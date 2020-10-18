@@ -1,0 +1,108 @@
+.header {
+    box-shadow: 0 0 10px rgba(0,0,0,.2);
+    background: #fff;
+    transition: top .2s ease-in-out;
+    z-index: 10;
+    width: 100%;
+    padding: 15px 0 6px;
+
+    &-left {
+        width: 60%;
+        margin-right: 10px;
+        .logo {
+            a {
+                display: inline-block;
+                width: 150px;
+                img {
+
+                }
+            }
+        }
+        .form_search {
+            width: 70%;
+            form {
+                position: relative;
+                input {
+                    width: 100%;
+                    border: 1px solid #dbdbdb;
+                    background-color: #f6f6f6;
+                    color: #353535;
+                    border-radius: 30px;
+                }
+                button {
+                    position: absolute;
+                    top: 50%;
+                    right: 8px;
+                    transform: translateY(-50%);
+                    border: 0;
+                    background-color: transparent;
+                    z-index: 4;
+                }
+            }
+        }
+    }
+    &-right {
+        width: 40%;
+        .btn-cdo {
+            background: #fb6a00;
+            border-radius: 100px;
+            padding: 4px 10px;
+            box-shadow: 0 0 3px 0 rgba(0,0,0,.2);
+            transition: all .2s ease;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            i {
+                margin-right: 10px;
+                color: white;
+            }
+        }
+        .cart {
+            position: relative;
+            i {
+                font-size: 30px;
+                color: #272727;
+            }
+            span {
+                position: absolute;
+                top: -9px;
+                right: -10px;
+            }
+        }
+        .auth {
+            height: 100%;
+            border-radius: 3px;
+            border: 1px solid #50ad4e;
+            background-color: #fff;
+            color: #50ad4e;
+            font-size: 15px;
+            padding: 5px 10px;
+            span {
+
+            }
+            a {
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                display: inline-block;
+                text-align: center;
+                line-height: 30px;
+            }
+            a.login {
+                display: inline-block;width: auto;
+                margin-right: 10px;
+                color: #50ad4e;
+                font-weight: bold;
+                text-decoration: none;
+            }
+            .facebook {
+                background: #3B5998;
+                color: white;
+            }
+            .google {
+                background: #dd4b39;
+                color: white;
+            }
+        }
+    }
+}

@@ -1,0 +1,16 @@
+.pagination {
+    margin: 20px auto;
+    text-align: center;
+    a {
+        background-color: #F89029;
+        background-image: linear-gradient(to right, #F89029, #FC3B1F);
+        color: white;
+        border: none;
+        padding: 10px 50px;
+        width: 250px;
+        font-size: 17px;
+        &:hover {
+            color: white !important;
+        }
+    }
+}
