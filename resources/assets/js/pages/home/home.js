@@ -2,9 +2,9 @@ import 'owl.carousel'
 var Home = {
     init : function ()
     {
-        console.log("init home")
         this.runBanner()
         this.runTags()
+        this.runCourse()
     },
 
     runBanner()
@@ -25,6 +25,20 @@ var Home = {
             animateOut: 'slideOutDown',
             animateIn: 'flipInX',
             items:5,
+            navigation: true,
+            smartSpeed:450,
+            navText: ["<i class='fa fa-chevron-left '></i>","<i class='fa fa-chevron-right'></i>"]
+        })
+    },
+
+    runCourse()
+    {
+        $(".js-lists-course-home").owlCarousel({
+            animateOut: 'slideOutDown',
+            animateIn: 'flipInX',
+            items:4,
+            loop:true,
+            nav: true,
             navigation: true,
             smartSpeed:450,
             navText: ["<i class='fa fa-chevron-left '></i>","<i class='fa fa-chevron-right'></i>"]

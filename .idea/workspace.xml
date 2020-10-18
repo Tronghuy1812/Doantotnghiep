@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="b6a09d15-6cd4-4f99-a1ca-a71bd348400e" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -156,7 +159,7 @@
       <option name="presentableId" value="Default" />
       <updated>1602860094356</updated>
       <workItem from="1602860095927" duration="11145000" />
-      <workItem from="1603019083201" duration="305000" />
+      <workItem from="1603019083201" duration="4517000" />
     </task>
     <servers />
   </component>
@@ -168,9 +171,9 @@
       <screen x="0" y="23" width="1792" height="1052" />
     </state>
     <state x="595" y="275" width="602" height="522" key="find.popup/0.23.1792.1052@0.23.1792.1052" timestamp="1602905598136" />
-    <state x="561" y="250" width="670" height="676" key="search.everywhere.popup" timestamp="1602862994825">
+    <state x="561" y="250" width="670" height="676" key="search.everywhere.popup" timestamp="1603034730070">
       <screen x="0" y="23" width="1792" height="1052" />
     </state>
-    <state x="561" y="250" width="670" height="676" key="search.everywhere.popup/0.23.1792.1052@0.23.1792.1052" timestamp="1602862994825" />
+    <state x="561" y="250" width="670" height="676" key="search.everywhere.popup/0.23.1792.1052@0.23.1792.1052" timestamp="1603034730070" />
   </component>
 </project>

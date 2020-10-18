@@ -14444,9 +14444,9 @@ __webpack_require__.r(__webpack_exports__);
 
 var Home = {
   init: function init() {
-    console.log("init home");
     this.runBanner();
     this.runTags();
+    this.runCourse();
   },
   runBanner: function runBanner() {
     $('.js-banner').owlCarousel({
@@ -14463,6 +14463,18 @@ var Home = {
       animateOut: 'slideOutDown',
       animateIn: 'flipInX',
       items: 5,
+      navigation: true,
+      smartSpeed: 450,
+      navText: ["<i class='fa fa-chevron-left '></i>", "<i class='fa fa-chevron-right'></i>"]
+    });
+  },
+  runCourse: function runCourse() {
+    $(".js-lists-course-home").owlCarousel({
+      animateOut: 'slideOutDown',
+      animateIn: 'flipInX',
+      items: 4,
+      loop: true,
+      nav: true,
       navigation: true,
       smartSpeed: 450,
       navText: ["<i class='fa fa-chevron-left '></i>", "<i class='fa fa-chevron-right'></i>"]

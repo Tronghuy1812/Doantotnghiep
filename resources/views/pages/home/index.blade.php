@@ -4,9 +4,8 @@
 @stop
 @section('content')
     @include('pages.home.include._inc_banner')
-    @for($i = 1 ; $i <= 5 ; $i++)
-        @include('pages.home.include._inc_section_one')
-    @endfor
+    @include('pages.home.include._inc_section_one')
+    @include('pages.home.include._inc_section_two')
 @stop
 
 @section('script')
