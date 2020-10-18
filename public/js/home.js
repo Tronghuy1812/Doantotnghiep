@@ -14470,12 +14470,30 @@ var Home = {
   },
   runCourse: function runCourse() {
     $(".js-lists-course-home").owlCarousel({
-      animateOut: 'slideOutDown',
-      animateIn: 'flipInX',
       items: 4,
       loop: true,
       nav: true,
       navigation: true,
+      smartSpeed: 450,
+      navText: ["<i class='fa fa-chevron-left '></i>", "<i class='fa fa-chevron-right'></i>"]
+    });
+    $(".js-tags-home").owlCarousel({
+      animateOut: 'slideOutDown',
+      animateIn: 'flipInX',
+      items: 6,
+      loop: false,
+      nav: false,
+      dots: false,
+      smartSpeed: 450,
+      navText: ["<i class='fa fa-chevron-left '></i>", "<i class='fa fa-chevron-right'></i>"]
+    });
+    $(".js-lists-lecture").owlCarousel({
+      animateOut: 'slideOutDown',
+      animateIn: 'flipInX',
+      items: 3,
+      loop: false,
+      nav: false,
+      dots: false,
       smartSpeed: 450,
       navText: ["<i class='fa fa-chevron-left '></i>", "<i class='fa fa-chevron-right'></i>"]
     });
@@ -14506,8 +14524,8 @@ $(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/trungphuna/Documents/work/web/khodoan/2020/education/resources/assets/js/pages/home/home.js */"./resources/assets/js/pages/home/home.js");
-module.exports = __webpack_require__(/*! /Users/trungphuna/Documents/work/web/khodoan/2020/education/resources/assets/scss/pages/home/home.scss */"./resources/assets/scss/pages/home/home.scss");
+__webpack_require__(/*! /Users/mac/Documents/web/work/duan/education/resources/assets/js/pages/home/home.js */"./resources/assets/js/pages/home/home.js");
+module.exports = __webpack_require__(/*! /Users/mac/Documents/web/work/duan/education/resources/assets/scss/pages/home/home.scss */"./resources/assets/scss/pages/home/home.scss");
 
 
 /***/ })

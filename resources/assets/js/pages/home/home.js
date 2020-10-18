@@ -34,12 +34,31 @@ var Home = {
     runCourse()
     {
         $(".js-lists-course-home").owlCarousel({
-            animateOut: 'slideOutDown',
-            animateIn: 'flipInX',
             items:4,
             loop:true,
             nav: true,
             navigation: true,
+            smartSpeed:450,
+            navText: ["<i class='fa fa-chevron-left '></i>","<i class='fa fa-chevron-right'></i>"]
+        })
+        $(".js-tags-home").owlCarousel({
+            animateOut: 'slideOutDown',
+            animateIn: 'flipInX',
+            items:6,
+            loop:false,
+            nav: false,
+            dots: false,
+            smartSpeed:450,
+            navText: ["<i class='fa fa-chevron-left '></i>","<i class='fa fa-chevron-right'></i>"]
+        })
+
+        $(".js-lists-lecture").owlCarousel({
+            animateOut: 'slideOutDown',
+            animateIn: 'flipInX',
+            items:3,
+            loop:false,
+            nav: false,
+            dots: false,
             smartSpeed:450,
             navText: ["<i class='fa fa-chevron-left '></i>","<i class='fa fa-chevron-right'></i>"]
         })
