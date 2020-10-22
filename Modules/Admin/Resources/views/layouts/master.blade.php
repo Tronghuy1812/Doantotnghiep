@@ -14,6 +14,12 @@
     <!-- Favicon -->
     <link rel="icon" href="{{ asset('img/brand/favicon.png') }}" type="image/x-icon"/>
     <link rel="stylesheet" href="{{ asset('css_admin/admin_dashboard.css') }}">
+    @if(session('toastr'))
+        <script>
+            var TYPE_MESSAGES = "{{ session('toastr.type') }}"
+            var MESSAGE = "{{ session('toastr.message') }}"
+        </script>
+    @endif
 </head>
 <body class="main-body app sidebar-mini">
 <!-- Start Switcher -->

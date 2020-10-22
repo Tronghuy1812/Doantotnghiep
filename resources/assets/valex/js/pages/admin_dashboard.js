@@ -16,6 +16,11 @@ import './../../assets/plugins/side-menu/sidemenu.js'
 import './../../assets/switcher/js/switcher.js'
 
 import FilepondUpload from '../components/_init_filepond.js'
+import SEO from '../components/_inc_seo.js'
+import Messages from "../../../components/_inc_run_message";
+
 $(function (){
     FilepondUpload.inti()
+    SEO.init()
+    Messages.init()
 })

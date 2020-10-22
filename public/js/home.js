@@ -14535,9 +14535,9 @@ $(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/trungphuna/Documents/work/web/khodoan/2020/education/resources/assets/js/pages/home/home.js */"./resources/assets/js/pages/home/home.js");
-__webpack_require__(/*! /Users/trungphuna/Documents/work/web/khodoan/2020/education/resources/assets/scss/pages/home/home.scss */"./resources/assets/scss/pages/home/home.scss");
-module.exports = __webpack_require__(/*! /Users/trungphuna/Documents/work/web/khodoan/2020/education/resources/assets/valex/scss/pages/admin_dashboard.scss */"./resources/assets/valex/scss/pages/admin_dashboard.scss");
+__webpack_require__(/*! /Users/mac/Documents/web/work/duan/education/resources/assets/js/pages/home/home.js */"./resources/assets/js/pages/home/home.js");
+__webpack_require__(/*! /Users/mac/Documents/web/work/duan/education/resources/assets/scss/pages/home/home.scss */"./resources/assets/scss/pages/home/home.scss");
+module.exports = __webpack_require__(/*! /Users/mac/Documents/web/work/duan/education/resources/assets/valex/scss/pages/admin_dashboard.scss */"./resources/assets/valex/scss/pages/admin_dashboard.scss");
 
 
 /***/ })
