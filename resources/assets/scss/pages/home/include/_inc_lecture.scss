@@ -55,5 +55,74 @@
                 min-height: 40px;
             }
         }
+        .dashboard {
+
+            margin: 20px 0;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            padding: .85rem 1rem;
+            background: #f6f6f6;
+            border-radius: 5px;
+            border: 1px solid #dbdbdb;
+            min-width: 289px;
+            .box-item{
+                width: calc(100%/3);
+                align-items: center;
+                span {
+                    &:first-child{
+                        font-size: 13px;
+                    }
+                    &:last-child{
+                        font-size: 1.1rem;
+                        color: #fff;
+                        font-weight: 500;
+                        line-height: 1.2;
+                        width: 42px;
+                        height: 42px;
+                        background: #50ad4e;
+                        padding: 4px;
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                }
+            }
+
+        }
+        .btn {
+            border: 1px solid #50ad4e;
+            background-color: #fff;
+            color: #50ad4e !important;
+            border-radius: 100px;
+            margin-bottom: 20px;
+        }
+    }
+    .owl-nav.disabled, .owl-carousel .owl-dots.disabled
+    {
+        display: block;
+    }
+    .owl-carousel .owl-next,
+    .owl-carousel .owl-prev, {
+        display: block;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 9;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        line-height: 30px;
+        color: #a8a8a8;
+        box-shadow: 0 0 5px 0 rgba(0,0,0,.1);
+        background: #fff !important;
+    }
+    .owl-carousel .owl-next
+    {
+        right: -40px;
+    }
+    .owl-carousel .owl-prev {
+        left: -40px;
     }
 }

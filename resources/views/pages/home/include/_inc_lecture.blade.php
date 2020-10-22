@@ -16,15 +16,15 @@
                         <p class="info-auth"><span class="icon"><i class="fa fa-briefcase"></i></span> <span class="name">
                       Tổng thư ký Hội đồng Liên hiệp Khoa học Doanh nhân Việt Nam</span></p>
                     </div>
-{{--                    <div class="dashboard">--}}
-{{--                        @for ($j = 1 ; $j <= 3 ;$j++)--}}
-{{--                            <div class="box-item">--}}
-{{--                                <span>Nôi dung</span>--}}
-{{--                                <span>100</span>--}}
-{{--                            </div>--}}
-{{--                        @endfor--}}
-{{--                    </div>--}}
-{{--                    <a href="" title="Xem thêm" class="btn btn-secondary">Xem thêm</a>--}}
+                    <div class="dashboard flex flex-jc-sb">
+                        @for ($j = 1 ; $j <= 3 ;$j++)
+                            <div class="box-item flex flex-d-c">
+                                <span class="mb10">Nôi dung</span>
+                                <span>100</span>
+                            </div>
+                        @endfor
+                    </div>
+                    <a href="" title="Xem thêm" class="btn btn-secondary">Xem thêm</a>
                 </div>
             @endfor
             <div class="clear"></div>

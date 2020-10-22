@@ -25,4 +25,15 @@
             </div>
         </div>
     </div>
+    <div class="header-button container mt10 flex flex-jc-sb">
+        <div class="box-category">
+            <a href="">
+                <i class="fa fa-bars"></i> <span>Danh mục khoá học</span>
+            </a>
+        </div>
+        <div class="box-right">
+            <a href=""><i class="fa fa-thumbs-o-up"></i> <span>Bán chạy nhất</span></a>
+            <a href=""><i class="fa fa-rss"></i> <span>Blog</span></a>
+        </div>
+    </div>
 </div>

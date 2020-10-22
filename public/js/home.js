@@ -14517,15 +14517,27 @@ $(function () {
 
 /***/ }),
 
+/***/ "./resources/assets/valex/scss/pages/admin_dashboard.scss":
+/*!****************************************************************!*\
+  !*** ./resources/assets/valex/scss/pages/admin_dashboard.scss ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ 0:
-/*!***************************************************************************************************!*\
-  !*** multi ./resources/assets/js/pages/home/home.js ./resources/assets/scss/pages/home/home.scss ***!
-  \***************************************************************************************************/
+/*!************************************************************************************************************************************************************!*\
+  !*** multi ./resources/assets/js/pages/home/home.js ./resources/assets/scss/pages/home/home.scss ./resources/assets/valex/scss/pages/admin_dashboard.scss ***!
+  \************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! /Users/trungphuna/Documents/work/web/khodoan/2020/education/resources/assets/js/pages/home/home.js */"./resources/assets/js/pages/home/home.js");
-module.exports = __webpack_require__(/*! /Users/trungphuna/Documents/work/web/khodoan/2020/education/resources/assets/scss/pages/home/home.scss */"./resources/assets/scss/pages/home/home.scss");
+__webpack_require__(/*! /Users/trungphuna/Documents/work/web/khodoan/2020/education/resources/assets/scss/pages/home/home.scss */"./resources/assets/scss/pages/home/home.scss");
+module.exports = __webpack_require__(/*! /Users/trungphuna/Documents/work/web/khodoan/2020/education/resources/assets/valex/scss/pages/admin_dashboard.scss */"./resources/assets/valex/scss/pages/admin_dashboard.scss");
 
 
 /***/ })
