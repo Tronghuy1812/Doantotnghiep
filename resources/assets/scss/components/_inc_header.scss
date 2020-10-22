@@ -106,3 +106,40 @@
         }
     }
 }
+.header-button {
+    .box-category {
+        width: 270px;
+        a {
+            color: #606060;
+            font-size: 15px;
+            font-weight: 500;
+            white-space: nowrap;
+            text-transform: uppercase;
+            i {
+                margin-right: 10px;
+            }
+        }
+    }
+    .box-right {
+        width: calc(100% - 270px);
+        display: inline;
+        text-align: right;
+        a {
+            color: #606060;
+            font-size: 15px;
+            font-weight: 500;
+            white-space: nowrap;
+            margin: 0 10px;
+            padding: 5px 0;
+            display: inline-block;
+            i {
+                margin-right: 5px;
+                color: #50ad4e;
+            }
+            &:hover {
+                cursor: pointer;
+                color: #50ad4e;
+            }
+        }
+    }
+}

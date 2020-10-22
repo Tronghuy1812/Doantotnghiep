@@ -20,6 +20,8 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
+        "filepond": "^4.21.1",
+        "filepond-plugin-image-preview": "^4.6.4",
         "owl.carousel": "^2.3.4"
     }
 }
