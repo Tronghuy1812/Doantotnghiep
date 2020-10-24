@@ -25,9 +25,18 @@ Route::prefix('admin')->group(function() {
 
     Route::prefix('category')->group(function (){
         Route::get('/', 'AdminCategoryController@index')->name('get_admin.category.index');
+        Route::get('/create', 'AdminCategoryController@create')->name('get_admin.category.create');
+        Route::post('/create', 'AdminCategoryController@store');
+        Route::get('update/{id}', 'AdminCategoryController@edit')->name('get_admin.category.edit');
+        Route::post('update/{id}', 'AdminCategoryController@update');
+        Route::get('delete/{id}', 'AdminCategoryController@delete')->name('get_admin.category.delete');
     });
 
     Route::prefix('teacher')->group(function (){
         Route::get('/', 'AdminTeacherController@index')->name('get_admin.teacher.index');
+    });
+
+    Route::prefix('ajax')->namespace('Ajax')->group(function (){
+        Route::post('/upload/image', 'AdminAjaxUploadImageController@processUpload')->name('post_ajax_admin.uploads');
     });
 });

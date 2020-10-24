@@ -72,6 +72,7 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1"> Avatar </label>
                         <input type="file" class="filepond" name="avatar">
+                        <input type="hidden" name="t_avatar" id="avatar_uploads">
                     </div>
                 </div>
             </div>

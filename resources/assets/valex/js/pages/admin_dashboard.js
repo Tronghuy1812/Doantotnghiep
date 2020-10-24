@@ -18,9 +18,11 @@ import './../../assets/switcher/js/switcher.js'
 import FilepondUpload from '../components/_init_filepond.js'
 import SEO from '../components/_inc_seo.js'
 import Messages from "../../../components/_inc_run_message";
+import Delete from "./../components/_inc_delete"
 
 $(function (){
     FilepondUpload.inti()
     SEO.init()
+    Delete.init()
     Messages.init()
 })

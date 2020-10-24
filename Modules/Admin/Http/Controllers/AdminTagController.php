@@ -5,6 +5,7 @@ namespace Modules\Admin\Http\Controllers;
 use App\Models\Education\Tag;
 use Carbon\Carbon;
 use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Http\Request;
 use Modules\Admin\Http\Requests\AdminTagRequest;
 
 class AdminTagController extends AdminController
@@ -67,12 +68,19 @@ class AdminTagController extends AdminController
         return redirect()->route('get_admin.tag.index');
     }
 
-    public function delete($id)
+    public function delete( Request  $request, $id)
     {
-        $tag = Tag::find($id);
-        if ($tag) $tag->delete();
+        if($request->ajax())
+        {
+            $tag = Tag::find($id);
+            if ($tag) $tag->delete();;
+            return response()->json([
+                'status' => 200,
+                'message' => 'Xoá dữ liệu thành công'
+            ]);
+        }
 
-        $this->showMessagesSuccess("Xử lý dữ liệu thành công");
-        return redirect()->route('get_admin.tag.index');
+        return redirect()->to('/');
+
     }
 }

@@ -1,16 +1,15 @@
 <?php
 
-namespace App\Models\Education;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 
-class Tag extends Model
+class Category extends Model
 {
     use HasFactory;
 
-    public $table = 'tags';
     protected $guarded = [''];
     const STATUS_DEFAULT = 1;
     const STATUS_HIDE = 0;
@@ -27,6 +26,6 @@ class Tag extends Model
 
     public function getStatus()
     {
-        return Arr::get($this->status, $this->t_status, "[N\A]");
+        return Arr::get($this->status, $this->c_status, "[N\A]");
     }
 }

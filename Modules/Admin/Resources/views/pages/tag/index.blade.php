@@ -52,15 +52,15 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                {{ $item->t_sort }}
+                                                <span class="badge badge-info">{{ $item->t_sort }}</span>
                                             </td>
                                             <td>
-                                                {{ $item->t_status }}
+                                                <span class="badge {{ $item->getStatus($item->t_status)['class']  }}">{{ $item->getStatus($item->t_status)['name']  }}</span>
                                             </td>
                                             <td>{{ $item->created_at }}</td>
                                             <td>
                                                 <a href="{{ route('get_admin.tag.edit', $item->id) }}" class="btn btn-xs btn-info"><i class="la la-edit"></i></a>
-                                                <a href="{{ route('get_admin.tag.delete', $item->id) }}" class="btn btn-xs btn-danger"><i class="la la-trash"></i></a>
+                                                <a href="{{ route('get_admin.tag.delete', $item->id) }}" class="btn btn-xs js-delete btn-danger"><i class="la la-trash"></i></a>
                                             </td>
                                         </tr>
                                     @empty

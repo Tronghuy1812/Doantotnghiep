@@ -2,78 +2,81 @@
 
 namespace Modules\Admin\Http\Controllers;
 
-use Illuminate\Contracts\Support\Renderable;
+use App\Models\Category;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
+use Modules\Admin\Http\Requests\AdminCategoryRequest;
 
-class AdminCategoryController extends Controller
+class AdminCategoryController extends AdminController
 {
-    /**
-     * Display a listing of the resource.
-     * @return Renderable
-     */
     public function index()
     {
-        return view('admin::index');
+        $categories = Category::orderByDesc('c_sort')
+            ->paginate(20);
+
+        $viewData = [
+            'categories' => $categories
+        ];
+        return view('admin::pages.category.index', $viewData);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     * @return Renderable
-     */
     public function create()
     {
-        return view('admin::create');
+        return view('admin::pages.category.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     * @param Request $request
-     * @return Renderable
-     */
-    public function store(Request $request)
+    public function store(AdminCategoryRequest  $request)
     {
-        //
+        $data = $request->except(['avatar','save','_token']);
+        $data['created_at'] = Carbon::now();
+
+        if(!$request->c_title_seo)             $data['c_title_seo'] = $request->c_name;
+        if(!$request->c_description_seo) $data['c_description_seo'] = $request->c_name;
+
+        $categoryID = Category::insertGetId($data);
+        if($categoryID)
+        {
+            $this->showMessagesSuccess();
+            return redirect()->route('get_admin.category.index');
+        }
+        $this->showMessagesError();
+        return  redirect()->back();
     }
 
-    /**
-     * Show the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function show($id)
-    {
-        return view('admin::show');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
     public function edit($id)
     {
-        return view('admin::edit');
+        $category = Category::findOrFail($id);
+        return view('admin::pages.category.update',compact('category'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     * @param Request $request
-     * @param int $id
-     * @return Renderable
-     */
-    public function update(Request $request, $id)
+    public function update(AdminCategoryRequest $request, $id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $data = $request->except(['avatar','save','_token']);
+        $data['updated_at'] = Carbon::now();
+
+        if(!$request->c_title_seo)             $data['c_title_seo'] = $request->c_name;
+        if(!$request->c_description_seo) $data['c_description_seo'] = $request->c_name;
+
+        $category->fill($data)->save();
+        $this->showMessagesSuccess();
+        return redirect()->route('get_admin.category.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     * @param int $id
-     * @return Renderable
-     */
-    public function destroy($id)
+
+    public function delete(Request $request, $id)
     {
-        //
+        if($request->ajax())
+        {
+            $category = Category::find($id);
+            if ($category) $category->delete();;
+            return response()->json([
+                'status' => 200,
+                'message' => 'Xoá dữ liệu thành công'
+            ]);
+        }
+
+        return redirect()->to('/');
+
     }
 }
