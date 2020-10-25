@@ -29,4 +29,9 @@ class Course extends Model
     {
         return Arr::get($this->status, $this->t_status, "[N\A]");
     }
+
+    public function teacher()
+    {
+        return $this->belongsTo(Teacher::class,'c_teacher_id');
+    }
 }

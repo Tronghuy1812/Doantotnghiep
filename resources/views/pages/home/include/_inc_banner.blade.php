@@ -4,8 +4,18 @@
             <div class="box-categories">
                 <div class="categories">
                     <ul>
-                        <li><a href=""><i class="fa fa-credit-card"></i><span>Tất cả khoá học</span></a></li>
-                        <li><a href=""><i class="fa fa-credit-card"></i><span>KHoá học combo</span></a></li>
+                        <li>
+                            <a href="{{ route('get.category.all') }}" title="Tất cả khoá học">
+                                <i class="fa fa-credit-card"></i><span>Tất cả khoá học</span>
+                            </a>
+                        </li>
+                        @foreach($categoriesParent as $item)
+                            <li>
+                                <a href="{{ route('get.category',['slug' => $item->c_slug]) }}" title="{{ $item->c_name }}">
+                                    <i class="{{ $item->c_icon }}"></i><span>{{ $item->c_name }}</span>
+                                </a>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>

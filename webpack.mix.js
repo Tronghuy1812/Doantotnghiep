@@ -12,6 +12,7 @@ const mix = require('laravel-mix');
  */
 // FRONTEND =====
 mix.sass('resources/assets/scss/pages/home/home.scss', 'public/css');
+mix.sass('resources/assets/scss/pages/category/category.scss', 'public/css');
 
 
 // ADMIN
@@ -20,6 +21,7 @@ mix.sass('resources/assets/valex/scss/pages/admin_dashboard.scss', 'public/css_a
 
 // FRONTEND =====
 mix.js('resources/assets/js/pages/home/home.js', 'public/js');
+mix.js('resources/assets/js/pages/category/category.js', 'public/js');
 
 // ADMIN
 mix.js('resources/assets/valex/js/pages/admin_dashboard.js', 'public/js_admin');
