@@ -5,7 +5,7 @@
         </div>
         <div class="lists js-lists-course-home owl-carousel owl-theme">
             @foreach($courses as $item)
-                <div class="item  mr20 box-course mb20">
+                <div class="item list-course  mr20 box-course mb20">
                     <div class="avatar">
                         <div class="img">
                             <a href="">

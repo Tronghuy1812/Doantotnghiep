@@ -2,7 +2,7 @@
     <div class="container flex flex-jc-sb flex-a-c">
         <div class="header-left flex flex-jc-sb flex-a-c">
             <div class="logo">
-                <a href="">
+                <a href="/" title="Logo">
                     <img src="{{ asset('images/logo.png') }}" alt="">
                 </a>
             </div>

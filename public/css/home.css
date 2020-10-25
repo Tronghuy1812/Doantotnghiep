@@ -1681,6 +1681,11 @@ a {
   text-decoration: none;
 }
 
+b,
+strong {
+  font-weight: 700;
+}
+
 .flex {
   display: flex;
 }
@@ -1717,6 +1722,10 @@ a {
   flex: 0 0 20%;
 }
 
+.box .box-25 {
+  flex: 0 0 25%;
+}
+
 .box .box-30 {
   flex: 0 0 30%;
 }
@@ -1751,6 +1760,10 @@ a {
 
 .box .box-70 {
   flex: 0 0 70%;
+}
+
+.box .box-75 {
+  flex: 0 0 75%;
 }
 
 .box .box-80 {
@@ -1844,6 +1857,11 @@ a {
 
 .lists .item-3 {
   width: calc(100%/3 - 10px);
+  float: left;
+}
+
+.lists .item-3-0 {
+  width: calc(100%/3);
   float: left;
 }
 
@@ -2796,7 +2814,7 @@ a {
   justify-self: center;
 }
 
-.box-course.item .avatar {
+.list-course.item .avatar {
   border-radius: 5px 5px 0 0;
   border: none;
   position: relative;
@@ -2804,7 +2822,7 @@ a {
   height: 127px;
 }
 
-.box-course.item .avatar a img {
+.list-course.item .avatar a img {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -2816,7 +2834,7 @@ a {
   object-fit: cover;
 }
 
-.box-course.item .img_badget {
+.list-course.item .img_badget {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -2826,7 +2844,7 @@ a {
   padding: 4px 0;
 }
 
-.box-course.item .img_badget span {
+.list-course.item .img_badget span {
   background: #50ad4e;
   border-radius: 100px;
   padding: 1px 5px;
@@ -2835,7 +2853,7 @@ a {
   color: white;
 }
 
-.box-course.item .info {
+.list-course.item .info {
   color: #000;
   background: #fff;
   border: none;
@@ -2846,7 +2864,7 @@ a {
   transition: background-color 0.25s linear;
 }
 
-.box-course.item .info .title a {
+.list-course.item .info .title a {
   color: #000000;
   font-size: 21px;
   font-size: 1rem;
@@ -2861,7 +2879,7 @@ a {
   min-height: 3rem;
 }
 
-.box-course.item .info-auth {
+.list-course.item .info-auth {
   display: -webkit-box;
   max-width: 100%;
   -webkit-line-clamp: 2;
@@ -2870,17 +2888,17 @@ a {
   text-overflow: ellipsis;
 }
 
-.box-course.item .info-auth .icon {
+.list-course.item .info-auth .icon {
   color: #50ad4e;
   margin-right: 5px;
   width: 15px;
 }
 
-.box-course.item .info-auth .name {
+.list-course.item .info-auth .name {
   font-size: 12px;
 }
 
-.box-course.item .info .video {
+.list-course.item .info .video {
   color: #fb6a00 !important;
   font-weight: 400;
   font-size: 14px;
@@ -2889,11 +2907,11 @@ a {
   align-items: center;
 }
 
-.box-course.item .info .video i {
+.list-course.item .info .video i {
   margin-right: 5px;
 }
 
-.box-course.item .info .price {
+.list-course.item .info .price {
   font-size: 14px;
   font-size: 1rem;
   color: #fb6a00;
@@ -2901,16 +2919,16 @@ a {
   font-weight: 700;
 }
 
-.box-course.item:hover {
+.list-course.item:hover {
   cursor: pointer;
 }
 
-.box-course.item:hover .avatar img {
+.list-course.item:hover .avatar img {
   transform: translate(-50%, -50%) scale(1.1);
   filter: brightness(0.7);
 }
 
-.box-course.item:hover .info {
+.list-course.item:hover .info {
   background-color: rgba(80, 173, 78, 0.1);
 }
 
