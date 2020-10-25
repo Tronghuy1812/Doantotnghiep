@@ -4,9 +4,9 @@
             <h2 class="heading-h2 heading-before">Từ khoá nổi bật</h2>
         </div>
         <div class="lists js-tags-home owl-carousel owl-theme">
-            @for($i = 1 ; $i <= 30 ; $i++)
-                <a href="">Lập Trình Ứng dụng</a>
-            @endfor
+            @foreach($tags as $item)
+                <a href="" target="_blank" title="{{ $item->t_name }}">{{ $item->t_name }}</a>
+            @endforeach
             <div class="clear"></div>
         </div>
     </div>

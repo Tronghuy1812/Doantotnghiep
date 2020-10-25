@@ -2,78 +2,74 @@
 
 namespace Modules\Admin\Http\Controllers;
 
-use Illuminate\Contracts\Support\Renderable;
+use App\Models\Education\Teacher;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
+use Modules\Admin\Http\Requests\AdminTeacherRequest;
 
-class AdminTeacherController extends Controller
+class AdminTeacherController extends AdminController
 {
-    /**
-     * Display a listing of the resource.
-     * @return Renderable
-     */
     public function index()
     {
-        return view('admin::index');
+        $teachers = Teacher::orderByDesc('id')
+            ->paginate(20);
+
+        $viewData = [
+            'teachers' => $teachers
+        ];
+        return view('admin::pages.teacher.index', $viewData);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     * @return Renderable
-     */
     public function create()
     {
-        return view('admin::create');
+        return view('admin::pages.teacher.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     * @param Request $request
-     * @return Renderable
-     */
-    public function store(Request $request)
+    public function store(AdminTeacherRequest $request)
     {
-        //
+        $data = $request->except(['avatar','save','_token']);
+        $data['created_at'] = Carbon::now();
+
+        $teacherID = Teacher::insertGetId($data);
+        if($teacherID)
+        {
+            $this->showMessagesSuccess();
+            return redirect()->route('get_admin.teacher.index');
+        }
+        $this->showMessagesError();
+        return  redirect()->back();
     }
 
-    /**
-     * Show the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function show($id)
-    {
-        return view('admin::show');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
     public function edit($id)
     {
-        return view('admin::edit');
+        $teacher = Teacher::find($id);
+
+        return view('admin::pages.teacher.update', compact('teacher'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     * @param Request $request
-     * @param int $id
-     * @return Renderable
-     */
-    public function update(Request $request, $id)
+    public function update(AdminTeacherRequest  $request, $id)
     {
-        //
+        $teacher = Teacher::find($id);
+        $data = $request->except(['avatar','save','_token']);
+        $data['updated_at'] = Carbon::now();
+
+        $teacher->fill($data)->save();
+        $this->showMessagesSuccess();
+        return redirect()->route('get_admin.teacher.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     * @param int $id
-     * @return Renderable
-     */
-    public function destroy($id)
+    public function delete($id, Request  $request)
     {
-        //
+        if($request->ajax())
+        {
+            $teacher = Teacher::find($id);
+            if ($teacher) $teacher->delete();;
+            return response()->json([
+                'status' => 200,
+                'message' => 'Xoá dữ liệu thành công'
+            ]);
+        }
+
+        return redirect()->to('/');
     }
 }

@@ -14,7 +14,6 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="required">Slug <span>(*)</span></label>
                         <input type="text"  class="form-control slug"   name="c_slug" value="{{ old('c_slug', $category->c_slug ?? '') }}">
-                        <span class="d-block"><a href="">Click xem mau</a></span>
                         @if($errors->first('c_slug'))
                             <span class="text-danger">{{ $errors->first('c_slug') }}</span>
                         @endif
@@ -23,7 +22,7 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="required">Icon <span>(*)</span></label>
                         <input type="text"  class="form-control" value="{{ old('c_icon', $category->c_icon ?? '') }}" name="c_icon">
-
+                        <span class="d-block"><a href="https://fontawesome.com/v4.7.0/icons/" target="_blank">Click xem mau</a></span>
                         @if($errors->first('c_icon'))
                             <span class="text-danger">{{ $errors->first('c_icon') }}</span>
                         @endif
@@ -31,6 +30,7 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="required">Sort <span>(*)</span></label>
                         <input type="number"  class="form-control"  name="c_sort" value="{{ old('c_sort', $category->c_sort ?? '0') }}">
+                        <span class="d-block text-warning">Thứ thự được sắp xếp từ bé đến lớn</span>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1"> Parent <span>(*)</span></label>

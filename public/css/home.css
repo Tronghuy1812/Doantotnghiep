@@ -2546,6 +2546,9 @@ a {
   border-radius: 5px;
   margin-right: 5px;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .tags_hot .owl-item a {
