@@ -2,7 +2,9 @@
 
 namespace Modules\Admin\Http\Controllers;
 
+use App\Models\Education\SeoEdutcation;
 use App\Models\Education\Tag;
+use App\Service\Seo\RenderUrlSeoCourseService;
 use Carbon\Carbon;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
@@ -43,6 +45,7 @@ class AdminTagController extends AdminController
         if($tagID)
         {
             $this->showMessagesSuccess();
+            RenderUrlSeoCourseService::init($request->t_slug,SeoEdutcation::TYPE_TAG, $tagID);
             return redirect()->route('get_admin.tag.index');
         }
         $this->showMessagesError();
@@ -64,6 +67,7 @@ class AdminTagController extends AdminController
         if(!$request->t_description_seo) $data['t_description_seo'] = $request->t_name;
 
         $tag->fill($data)->save();
+        RenderUrlSeoCourseService::init($request->t_slug,SeoEdutcation::TYPE_TAG, $id);
         $this->showMessagesSuccess();
         return redirect()->route('get_admin.tag.index');
     }
@@ -73,7 +77,10 @@ class AdminTagController extends AdminController
         if($request->ajax())
         {
             $tag = Tag::find($id);
-            if ($tag) $tag->delete();;
+            if ($tag){
+                $tag->delete();
+                RenderUrlSeoCourseService::deleteUrlSeo(SeoEdutcation::TYPE_TAG, $id);
+            }
             return response()->json([
                 'status' => 200,
                 'message' => 'Xoá dữ liệu thành công'

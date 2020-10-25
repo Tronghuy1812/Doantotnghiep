@@ -3,6 +3,8 @@
 namespace Modules\Admin\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Education\SeoEdutcation;
+use App\Service\Seo\RenderUrlSeoCourseService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Modules\Admin\Http\Requests\AdminCategoryRequest;
@@ -37,6 +39,7 @@ class AdminCategoryController extends AdminController
         if($categoryID)
         {
             $this->showMessagesSuccess();
+            RenderUrlSeoCourseService::init($request->c_slug,SeoEdutcation::TYPE_CATEGORY, $categoryID);
             return redirect()->route('get_admin.category.index');
         }
         $this->showMessagesError();
@@ -59,6 +62,7 @@ class AdminCategoryController extends AdminController
         if(!$request->c_description_seo) $data['c_description_seo'] = $request->c_name;
 
         $category->fill($data)->save();
+        RenderUrlSeoCourseService::init($request->c_slug,SeoEdutcation::TYPE_CATEGORY, $id);
         $this->showMessagesSuccess();
         return redirect()->route('get_admin.category.index');
     }
@@ -69,7 +73,11 @@ class AdminCategoryController extends AdminController
         if($request->ajax())
         {
             $category = Category::find($id);
-            if ($category) $category->delete();;
+            if ($category)
+            {
+                $category->delete();
+                RenderUrlSeoCourseService::deleteUrlSeo(SeoEdutcation::TYPE_CATEGORY, $id);
+            }
             return response()->json([
                 'status' => 200,
                 'message' => 'Xoá dữ liệu thành công'

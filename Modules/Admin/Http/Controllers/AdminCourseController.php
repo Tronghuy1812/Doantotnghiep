@@ -4,7 +4,9 @@ namespace Modules\Admin\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Education\Course;
+use App\Models\Education\SeoEdutcation;
 use App\Models\Education\Teacher;
+use App\Service\Seo\RenderUrlSeoCourseService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Modules\Admin\Http\Requests\AdminCourseRequest;
@@ -52,6 +54,7 @@ class AdminCourseController extends AdminController
         if($courseID)
         {
             $this->showMessagesSuccess();
+            RenderUrlSeoCourseService::init($request->c_slug,SeoEdutcation::TYPE_COURSE, $courseID);
             return redirect()->route('get_admin.course.index');
         }
         $this->showMessagesError();
@@ -80,6 +83,7 @@ class AdminCourseController extends AdminController
         if(!$request->c_price )  $data['c_price'] = 0;
 
         $course->fill($data)->save();
+        RenderUrlSeoCourseService::init($request->c_slug,SeoEdutcation::TYPE_COURSE, $id);
         $this->showMessagesSuccess();
         return redirect()->route('get_admin.course.index');
     }
@@ -89,7 +93,11 @@ class AdminCourseController extends AdminController
         if($request->ajax())
         {
             $course = Course::findOrFail($id);
-            if ($course) $course->delete();;
+            if ($course)
+            {
+                $course->delete();
+                RenderUrlSeoCourseService::deleteUrlSeo(SeoEdutcation::TYPE_COURSE, $id);
+            }
             return response()->json([
                 'status' => 200,
                 'message' => 'Xoá dữ liệu thành công'
