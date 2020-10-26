@@ -8,8 +8,8 @@
                 <div class="item list-course  mr20 box-course mb20">
                     <div class="avatar">
                         <div class="img">
-                            <a href="">
-                                <img src="{{ asset('images/thumb.jpg') }}" alt="">
+                            <a href="{{ route('get.course.render',['slug' => $item->c_slug.'-cr']) }}" title="{{ $item->c_name }}">
+                                <img src="{{ asset('images/thumb.jpg') }}" alt="{{ $item->c_name }}">
                             </a>
                             <div class="img_badget">
                                 <p class="flex flex-jc-sb pl10 pr10">

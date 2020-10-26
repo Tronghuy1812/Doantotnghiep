@@ -15,4 +15,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/','Frontend\HomeController@index');
 Route::get('/danh-muc/{slug?}','Frontend\CategoryController@index')->name('get.category');
+Route::get('/khoa-hoc/{slug?}','Frontend\HubCourseController@render')->name('get.course.render');
 Route::get('tat-ca-khoa-hoc','Frontend\CategoryController@index')->name('get.category.all');
