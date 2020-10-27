@@ -59,8 +59,9 @@
                                                     <label for="exampleInputEmail1" class="required">Teacher <span>(*)</span></label>
                                                     <div class="SumoSelect sumo_somename" tabindex="0" role="button" aria-expanded="true">
                                                         <select name="c_teacher_id" class="form-control SlectBox SumoUnder" onclick="console.log($(this).val())" onchange="console.log('change is firing')" tabindex="-1">
-                                                            <option title="Public" value="1">Public</option>
-                                                            <option title="hide" value="0">Hide</option>
+                                                            @foreach($teachers as $teacher)
+                                                                <option title="{{ $teacher->t_name }}" value="{{ $teacher->id }}">{{ $teacher->t_name }}</option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                     @if($errors->first('c_teacher_id'))
@@ -73,8 +74,9 @@
                                                     <label for="exampleInputEmail1" class="required">Category <span>(*)</span></label>
                                                     <div class="SumoSelect sumo_somename" tabindex="0" role="button" aria-expanded="true">
                                                         <select name="c_category_id" class="form-control SlectBox SumoUnder" onclick="console.log($(this).val())" onchange="console.log('change is firing')" tabindex="-1">
-                                                            <option title="Public" value="1">Public</option>
-                                                            <option title="hide" value="0">Hide</option>
+                                                            @foreach($categories as $category)
+                                                                <option title="{{ $category->c_name }}" value="{{ $category->id }}">{{ $category->c_name }}</option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                     @if($errors->first('c_category_id'))

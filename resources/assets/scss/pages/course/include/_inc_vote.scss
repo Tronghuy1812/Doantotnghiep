@@ -1,0 +1,51 @@
+.vote {
+    .dashboard{
+        border-right: 1px solid #dedede;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        .vote-total-age {
+            font-size: 3.75rem;
+            font-weight: 700;
+            margin-bottom: 0;
+        }
+        .vote-star {
+            span {
+                color: #bcdeba!important;
+            }
+            span.active{
+                color: #50ad4e !important;
+            }
+        }
+        .desc {
+            font-size: 1rem;
+            color: #878787;
+            margin-bottom: 0;
+        }
+    }
+    .list-vote {
+        padding: 10px;
+        .item {
+            margin-bottom: 10px;
+            align-items: center;
+            .first{
+                i {
+                    color: #50ad4e;
+                }
+            }
+            div {
+                width: 80%;
+                height: 7px;
+                overflow: hidden;
+                font-size: .875rem;
+                background-color: #e9ecef;
+                border-radius: .25rem;
+                .progress {
+                    display: block;
+                    background-color: #28a745;
+                }
+            }
+        }
+    }
+}

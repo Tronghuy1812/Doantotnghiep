@@ -2256,6 +2256,24 @@ strong {
   font-weight: 500;
 }
 
+.box-section .box-title a {
+  float: right;
+  font-size: 14px;
+  color: #272727;
+}
+
+.box-section .box-title a i {
+  font-size: 11px;
+  font-weight: 400;
+}
+
+#rightSidebar {
+  position: absolute;
+  top: -170px;
+  right: -15px;
+  width: 30%;
+}
+
 .right-section {
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 5px;
@@ -2264,6 +2282,10 @@ strong {
   background: #fff;
   position: relative;
   margin: 15px 0;
+}
+
+.right-section-box {
+  padding: 1.25rem;
 }
 
 .right-section-title {
@@ -2300,6 +2322,10 @@ strong {
   margin-bottom: 20px;
 }
 
+.right-section .price i {
+  margin-right: 5px;
+}
+
 .right-section .footer {
   margin-top: 20px;
 }
@@ -2321,6 +2347,100 @@ strong {
 .right-section .footer a.google {
   background-color: #dd4b39;
   color: white;
+}
+
+.teacher .info {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.teacher .info a img {
+  width: 100px;
+  height: 100px;
+  max-width: 100%;
+  border-radius: 50%;
+}
+
+.teacher .info .name {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #272727;
+  margin-top: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.teacher .info .job {
+  margin-bottom: 0;
+  color: #878787;
+}
+
+.teacher .info .job i {
+  color: #50ad4e;
+}
+
+.teacher .content .item {
+  margin-bottom: 1rem;
+}
+
+.teacher .content .item p:first-child {
+  font-weight: 700;
+}
+
+.vote .dashboard {
+  border-right: 1px solid #dedede;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.vote .dashboard .vote-total-age {
+  font-size: 3.75rem;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
+.vote .dashboard .vote-star span {
+  color: #bcdeba !important;
+}
+
+.vote .dashboard .vote-star span.active {
+  color: #50ad4e !important;
+}
+
+.vote .dashboard .desc {
+  font-size: 1rem;
+  color: #878787;
+  margin-bottom: 0;
+}
+
+.vote .list-vote {
+  padding: 10px;
+}
+
+.vote .list-vote .item {
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.vote .list-vote .item .first i {
+  color: #50ad4e;
+}
+
+.vote .list-vote .item div {
+  width: 80%;
+  height: 7px;
+  overflow: hidden;
+  font-size: 0.875rem;
+  background-color: #e9ecef;
+  border-radius: 0.25rem;
+}
+
+.vote .list-vote .item div .progress {
+  display: block;
+  background-color: #28a745;
 }
 
 footer {

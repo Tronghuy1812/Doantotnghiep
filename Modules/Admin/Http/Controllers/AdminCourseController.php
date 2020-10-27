@@ -39,62 +39,65 @@ class AdminCourseController extends AdminController
         return view('admin::pages.course.create', $viewData);
     }
 
-    public function store(AdminCourseRequest  $request)
+    public function store(AdminCourseRequest $request)
     {
-        $data = $request->except(['avatar','save','_token']);
+        $data = $request->except(['avatar', 'save', '_token']);
         $data['created_at'] = Carbon::now();
 
-        if(!$request->c_title_seo)             $data['c_title_seo'] = $request->c_name;
-        if(!$request->c_description_seo) $data['c_description_seo'] = $request->c_name;
-        if(!$request->c_sale )  $data['c_sale'] = 0;
-        if(!$request->c_total_time )  $data['c_total_time'] = 0;
-        if(!$request->c_price )  $data['c_price'] = 0;
+        if (!$request->c_title_seo) $data['c_title_seo'] = $request->c_name;
+        if (!$request->c_description_seo) $data['c_description_seo'] = $request->c_name;
+        if (!$request->c_sale) $data['c_sale'] = 0;
+        if (!$request->c_total_time) $data['c_total_time'] = 0;
+        if (!$request->c_price) $data['c_price'] = 0;
 
         $courseID = Course::insertGetId($data);
-        if($courseID)
-        {
+        if ($courseID) {
             $this->showMessagesSuccess();
-            RenderUrlSeoCourseService::init($request->c_slug,SeoEdutcation::TYPE_COURSE, $courseID);
+            RenderUrlSeoCourseService::init($request->c_slug, SeoEdutcation::TYPE_COURSE, $courseID);
             return redirect()->route('get_admin.course.index');
         }
         $this->showMessagesError();
-        return  redirect()->back();
+        return redirect()->back();
     }
 
     public function edit($id)
     {
         $course = Course::findOrFail($id);
+        $categories = Category::orderByDesc('c_sort')
+            ->get();
+        $teachers = Teacher::orderByDesc('id')->get();
+
         $viewData = [
-            'course' => $course
+            'course' => $course,
+            'categories' => $categories,
+            'teachers' => $teachers
         ];
         return view('admin::pages.course.update', $viewData);
     }
 
-    public function update(AdminCourseRequest $request,$id)
+    public function update(AdminCourseRequest $request, $id)
     {
         $course = Course::findOrFail($id);
-        $data = $request->except(['avatar','save','_token']);
+        $data = $request->except(['avatar', 'save', '_token']);
         $data['updated_at'] = Carbon::now();
 
-        if(!$request->c_title_seo)             $data['c_title_seo'] = $request->c_name;
-        if(!$request->c_description_seo) $data['c_description_seo'] = $request->c_name;
-        if(!$request->c_sale )  $data['c_sale'] = 0;
-        if(!$request->c_total_time )  $data['c_total_time'] = 0;
-        if(!$request->c_price )  $data['c_price'] = 0;
+        if (!$request->c_title_seo) $data['c_title_seo'] = $request->c_name;
+        if (!$request->c_description_seo) $data['c_description_seo'] = $request->c_name;
+        if (!$request->c_sale) $data['c_sale'] = 0;
+        if (!$request->c_total_time) $data['c_total_time'] = 0;
+        if (!$request->c_price) $data['c_price'] = 0;
 
         $course->fill($data)->save();
-        RenderUrlSeoCourseService::init($request->c_slug,SeoEdutcation::TYPE_COURSE, $id);
+        RenderUrlSeoCourseService::init($request->c_slug, SeoEdutcation::TYPE_COURSE, $id);
         $this->showMessagesSuccess();
         return redirect()->route('get_admin.course.index');
     }
 
-    public function delete(Request  $request, $id)
+    public function delete(Request $request, $id)
     {
-        if($request->ajax())
-        {
+        if ($request->ajax()) {
             $course = Course::findOrFail($id);
-            if ($course)
-            {
+            if ($course) {
                 $course->delete();
                 RenderUrlSeoCourseService::deleteUrlSeo(SeoEdutcation::TYPE_COURSE, $id);
             }
