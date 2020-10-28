@@ -1845,6 +1845,14 @@ strong {
   width: 60%;
 }
 
+.g-title {
+  font-weight: 400;
+  padding: 0 15px 12px 0;
+  border-bottom: 2px solid #50ad4e !important;
+  display: inline-block;
+  font-size: 16px;
+}
+
 .lists .item-4 {
   width: calc(100%/4 - 10px);
   float: left;
@@ -1852,6 +1860,11 @@ strong {
 
 .lists .item-4-20 {
   width: calc(100%/4 - 20px);
+  float: left;
+}
+
+.lists .item-4-0 {
+  width: calc(100%/4);
   float: left;
 }
 

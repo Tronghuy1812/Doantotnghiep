@@ -6,5 +6,7 @@
     "/css/category.css": "/css/category.css",
     "/css/course.css": "/css/course.css",
     "/css_admin/admin_dashboard.css": "/css_admin/admin_dashboard.css",
-    "/js_admin/admin_dashboard.js": "/js_admin/admin_dashboard.js"
+    "/js/teacher.js": "/js/teacher.js",
+    "/js_admin/admin_dashboard.js": "/js_admin/admin_dashboard.js",
+    "/css/teacher.css": "/css/teacher.css"
 }

@@ -1,0 +1,27 @@
+.teacher-content {
+    margin-top: 30px;
+    .content-text {
+
+    }
+
+    .teacher-tag{
+
+        li {
+            float: left;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            a {
+                padding: 3px 8px;
+                color: #fff!important;
+                background: #a9b2bd;
+                border-radius: 3px;
+                -webkit-border-radius: 3px;
+                -moz-border-radius: 3px;
+                font-weight: 300;
+                display: block;
+                font-size: 12px;
+            }
+        }
+    }
+
+}

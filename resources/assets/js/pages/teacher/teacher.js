@@ -1,4 +1,4 @@
-var Course = {
+var Teacher = {
     init : function ()
     {
 
@@ -6,5 +6,5 @@ var Course = {
 }
 
 $(function (){
-    Teacher.init()
+    Course.init()
 })

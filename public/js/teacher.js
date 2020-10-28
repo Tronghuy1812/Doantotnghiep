@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -10970,31 +10970,31 @@ return jQuery;
 
 /***/ }),
 
-/***/ "./resources/assets/js/pages/course/course.js":
-/*!****************************************************!*\
-  !*** ./resources/assets/js/pages/course/course.js ***!
-  \****************************************************/
+/***/ "./resources/assets/js/pages/teacher/teacher.js":
+/*!******************************************************!*\
+  !*** ./resources/assets/js/pages/teacher/teacher.js ***!
+  \******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function($) {var Course = {
+/* WEBPACK VAR INJECTION */(function($) {var Teacher = {
   init: function init() {}
 };
 $(function () {
-  Teacher.init();
+  Course.init();
 });
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
 
 /***/ }),
 
-/***/ 2:
-/*!**********************************************************!*\
-  !*** multi ./resources/assets/js/pages/course/course.js ***!
-  \**********************************************************/
+/***/ 3:
+/*!************************************************************!*\
+  !*** multi ./resources/assets/js/pages/teacher/teacher.js ***!
+  \************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/mac/Documents/web/work/duan/education/resources/assets/js/pages/course/course.js */"./resources/assets/js/pages/course/course.js");
+module.exports = __webpack_require__(/*! /Users/mac/Documents/web/work/duan/education/resources/assets/js/pages/teacher/teacher.js */"./resources/assets/js/pages/teacher/teacher.js");
 
 
 /***/ })

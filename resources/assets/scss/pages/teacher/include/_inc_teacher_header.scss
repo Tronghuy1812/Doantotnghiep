@@ -1,0 +1,67 @@
+.teacher-header {
+    padding-top: 30px;
+    padding-bottom: 40px;
+    background: url(/images/bg.jpg) no-repeat!important;
+    background-size: cover!important;
+    .info {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        &-avatar {
+            width: 100px;
+            height: 100px;
+            -o-object-fit: cover;
+            object-fit: cover;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+        }
+        &-name {
+            color: #fff;
+            font-weight: 700;
+            font-size: 30px;
+        }
+        &-job {
+            color: #fff;
+            font-weight: 400;
+            font-size: 22px;
+        }
+
+        &-list {
+            border-radius: 3px;
+            text-align: center;
+            background: #fff;
+            margin-bottom: 30px;
+            padding: 0 15px;
+            box-shadow: 0 1px 2px rgba(0,0,0,.1);
+            display: flex;
+            justify-content: center;
+            width: 80%;
+            .item {
+                display: flex;
+                flex-direction: column;
+                margin: 10px 30px;
+                p {
+                    font-size: 18px;
+                    color: #353535;
+                    margin-bottom: 1rem;
+                }
+                .img {
+                    width: 50px;
+                    height: 50px;
+                    margin: auto;
+                    background-image: url(/images/sokhoahoc-icon.png);
+                    background-repeat: no-repeat;
+                    background-position: 0;
+                    background-size: contain;
+                }
+                span {
+                    font-size: 24px;
+                    font-weight: 400;
+                    display: block;
+                    margin-top: 15px;
+                }
+            }
+        }
+    }
+}
