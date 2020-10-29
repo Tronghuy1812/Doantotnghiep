@@ -79,11 +79,43 @@
                 <div class="card-body pt-3">
                     <div class="form-group">
                         <label for="exampleInputEmail1"> Status <span>(*)</span></label>
-                        <div class="SumoSelect sumo_somename" tabindex="0" role="button" aria-expanded="true">
-                            <select name="c_status" class="form-control SlectBox SumoUnder" onclick="console.log($(this).val())" onchange="console.log('change is firing')" tabindex="-1">
+                        <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button" aria-expanded="true">
+                            <select name="c_status" class="form-control SlectBox SumoUnder"  tabindex="-1">
                                 <option title="Public" value="1">Public</option>
                                 <option title="hide" value="0">Hide</option>
                             </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card  box-shadow-0 ">
+                <div class="card-body pt-3">
+                    <div class="form-group">
+                        <label class="" for="exampleInputEmail1"> Hot </label>
+                        <div class="form-group">
+                            <label class="box-checkbox"> Nổi bật
+                                <input type="radio" name="c_hot" {{ ($category->c_hot ?? 0) == 1 ? 'checked' : '' }}  value="1">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="box-checkbox"> Không nổi bật
+                                <input type="radio" name="c_hot" {{ ($category->c_hot ?? 0) ==  0 ? 'checked' : '' }} value="0">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card  box-shadow-0 ">
+                <div class="card-body pt-3">
+                    <div class="form-group">
+                        <label class="" for="exampleInputEmail1"> Position </label>
+                        <div class="form-group">
+                            <label class="box-checkbox"> Nổi bật trang chủ
+                                <input type="checkbox" name="c_position_1" {{ ($category->c_position_1 ?? 0) == 1 ? 'checked' : '' }} value="1">
+                                <span class="checkmark"></span>
+                            </label>
                         </div>
                     </div>
                 </div>

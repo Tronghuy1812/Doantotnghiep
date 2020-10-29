@@ -5,7 +5,7 @@
         </div>
         <div class="lists js-tags-home owl-carousel owl-theme">
             @foreach($tags as $item)
-                <a href="" target="_blank" title="{{ $item->t_name }}">{{ $item->t_name }}</a>
+                <a href="{{ route('get.course.render',['slug' => $item->t_slug.'-t']) }}" target="_blank" title="{{ $item->t_name }}">{{ $item->t_name }}</a>
             @endforeach
             <div class="clear"></div>
         </div>

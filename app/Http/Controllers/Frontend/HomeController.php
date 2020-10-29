@@ -21,6 +21,17 @@ class HomeController extends Controller
             ->select('t_name', 't_hot', 'id', 't_slug')
             ->get();
 
+        // Khoá học nổi bật ở vị trí thứ 1
+        $coursesHotPositionOne = Course::with('teacher:id,t_name,t_avatar,t_slug,t_job')
+            ->where([
+                'c_position_1' => 1,
+                'c_hot' => 1
+            ])
+            ->orderByDesc('id')
+            ->limit(8)
+            ->get();
+
+
         // khoa hoc khong dong
         $coursesFree = Course::with('teacher:id,t_name,t_avatar,t_slug,t_job')->where('c_price', 0)
             ->orderByDesc('id')
@@ -32,6 +43,15 @@ class HomeController extends Controller
             ->orderByDesc('c_sort')
             ->select('id', 'c_name', 'c_icon', 'c_slug', 'c_avatar')
             ->get();
+        // show category nổi bật trang chủ`
+
+        $categoriesHotHome = Category::where([
+            'c_hot' => 1,
+            'c_position_1' => 1
+        ])
+            ->orderByDesc('c_sort')
+            ->select('id', 'c_name', 'c_icon', 'c_slug', 'c_avatar')
+            ->get();
 
         // lay slide
         $slides = Slide::where('s_status', Slide::STATUS_DEFAULT)
@@ -39,7 +59,7 @@ class HomeController extends Controller
             ->get();
 
         // lay giao vien
-        $teachers =  Teacher::orderByDesc('id')->get();
+        $teachers = Teacher::orderByDesc('id')->get();
 
 
         $viewData = [
@@ -47,6 +67,8 @@ class HomeController extends Controller
             'coursesFree' => $coursesFree,
             'categoriesParent' => $categoriesParent,
             'slides' => $slides,
+            'categoriesHotHome' => $categoriesHotHome,
+            'coursesHotPositionOne' => $coursesHotPositionOne,
             'teachers' => $teachers
         ];
 

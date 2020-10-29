@@ -86,6 +86,262 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./node_modules/jquery-modal/jquery.modal.js":
+/*!***************************************************!*\
+  !*** ./node_modules/jquery-modal/jquery.modal.js ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(jQuery) {/*
+    A simple jQuery modal (http://github.com/kylefox/jquery-modal)
+    Version 0.9.2
+*/
+
+(function (factory) {
+  // Making your jQuery plugin work better with npm tools
+  // http://blog.npmjs.org/post/112712169830/making-your-jquery-plugin-work-better-with-npm
+  if( true && typeof module.exports === "object") {
+    factory(__webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js"), window, document);
+  }
+  else {
+    factory(jQuery, window, document);
+  }
+}(function($, window, document, undefined) {
+
+  var modals = [],
+      getCurrent = function() {
+        return modals.length ? modals[modals.length - 1] : null;
+      },
+      selectCurrent = function() {
+        var i,
+            selected = false;
+        for (i=modals.length-1; i>=0; i--) {
+          if (modals[i].$blocker) {
+            modals[i].$blocker.toggleClass('current',!selected).toggleClass('behind',selected);
+            selected = true;
+          }
+        }
+      };
+
+  $.modal = function(el, options) {
+    var remove, target;
+    this.$body = $('body');
+    this.options = $.extend({}, $.modal.defaults, options);
+    this.options.doFade = !isNaN(parseInt(this.options.fadeDuration, 10));
+    this.$blocker = null;
+    if (this.options.closeExisting)
+      while ($.modal.isActive())
+        $.modal.close(); // Close any open modals.
+    modals.push(this);
+    if (el.is('a')) {
+      target = el.attr('href');
+      this.anchor = el;
+      //Select element by id from href
+      if (/^#/.test(target)) {
+        this.$elm = $(target);
+        if (this.$elm.length !== 1) return null;
+        this.$body.append(this.$elm);
+        this.open();
+      //AJAX
+      } else {
+        this.$elm = $('<div>');
+        this.$body.append(this.$elm);
+        remove = function(event, modal) { modal.elm.remove(); };
+        this.showSpinner();
+        el.trigger($.modal.AJAX_SEND);
+        $.get(target).done(function(html) {
+          if (!$.modal.isActive()) return;
+          el.trigger($.modal.AJAX_SUCCESS);
+          var current = getCurrent();
+          current.$elm.empty().append(html).on($.modal.CLOSE, remove);
+          current.hideSpinner();
+          current.open();
+          el.trigger($.modal.AJAX_COMPLETE);
+        }).fail(function() {
+          el.trigger($.modal.AJAX_FAIL);
+          var current = getCurrent();
+          current.hideSpinner();
+          modals.pop(); // remove expected modal from the list
+          el.trigger($.modal.AJAX_COMPLETE);
+        });
+      }
+    } else {
+      this.$elm = el;
+      this.anchor = el;
+      this.$body.append(this.$elm);
+      this.open();
+    }
+  };
+
+  $.modal.prototype = {
+    constructor: $.modal,
+
+    open: function() {
+      var m = this;
+      this.block();
+      this.anchor.blur();
+      if(this.options.doFade) {
+        setTimeout(function() {
+          m.show();
+        }, this.options.fadeDuration * this.options.fadeDelay);
+      } else {
+        this.show();
+      }
+      $(document).off('keydown.modal').on('keydown.modal', function(event) {
+        var current = getCurrent();
+        if (event.which === 27 && current.options.escapeClose) current.close();
+      });
+      if (this.options.clickClose)
+        this.$blocker.click(function(e) {
+          if (e.target === this)
+            $.modal.close();
+        });
+    },
+
+    close: function() {
+      modals.pop();
+      this.unblock();
+      this.hide();
+      if (!$.modal.isActive())
+        $(document).off('keydown.modal');
+    },
+
+    block: function() {
+      this.$elm.trigger($.modal.BEFORE_BLOCK, [this._ctx()]);
+      this.$body.css('overflow','hidden');
+      this.$blocker = $('<div class="' + this.options.blockerClass + ' blocker current"></div>').appendTo(this.$body);
+      selectCurrent();
+      if(this.options.doFade) {
+        this.$blocker.css('opacity',0).animate({opacity: 1}, this.options.fadeDuration);
+      }
+      this.$elm.trigger($.modal.BLOCK, [this._ctx()]);
+    },
+
+    unblock: function(now) {
+      if (!now && this.options.doFade)
+        this.$blocker.fadeOut(this.options.fadeDuration, this.unblock.bind(this,true));
+      else {
+        this.$blocker.children().appendTo(this.$body);
+        this.$blocker.remove();
+        this.$blocker = null;
+        selectCurrent();
+        if (!$.modal.isActive())
+          this.$body.css('overflow','');
+      }
+    },
+
+    show: function() {
+      this.$elm.trigger($.modal.BEFORE_OPEN, [this._ctx()]);
+      if (this.options.showClose) {
+        this.closeButton = $('<a href="#close-modal" rel="modal:close" class="close-modal ' + this.options.closeClass + '">' + this.options.closeText + '</a>');
+        this.$elm.append(this.closeButton);
+      }
+      this.$elm.addClass(this.options.modalClass).appendTo(this.$blocker);
+      if(this.options.doFade) {
+        this.$elm.css({opacity: 0, display: 'inline-block'}).animate({opacity: 1}, this.options.fadeDuration);
+      } else {
+        this.$elm.css('display', 'inline-block');
+      }
+      this.$elm.trigger($.modal.OPEN, [this._ctx()]);
+    },
+
+    hide: function() {
+      this.$elm.trigger($.modal.BEFORE_CLOSE, [this._ctx()]);
+      if (this.closeButton) this.closeButton.remove();
+      var _this = this;
+      if(this.options.doFade) {
+        this.$elm.fadeOut(this.options.fadeDuration, function () {
+          _this.$elm.trigger($.modal.AFTER_CLOSE, [_this._ctx()]);
+        });
+      } else {
+        this.$elm.hide(0, function () {
+          _this.$elm.trigger($.modal.AFTER_CLOSE, [_this._ctx()]);
+        });
+      }
+      this.$elm.trigger($.modal.CLOSE, [this._ctx()]);
+    },
+
+    showSpinner: function() {
+      if (!this.options.showSpinner) return;
+      this.spinner = this.spinner || $('<div class="' + this.options.modalClass + '-spinner"></div>')
+        .append(this.options.spinnerHtml);
+      this.$body.append(this.spinner);
+      this.spinner.show();
+    },
+
+    hideSpinner: function() {
+      if (this.spinner) this.spinner.remove();
+    },
+
+    //Return context for custom events
+    _ctx: function() {
+      return { elm: this.$elm, $elm: this.$elm, $blocker: this.$blocker, options: this.options, $anchor: this.anchor };
+    }
+  };
+
+  $.modal.close = function(event) {
+    if (!$.modal.isActive()) return;
+    if (event) event.preventDefault();
+    var current = getCurrent();
+    current.close();
+    return current.$elm;
+  };
+
+  // Returns if there currently is an active modal
+  $.modal.isActive = function () {
+    return modals.length > 0;
+  };
+
+  $.modal.getCurrent = getCurrent;
+
+  $.modal.defaults = {
+    closeExisting: true,
+    escapeClose: true,
+    clickClose: true,
+    closeText: 'Close',
+    closeClass: '',
+    modalClass: "modal",
+    blockerClass: "jquery-modal",
+    spinnerHtml: '<div class="rect1"></div><div class="rect2"></div><div class="rect3"></div><div class="rect4"></div>',
+    showSpinner: true,
+    showClose: true,
+    fadeDuration: null,   // Number of milliseconds the fade animation takes.
+    fadeDelay: 1.0        // Point during the overlay's fade-in that the modal begins to fade in (.5 = 50%, 1.5 = 150%, etc.)
+  };
+
+  // Event constants
+  $.modal.BEFORE_BLOCK = 'modal:before-block';
+  $.modal.BLOCK = 'modal:block';
+  $.modal.BEFORE_OPEN = 'modal:before-open';
+  $.modal.OPEN = 'modal:open';
+  $.modal.BEFORE_CLOSE = 'modal:before-close';
+  $.modal.CLOSE = 'modal:close';
+  $.modal.AFTER_CLOSE = 'modal:after-close';
+  $.modal.AJAX_SEND = 'modal:ajax:send';
+  $.modal.AJAX_SUCCESS = 'modal:ajax:success';
+  $.modal.AJAX_FAIL = 'modal:ajax:fail';
+  $.modal.AJAX_COMPLETE = 'modal:ajax:complete';
+
+  $.fn.modal = function(options){
+    if (this.length === 1) {
+      new $.modal(this, options);
+    }
+    return this;
+  };
+
+  // Automatically bind links with rel="modal:close" to, well, close the modal.
+  $(document).on('click.modal', 'a[rel~="modal:close"]', $.modal.close);
+  $(document).on('click.modal', 'a[rel~="modal:open"]', function(event) {
+    event.preventDefault();
+    $(this).modal();
+  });
+}));
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
+
+/***/ }),
+
 /***/ "./node_modules/jquery/dist/jquery.js":
 /*!********************************************!*\
   !*** ./node_modules/jquery/dist/jquery.js ***!
@@ -14430,6 +14686,607 @@ return jQuery;
 
 /***/ }),
 
+/***/ "./node_modules/toastr/toastr.js":
+/*!***************************************!*\
+  !*** ./node_modules/toastr/toastr.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
+ * Toastr
+ * Copyright 2012-2015
+ * Authors: John Papa, Hans Fjällemark, and Tim Ferrell.
+ * All Rights Reserved.
+ * Use, reproduction, distribution, and modification of this code is subject to the terms and
+ * conditions of the MIT license, available at http://www.opensource.org/licenses/mit-license.php
+ *
+ * ARIA Support: Greta Krafsig
+ *
+ * Project: https://github.com/CodeSeven/toastr
+ */
+/* global define */
+(function (define) {
+    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")], __WEBPACK_AMD_DEFINE_RESULT__ = (function ($) {
+        return (function () {
+            var $container;
+            var listener;
+            var toastId = 0;
+            var toastType = {
+                error: 'error',
+                info: 'info',
+                success: 'success',
+                warning: 'warning'
+            };
+
+            var toastr = {
+                clear: clear,
+                remove: remove,
+                error: error,
+                getContainer: getContainer,
+                info: info,
+                options: {},
+                subscribe: subscribe,
+                success: success,
+                version: '2.1.4',
+                warning: warning
+            };
+
+            var previousToast;
+
+            return toastr;
+
+            ////////////////
+
+            function error(message, title, optionsOverride) {
+                return notify({
+                    type: toastType.error,
+                    iconClass: getOptions().iconClasses.error,
+                    message: message,
+                    optionsOverride: optionsOverride,
+                    title: title
+                });
+            }
+
+            function getContainer(options, create) {
+                if (!options) { options = getOptions(); }
+                $container = $('#' + options.containerId);
+                if ($container.length) {
+                    return $container;
+                }
+                if (create) {
+                    $container = createContainer(options);
+                }
+                return $container;
+            }
+
+            function info(message, title, optionsOverride) {
+                return notify({
+                    type: toastType.info,
+                    iconClass: getOptions().iconClasses.info,
+                    message: message,
+                    optionsOverride: optionsOverride,
+                    title: title
+                });
+            }
+
+            function subscribe(callback) {
+                listener = callback;
+            }
+
+            function success(message, title, optionsOverride) {
+                return notify({
+                    type: toastType.success,
+                    iconClass: getOptions().iconClasses.success,
+                    message: message,
+                    optionsOverride: optionsOverride,
+                    title: title
+                });
+            }
+
+            function warning(message, title, optionsOverride) {
+                return notify({
+                    type: toastType.warning,
+                    iconClass: getOptions().iconClasses.warning,
+                    message: message,
+                    optionsOverride: optionsOverride,
+                    title: title
+                });
+            }
+
+            function clear($toastElement, clearOptions) {
+                var options = getOptions();
+                if (!$container) { getContainer(options); }
+                if (!clearToast($toastElement, options, clearOptions)) {
+                    clearContainer(options);
+                }
+            }
+
+            function remove($toastElement) {
+                var options = getOptions();
+                if (!$container) { getContainer(options); }
+                if ($toastElement && $(':focus', $toastElement).length === 0) {
+                    removeToast($toastElement);
+                    return;
+                }
+                if ($container.children().length) {
+                    $container.remove();
+                }
+            }
+
+            // internal functions
+
+            function clearContainer (options) {
+                var toastsToClear = $container.children();
+                for (var i = toastsToClear.length - 1; i >= 0; i--) {
+                    clearToast($(toastsToClear[i]), options);
+                }
+            }
+
+            function clearToast ($toastElement, options, clearOptions) {
+                var force = clearOptions && clearOptions.force ? clearOptions.force : false;
+                if ($toastElement && (force || $(':focus', $toastElement).length === 0)) {
+                    $toastElement[options.hideMethod]({
+                        duration: options.hideDuration,
+                        easing: options.hideEasing,
+                        complete: function () { removeToast($toastElement); }
+                    });
+                    return true;
+                }
+                return false;
+            }
+
+            function createContainer(options) {
+                $container = $('<div/>')
+                    .attr('id', options.containerId)
+                    .addClass(options.positionClass);
+
+                $container.appendTo($(options.target));
+                return $container;
+            }
+
+            function getDefaults() {
+                return {
+                    tapToDismiss: true,
+                    toastClass: 'toast',
+                    containerId: 'toast-container',
+                    debug: false,
+
+                    showMethod: 'fadeIn', //fadeIn, slideDown, and show are built into jQuery
+                    showDuration: 300,
+                    showEasing: 'swing', //swing and linear are built into jQuery
+                    onShown: undefined,
+                    hideMethod: 'fadeOut',
+                    hideDuration: 1000,
+                    hideEasing: 'swing',
+                    onHidden: undefined,
+                    closeMethod: false,
+                    closeDuration: false,
+                    closeEasing: false,
+                    closeOnHover: true,
+
+                    extendedTimeOut: 1000,
+                    iconClasses: {
+                        error: 'toast-error',
+                        info: 'toast-info',
+                        success: 'toast-success',
+                        warning: 'toast-warning'
+                    },
+                    iconClass: 'toast-info',
+                    positionClass: 'toast-top-right',
+                    timeOut: 5000, // Set timeOut and extendedTimeOut to 0 to make it sticky
+                    titleClass: 'toast-title',
+                    messageClass: 'toast-message',
+                    escapeHtml: false,
+                    target: 'body',
+                    closeHtml: '<button type="button">&times;</button>',
+                    closeClass: 'toast-close-button',
+                    newestOnTop: true,
+                    preventDuplicates: false,
+                    progressBar: false,
+                    progressClass: 'toast-progress',
+                    rtl: false
+                };
+            }
+
+            function publish(args) {
+                if (!listener) { return; }
+                listener(args);
+            }
+
+            function notify(map) {
+                var options = getOptions();
+                var iconClass = map.iconClass || options.iconClass;
+
+                if (typeof (map.optionsOverride) !== 'undefined') {
+                    options = $.extend(options, map.optionsOverride);
+                    iconClass = map.optionsOverride.iconClass || iconClass;
+                }
+
+                if (shouldExit(options, map)) { return; }
+
+                toastId++;
+
+                $container = getContainer(options, true);
+
+                var intervalId = null;
+                var $toastElement = $('<div/>');
+                var $titleElement = $('<div/>');
+                var $messageElement = $('<div/>');
+                var $progressElement = $('<div/>');
+                var $closeElement = $(options.closeHtml);
+                var progressBar = {
+                    intervalId: null,
+                    hideEta: null,
+                    maxHideTime: null
+                };
+                var response = {
+                    toastId: toastId,
+                    state: 'visible',
+                    startTime: new Date(),
+                    options: options,
+                    map: map
+                };
+
+                personalizeToast();
+
+                displayToast();
+
+                handleEvents();
+
+                publish(response);
+
+                if (options.debug && console) {
+                    console.log(response);
+                }
+
+                return $toastElement;
+
+                function escapeHtml(source) {
+                    if (source == null) {
+                        source = '';
+                    }
+
+                    return source
+                        .replace(/&/g, '&amp;')
+                        .replace(/"/g, '&quot;')
+                        .replace(/'/g, '&#39;')
+                        .replace(/</g, '&lt;')
+                        .replace(/>/g, '&gt;');
+                }
+
+                function personalizeToast() {
+                    setIcon();
+                    setTitle();
+                    setMessage();
+                    setCloseButton();
+                    setProgressBar();
+                    setRTL();
+                    setSequence();
+                    setAria();
+                }
+
+                function setAria() {
+                    var ariaValue = '';
+                    switch (map.iconClass) {
+                        case 'toast-success':
+                        case 'toast-info':
+                            ariaValue =  'polite';
+                            break;
+                        default:
+                            ariaValue = 'assertive';
+                    }
+                    $toastElement.attr('aria-live', ariaValue);
+                }
+
+                function handleEvents() {
+                    if (options.closeOnHover) {
+                        $toastElement.hover(stickAround, delayedHideToast);
+                    }
+
+                    if (!options.onclick && options.tapToDismiss) {
+                        $toastElement.click(hideToast);
+                    }
+
+                    if (options.closeButton && $closeElement) {
+                        $closeElement.click(function (event) {
+                            if (event.stopPropagation) {
+                                event.stopPropagation();
+                            } else if (event.cancelBubble !== undefined && event.cancelBubble !== true) {
+                                event.cancelBubble = true;
+                            }
+
+                            if (options.onCloseClick) {
+                                options.onCloseClick(event);
+                            }
+
+                            hideToast(true);
+                        });
+                    }
+
+                    if (options.onclick) {
+                        $toastElement.click(function (event) {
+                            options.onclick(event);
+                            hideToast();
+                        });
+                    }
+                }
+
+                function displayToast() {
+                    $toastElement.hide();
+
+                    $toastElement[options.showMethod](
+                        {duration: options.showDuration, easing: options.showEasing, complete: options.onShown}
+                    );
+
+                    if (options.timeOut > 0) {
+                        intervalId = setTimeout(hideToast, options.timeOut);
+                        progressBar.maxHideTime = parseFloat(options.timeOut);
+                        progressBar.hideEta = new Date().getTime() + progressBar.maxHideTime;
+                        if (options.progressBar) {
+                            progressBar.intervalId = setInterval(updateProgress, 10);
+                        }
+                    }
+                }
+
+                function setIcon() {
+                    if (map.iconClass) {
+                        $toastElement.addClass(options.toastClass).addClass(iconClass);
+                    }
+                }
+
+                function setSequence() {
+                    if (options.newestOnTop) {
+                        $container.prepend($toastElement);
+                    } else {
+                        $container.append($toastElement);
+                    }
+                }
+
+                function setTitle() {
+                    if (map.title) {
+                        var suffix = map.title;
+                        if (options.escapeHtml) {
+                            suffix = escapeHtml(map.title);
+                        }
+                        $titleElement.append(suffix).addClass(options.titleClass);
+                        $toastElement.append($titleElement);
+                    }
+                }
+
+                function setMessage() {
+                    if (map.message) {
+                        var suffix = map.message;
+                        if (options.escapeHtml) {
+                            suffix = escapeHtml(map.message);
+                        }
+                        $messageElement.append(suffix).addClass(options.messageClass);
+                        $toastElement.append($messageElement);
+                    }
+                }
+
+                function setCloseButton() {
+                    if (options.closeButton) {
+                        $closeElement.addClass(options.closeClass).attr('role', 'button');
+                        $toastElement.prepend($closeElement);
+                    }
+                }
+
+                function setProgressBar() {
+                    if (options.progressBar) {
+                        $progressElement.addClass(options.progressClass);
+                        $toastElement.prepend($progressElement);
+                    }
+                }
+
+                function setRTL() {
+                    if (options.rtl) {
+                        $toastElement.addClass('rtl');
+                    }
+                }
+
+                function shouldExit(options, map) {
+                    if (options.preventDuplicates) {
+                        if (map.message === previousToast) {
+                            return true;
+                        } else {
+                            previousToast = map.message;
+                        }
+                    }
+                    return false;
+                }
+
+                function hideToast(override) {
+                    var method = override && options.closeMethod !== false ? options.closeMethod : options.hideMethod;
+                    var duration = override && options.closeDuration !== false ?
+                        options.closeDuration : options.hideDuration;
+                    var easing = override && options.closeEasing !== false ? options.closeEasing : options.hideEasing;
+                    if ($(':focus', $toastElement).length && !override) {
+                        return;
+                    }
+                    clearTimeout(progressBar.intervalId);
+                    return $toastElement[method]({
+                        duration: duration,
+                        easing: easing,
+                        complete: function () {
+                            removeToast($toastElement);
+                            clearTimeout(intervalId);
+                            if (options.onHidden && response.state !== 'hidden') {
+                                options.onHidden();
+                            }
+                            response.state = 'hidden';
+                            response.endTime = new Date();
+                            publish(response);
+                        }
+                    });
+                }
+
+                function delayedHideToast() {
+                    if (options.timeOut > 0 || options.extendedTimeOut > 0) {
+                        intervalId = setTimeout(hideToast, options.extendedTimeOut);
+                        progressBar.maxHideTime = parseFloat(options.extendedTimeOut);
+                        progressBar.hideEta = new Date().getTime() + progressBar.maxHideTime;
+                    }
+                }
+
+                function stickAround() {
+                    clearTimeout(intervalId);
+                    progressBar.hideEta = 0;
+                    $toastElement.stop(true, true)[options.showMethod](
+                        {duration: options.showDuration, easing: options.showEasing}
+                    );
+                }
+
+                function updateProgress() {
+                    var percentage = ((progressBar.hideEta - (new Date().getTime())) / progressBar.maxHideTime) * 100;
+                    $progressElement.width(percentage + '%');
+                }
+            }
+
+            function getOptions() {
+                return $.extend({}, getDefaults(), toastr.options);
+            }
+
+            function removeToast($toastElement) {
+                if (!$container) { $container = getContainer(); }
+                if ($toastElement.is(':visible')) {
+                    return;
+                }
+                $toastElement.remove();
+                $toastElement = null;
+                if ($container.children().length === 0) {
+                    $container.remove();
+                    previousToast = undefined;
+                }
+            }
+
+        })();
+    }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+}(__webpack_require__(/*! !webpack amd define */ "./node_modules/webpack/buildin/amd-define.js")));
+
+
+/***/ }),
+
+/***/ "./node_modules/webpack/buildin/amd-define.js":
+/*!***************************************!*\
+  !*** (webpack)/buildin/amd-define.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = function() {
+	throw new Error("define cannot be used indirect");
+};
+
+
+/***/ }),
+
+/***/ "./resources/assets/components/_inc_auth.js":
+/*!**************************************************!*\
+  !*** ./resources/assets/components/_inc_auth.js ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var jquery_modal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery-modal */ "./node_modules/jquery-modal/jquery.modal.js");
+/* harmony import */ var jquery_modal__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery_modal__WEBPACK_IMPORTED_MODULE_0__);
+
+var Auth = {
+  init: function init() {
+    this.showPopupAuth();
+    this.showPassword();
+  },
+  showPopupAuth: function showPopupAuth() {
+    $(".js-auth-popup").click(function (event) {
+      event.preventDefault();
+      $('.js-popup-auth').modal({
+        escapeClose: true,
+        clickClose: true,
+        showClose: true
+      });
+    });
+  },
+  showPassword: function showPassword() {
+    $(".js-show-password i").click(function (event) {
+      event.preventDefault();
+      var $this = $(this);
+      var $elementPassword = $this.parent().prev();
+
+      if ($this.hasClass('fa-eye')) {
+        $elementPassword.attr("type", "text");
+        $this.removeClass('fa-eye').addClass('fa-eye-slash');
+      } else {
+        $elementPassword.attr("type", "password");
+        $this.removeClass('fa-eye-slash').addClass('fa-eye');
+      }
+    });
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (Auth);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
+
+/***/ }),
+
+/***/ "./resources/assets/components/_inc_autoload.js":
+/*!******************************************************!*\
+  !*** ./resources/assets/components/_inc_autoload.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _inc_auth__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_inc_auth */ "./resources/assets/components/_inc_auth.js");
+/* harmony import */ var _inc_run_message__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_inc_run_message */ "./resources/assets/components/_inc_run_message.js");
+
+
+var AutoloadJs = {
+  init: function init() {
+    _inc_auth__WEBPACK_IMPORTED_MODULE_0__["default"].init();
+    _inc_run_message__WEBPACK_IMPORTED_MODULE_1__["default"].init();
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (AutoloadJs);
+
+/***/ }),
+
+/***/ "./resources/assets/components/_inc_run_message.js":
+/*!*********************************************************!*\
+  !*** ./resources/assets/components/_inc_run_message.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var toastr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! toastr */ "./node_modules/toastr/toastr.js");
+/* harmony import */ var toastr__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(toastr__WEBPACK_IMPORTED_MODULE_0__);
+
+var Messages = {
+  init: function init() {
+    this.runToastr();
+  },
+  runToastr: function runToastr() {
+    if (typeof TYPE_MESSAGES !== "undefined") {
+      switch (TYPE_MESSAGES) {
+        case 'success':
+          toastr__WEBPACK_IMPORTED_MODULE_0___default.a.success(MESSAGE);
+          break;
+
+        case 'error':
+          toastr__WEBPACK_IMPORTED_MODULE_0___default.a.error(MESSAGE);
+          break;
+      }
+    }
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (Messages);
+
+/***/ }),
+
 /***/ "./resources/assets/js/pages/home/home.js":
 /*!************************************************!*\
   !*** ./resources/assets/js/pages/home/home.js ***!
@@ -14441,6 +15298,8 @@ return jQuery;
 __webpack_require__.r(__webpack_exports__);
 /* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var owl_carousel__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! owl.carousel */ "./node_modules/owl.carousel/dist/owl.carousel.js");
 /* harmony import */ var owl_carousel__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(owl_carousel__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_inc_autoload__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../components/_inc_autoload */ "./resources/assets/components/_inc_autoload.js");
+
 
 var Home = {
   init: function init() {
@@ -14500,6 +15359,7 @@ var Home = {
   }
 };
 $(function () {
+  _components_inc_autoload__WEBPACK_IMPORTED_MODULE_1__["default"].init();
   Home.init();
 });
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))

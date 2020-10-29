@@ -13,6 +13,7 @@
         @include('pages.components._inc_header')
         @yield('content')
         @include('pages.components._inc_footer')
+        @include('pages.components.auth._inc_popup_auth')
     </body>
-        @yield('script')
+    @yield('script')
 </html>
