@@ -15299,6 +15299,9 @@ __webpack_require__.r(__webpack_exports__);
 /* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var owl_carousel__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! owl.carousel */ "./node_modules/owl.carousel/dist/owl.carousel.js");
 /* harmony import */ var owl_carousel__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(owl_carousel__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_inc_autoload__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../components/_inc_autoload */ "./resources/assets/components/_inc_autoload.js");
+/* harmony import */ var toastr__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! toastr */ "./node_modules/toastr/toastr.js");
+/* harmony import */ var toastr__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(toastr__WEBPACK_IMPORTED_MODULE_2__);
+
 
 
 var Home = {
@@ -15306,6 +15309,7 @@ var Home = {
     this.runBanner();
     this.runTags();
     this.runCourse();
+    this.showCourseByCategory();
   },
   runBanner: function runBanner() {
     $('.js-banner').owlCarousel({
@@ -15321,7 +15325,7 @@ var Home = {
     $('.js-tags').owlCarousel({
       animateOut: 'slideOutDown',
       animateIn: 'flipInX',
-      items: 5,
+      items: 7,
       navigation: true,
       smartSpeed: 450,
       navText: ["<i class='fa fa-chevron-left '></i>", "<i class='fa fa-chevron-right'></i>"]
@@ -15355,6 +15359,30 @@ var Home = {
       dots: false,
       smartSpeed: 450,
       navText: ["<i class='fa fa-chevron-left '></i>", "<i class='fa fa-chevron-right'></i>"]
+    });
+  },
+  showCourseByCategory: function showCourseByCategory() {
+    $(".js-course-by-category").click(function (event) {
+      event.preventDefault();
+      $(".js-course-by-category").removeClass('active');
+      var $this = $(this);
+      $this.addClass('active');
+      var URL = $this.attr('href');
+
+      if (URL) {
+        $.ajax({
+          url: URL,
+          beforeSend: function beforeSend(xhr) {
+            $(".js-loading-1").show();
+          }
+        }).done(function (results) {
+          console.log(results);
+
+          if (results.coursesHtml) {
+            $("#coursesHtml").html(results.coursesHtml);
+          }
+        });
+      }
     });
   }
 };
