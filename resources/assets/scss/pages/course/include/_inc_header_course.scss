@@ -1,0 +1,29 @@
+.header-course {
+    background-image: url("/images/bg-spotlight.png");
+    background-size: cover;
+    background-position: 50%;
+    color: #fff;
+    padding: 25px 0;
+    .info {
+        width: 70%;
+        h1 {
+            font-size: 20px;
+        }
+        .desc {
+            span {
+                margin-right: 20px;
+            }
+        }
+        .vote {
+            i {
+                color: #bcdeba;
+            }
+            i.active {
+                color: #ffd500;
+            }
+        }
+        p {
+            margin-bottom: 10px;
+        }
+    }
+}

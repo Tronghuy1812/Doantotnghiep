@@ -25,9 +25,32 @@ Route::prefix('admin')->group(function() {
 
     Route::prefix('category')->group(function (){
         Route::get('/', 'AdminCategoryController@index')->name('get_admin.category.index');
+        Route::get('/create', 'AdminCategoryController@create')->name('get_admin.category.create');
+        Route::post('/create', 'AdminCategoryController@store');
+        Route::get('update/{id}', 'AdminCategoryController@edit')->name('get_admin.category.edit');
+        Route::post('update/{id}', 'AdminCategoryController@update');
+        Route::get('delete/{id}', 'AdminCategoryController@delete')->name('get_admin.category.delete');
     });
 
     Route::prefix('teacher')->group(function (){
         Route::get('/', 'AdminTeacherController@index')->name('get_admin.teacher.index');
+        Route::get('/create', 'AdminTeacherController@create')->name('get_admin.teacher.create');
+        Route::post('/create', 'AdminTeacherController@store');
+        Route::get('update/{id}', 'AdminTeacherController@edit')->name('get_admin.teacher.edit');
+        Route::post('update/{id}', 'AdminTeacherController@update');
+        Route::get('delete/{id}', 'AdminTeacherController@delete')->name('get_admin.teacher.delete');
+    });
+
+    Route::prefix('course')->group(function (){
+        Route::get('/', 'AdminCourseController@index')->name('get_admin.course.index');
+        Route::get('/create', 'AdminCourseController@create')->name('get_admin.course.create');
+        Route::post('/create', 'AdminCourseController@store');
+        Route::get('update/{id}', 'AdminCourseController@edit')->name('get_admin.course.edit');
+        Route::post('update/{id}', 'AdminCourseController@update');
+        Route::get('delete/{id}', 'AdminCourseController@delete')->name('get_admin.course.delete');
+    });
+
+    Route::prefix('ajax')->namespace('Ajax')->group(function (){
+        Route::post('/upload/image', 'AdminAjaxUploadImageController@processUpload')->name('post_ajax_admin.uploads');
     });
 });

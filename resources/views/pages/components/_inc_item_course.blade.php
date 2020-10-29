@@ -1,4 +1,4 @@
-<div class="item item-4-20 mr20 box-course mb20">
+<div class="item list-course item-4-20 mr20 box-course mb20">
     <div class="avatar">
         <div class="img">
             <a href="">

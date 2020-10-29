@@ -4,12 +4,12 @@
             <h2 class="heading-h2 heading-before">Khóa học <span style="color: #ff7818;">0 đồng</span></h2>
         </div>
         <div class="lists js-lists-course-home owl-carousel owl-theme">
-            @for($i = 1 ; $i <= 8 ; $i++)
-                <div class="item  mr20 box-course mb20">
+            @foreach($courses as $item)
+                <div class="item list-course  mr20 box-course mb20">
                     <div class="avatar">
                         <div class="img">
-                            <a href="">
-                                <img src="{{ asset('images/thumb.jpg') }}" alt="">
+                            <a href="{{ route('get.course.render',['slug' => $item->c_slug.'-cr']) }}" title="{{ $item->c_name }}">
+                                <img src="{{ asset('images/thumb.jpg') }}" alt="{{ $item->c_name }}">
                             </a>
                             <div class="img_badget">
                                 <p class="flex flex-jc-sb pl10 pr10">
@@ -21,11 +21,16 @@
                     </div>
                     <div class="info">
                         <h3 class="title">
-                            <a href="">Kỷ Nguyên Bán Hàng Mới - Biến Khách Hàng Thành Bạn</a>
+                            <a href="">{{ $item->c_name }}</a>
                         </h3>
-                        <p class="info-auth"><span class="icon"><i class="fa fa-user-md"></i></span> <span class="name">TrungPhuNA</span></p>
-                        <p class="info-auth"><span class="icon"><i class="fa fa-briefcase"></i></span> <span class="name">
-                      Tổng thư ký Hội đồng Liên hiệp Khoa học Doanh nhân Việt Nam</span></p>
+                        <p class="info-auth">
+                            <span class="icon"><i class="fa fa-user-md"></i></span>
+                            <span class="name">{{ $item->teacher->t_name }}</span>
+                        </p>
+                        <p class="info-auth">
+                            <span class="icon"><i class="fa fa-briefcase"></i></span>
+                            <span class="name">{{ $item->teacher->t_job }}</span>
+                        </p>
                         <p class="flex flex-jc-sb mt10">
                             <a href="" class="video">
                                 <i class="fa fa-play-circle"></i> Học thử
@@ -34,8 +39,7 @@
                         </p>
                     </div>
                 </div>
-
-            @endfor
+            @endforeach
             <div class="clear"></div>
         </div>
     </div>

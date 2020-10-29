@@ -21,7 +21,11 @@ return [
                 [
                     'name' => 'Giáo viên',
                     'route' => 'get_admin.teacher.index'
-                ]
+                ],
+                [
+                    'name' => 'Khoá học',
+                    'route' => 'get_admin.course.index'
+                ],
             ]
         ],
     ]

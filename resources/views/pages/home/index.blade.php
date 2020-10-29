@@ -5,8 +5,8 @@
 @section('content')
     @include('pages.home.include._inc_banner')
     @include('pages.home.include._inc_section_one')
-    @include('pages.home.include._inc_section_two')
-    @include('pages.home.include._inc_tags_hot')
+    @include('pages.home.include._inc_section_two',['courses' => $coursesFree])
+    @include('pages.home.include._inc_tags_hot',['tags' => $tagsHot])
     @include('pages.home.include._inc_lecture')
 @stop
 
