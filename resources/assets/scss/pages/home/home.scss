@@ -1,5 +1,6 @@
 @import "./../../../bases/init";
 @import "~owl.carousel";
+@import "~jquery-modal";
 @import "./../../components/inc_header";
 @import "./include/inc_banner";
 @import "./include/inc_section_one";
@@ -7,4 +8,7 @@
 @import "./include/inc_tags_hot";
 @import "./include/inc_lecture";
 @import "./../../components/inc_item_course";
+@import "./../../components/loading/inc_loading";
 @import "../../components/inc_footer";
+@import "../../components/inc_popup";
+@import "../../components/inc_popup_auth";

@@ -1,3 +1,8 @@
+<style>
+    .text-wrap .example .form-group {
+        margin-bottom: 1rem;
+    }
+</style>
 <form class="form-horizontal" autocomplete="off" method="POST" action="">
     @csrf
     <div class="row">
@@ -27,6 +32,7 @@
                                                 <span class="text-danger">{{ $errors->first('c_name') }}</span>
                                             @endif
                                         </div>
+
                                         <div class="form-group">
                                             <label for="exampleInputEmail1" class="required">Slug <span>(*)</span></label>
                                             <input type="text"  class="form-control slug"  name="c_slug" value="{{ old('c_slug',$course->c_slug ?? '') }}">
@@ -34,10 +40,16 @@
                                                 <span class="text-danger">{{ $errors->first('c_slug') }}</span>
                                             @endif
                                         </div>
+
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1" class="required">Total time <span>(*)</span></label>
-                                            <input type="number"  class="form-control"   name="c_total_time" value="{{ old('c_total_time',$course->c_total_time ?? '') }}">
+                                            <label for="exampleInputEmail1">Tag </label>
+                                            <select name="tags[]" class="form-control js-select2" tabindex="-1" multiple>
+                                                @foreach($tags as $tag)
+                                                    <option title="{{ $tag->t_name }}" {{ in_array($tag->id, $tagOld) ? "selected" : "" }} value="{{ $tag->id }}">{{ $tag->t_name }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
+
                                         <div class="row">
                                             <div class="col-sm-3">
                                                 <div class="form-group">
@@ -57,8 +69,8 @@
                                             <div class="col-sm-3">
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1" class="required">Teacher <span>(*)</span></label>
-                                                    <div class="SumoSelect sumo_somename" tabindex="0" role="button" aria-expanded="true">
-                                                        <select name="c_teacher_id" class="form-control SlectBox SumoUnder" onclick="console.log($(this).val())" onchange="console.log('change is firing')" tabindex="-1">
+                                                    <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button" aria-expanded="true">
+                                                        <select name="c_teacher_id" class="form-control SlectBox SumoUnder" tabindex="-1">
                                                             @foreach($teachers as $teacher)
                                                                 <option title="{{ $teacher->t_name }}" value="{{ $teacher->id }}">{{ $teacher->t_name }}</option>
                                                             @endforeach
@@ -72,8 +84,8 @@
                                             <div class="col-sm-3">
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1" class="required">Category <span>(*)</span></label>
-                                                    <div class="SumoSelect sumo_somename" tabindex="0" role="button" aria-expanded="true">
-                                                        <select name="c_category_id" class="form-control SlectBox SumoUnder" onclick="console.log($(this).val())" onchange="console.log('change is firing')" tabindex="-1">
+                                                    <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button" aria-expanded="true">
+                                                        <select name="c_category_id" class="form-control SlectBox SumoUnder"  tabindex="-1">
                                                             @foreach($categories as $category)
                                                                 <option title="{{ $category->c_name }}" value="{{ $category->id }}">{{ $category->c_name }}</option>
                                                             @endforeach
@@ -85,6 +97,12 @@
                                                 </div>
                                             </div>
                                         </div>
+
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1" class="required">Total time <span>(*)</span></label>
+                                            <input type="number"  class="form-control"   name="c_total_time" value="{{ old('c_total_time',$course->c_total_time ?? '') }}">
+                                        </div>
+
                                     </div>
                                     <div class="tab-pane" id="tab2">
                                         <p>dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
@@ -138,11 +156,43 @@
                 <div class="card-body pt-3">
                     <div class="form-group">
                         <label for="exampleInputEmail1"> Status <span>(*)</span></label>
-                        <div class="SumoSelect sumo_somename" tabindex="0" role="button" aria-expanded="true">
-                            <select name="c_status" class="form-control SlectBox SumoUnder" onclick="console.log($(this).val())" onchange="console.log('change is firing')" tabindex="-1">
+                        <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button" aria-expanded="true">
+                            <select name="c_status" class="form-control SlectBox SumoUnder"  tabindex="-1">
                                 <option title="Public" value="1">Public</option>
                                 <option title="hide" value="0">Hide</option>
                             </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card  box-shadow-0 ">
+                <div class="card-body pt-3">
+                    <div class="form-group">
+                        <label class="" for="exampleInputEmail1"> Hot </label>
+                        <div class="form-group">
+                            <label class="box-checkbox"> Nổi bật
+                                <input type="radio" name="c_hot" {{ ($course->c_hot ?? 0) == 1 ? 'checked' : '' }}  value="1">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="box-checkbox"> Không nổi bật
+                                <input type="radio" name="c_hot" {{ ($course->c_hot ?? 0) ==  0 ? 'checked' : '' }} value="0">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card  box-shadow-0 ">
+                <div class="card-body pt-3">
+                    <div class="form-group">
+                        <label class="" for="exampleInputEmail1"> Position </label>
+                        <div class="form-group">
+                            <label class="box-checkbox"> Nổi bật trang chủ
+                                <input type="checkbox" name="c_position_1" {{ ($course->c_position_1 ?? 0) == 1 ? 'checked' : '' }} value="1">
+                                <span class="checkmark"></span>
+                            </label>
                         </div>
                     </div>
                 </div>

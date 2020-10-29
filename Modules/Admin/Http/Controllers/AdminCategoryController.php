@@ -31,9 +31,11 @@ class AdminCategoryController extends AdminController
     {
         $data = $request->except(['avatar','save','_token']);
         $data['created_at'] = Carbon::now();
+        $data['c_position_1'] = 0;
 
         if(!$request->c_title_seo)             $data['c_title_seo'] = $request->c_name;
         if(!$request->c_description_seo) $data['c_description_seo'] = $request->c_name;
+        if($request->c_position_1) $data['c_position_1'] = 1;
 
         $categoryID = Category::insertGetId($data);
         if($categoryID)
@@ -55,11 +57,12 @@ class AdminCategoryController extends AdminController
     public function update(AdminCategoryRequest $request, $id)
     {
         $category = Category::findOrFail($id);
-        $data = $request->except(['avatar','save','_token']);
+        $data = $request->except(['avatar','save','_token','c_position_1']);
         $data['updated_at'] = Carbon::now();
 
         if(!$request->c_title_seo)             $data['c_title_seo'] = $request->c_name;
         if(!$request->c_description_seo) $data['c_description_seo'] = $request->c_name;
+        if($request->c_position_1) $data['c_position_1'] = 1;
 
         $category->fill($data)->save();
         RenderUrlSeoCourseService::init($request->c_slug,SeoEdutcation::TYPE_CATEGORY, $id);

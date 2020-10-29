@@ -24,6 +24,9 @@ class HubCourseController extends Controller
                 case SeoEdutcation::TYPE_COURSE:
                     return (new CourseController())->getCourseDetail($urlSeo->se_id, $request);
 
+                case SeoEdutcation::TYPE_TAG:
+                    return (new TagController())->getCourseByTag($urlSeo->se_id, $request);
+
             }
         }
 

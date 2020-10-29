@@ -1,10 +1,13 @@
 import 'owl.carousel'
+import AutoloadJs from '../../../components/_inc_autoload'
+import Toastr from "toastr";
 var Home = {
     init : function ()
     {
         this.runBanner()
         this.runTags()
         this.runCourse()
+        this.showCourseByCategory()
     },
 
     runBanner()
@@ -24,7 +27,7 @@ var Home = {
         $('.js-tags').owlCarousel({
             animateOut: 'slideOutDown',
             animateIn: 'flipInX',
-            items:5,
+            items:7,
             navigation: true,
             smartSpeed:450,
             navText: ["<i class='fa fa-chevron-left '></i>","<i class='fa fa-chevron-right'></i>"]
@@ -62,9 +65,35 @@ var Home = {
             smartSpeed:450,
             navText: ["<i class='fa fa-chevron-left '></i>","<i class='fa fa-chevron-right'></i>"]
         })
+    },
+
+    showCourseByCategory()
+    {
+        $(".js-course-by-category").click(function (event){
+            event.preventDefault()
+            $(".js-course-by-category").removeClass('active')
+            let $this = $(this);
+            $this.addClass('active')
+            let URL = $this.attr('href')
+            if (URL) {
+                $.ajax({
+                    url: URL,
+                    beforeSend: function( xhr ) {
+                        $(".js-loading-1").show()
+                    }
+                }).done(function( results ) {
+                    console.log(results)
+                    if (results.coursesHtml)
+                    {
+                        $("#coursesHtml").html(results.coursesHtml)
+                    }
+                });
+            }
+        })
     }
 }
 
 $(function (){
+    AutoloadJs.init()
     Home.init()
 })

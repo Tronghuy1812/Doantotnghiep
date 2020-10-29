@@ -6,16 +6,13 @@
         </div>
         <div class="section_tags">
             <div class="lists js-tags owl-carousel owl-theme">
-                @for ($i = 1 ; $i <= 10 ; $i ++)
-                    <a href="">đào tạo nội bộ doanh nghiệp <span>({{ $i }})</span></a>
-                @endfor
+                @foreach($categories as $item)
+                    <a href="{{ route('ajax_get.course.by_category', $item->id) }}" class="js-course-by-category" title="{{ $item->c_name }}">{{ $item->c_name }}</a>
+                @endforeach
             </div>
         </div>
-        <div class="lists ">
-            @for($i = 1 ; $i <= 8 ; $i++)
-                @include('pages.components._inc_item_course')
-            @endfor
-            <div class="clear"></div>
+        <div class="lists" id="coursesHtml">`
+            @include('pages.home.include._inc_course_list',['courses' => $courses])
         </div>
     </div>
 </section>

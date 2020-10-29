@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Education\Course;
+use App\Models\Education\Tag;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller

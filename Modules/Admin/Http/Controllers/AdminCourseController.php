@@ -4,7 +4,9 @@ namespace Modules\Admin\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Education\Course;
+use App\Models\Education\CourseTag;
 use App\Models\Education\SeoEdutcation;
+use App\Models\Education\Tag;
 use App\Models\Education\Teacher;
 use App\Service\Seo\RenderUrlSeoCourseService;
 use Carbon\Carbon;
@@ -28,12 +30,14 @@ class AdminCourseController extends AdminController
     {
         $categories = Category::orderByDesc('c_sort')
             ->get();
-
         $teachers = Teacher::orderByDesc('id')->get();
+        $tags = Tag::all();
 
         $viewData = [
             'categories' => $categories,
-            'teachers' => $teachers
+            'teachers' => $teachers,
+            'tags' => $tags,
+            'tagOld' => []
         ];
 
         return view('admin::pages.course.create', $viewData);
@@ -41,7 +45,8 @@ class AdminCourseController extends AdminController
 
     public function store(AdminCourseRequest $request)
     {
-        $data = $request->except(['avatar', 'save', '_token']);
+        $data = $request->except(['avatar', 'save', '_token','tags']);
+        $data['c_position_1'] = 0;
         $data['created_at'] = Carbon::now();
 
         if (!$request->c_title_seo) $data['c_title_seo'] = $request->c_name;
@@ -49,15 +54,32 @@ class AdminCourseController extends AdminController
         if (!$request->c_sale) $data['c_sale'] = 0;
         if (!$request->c_total_time) $data['c_total_time'] = 0;
         if (!$request->c_price) $data['c_price'] = 0;
+        if($request->c_position_1) $data['c_position_1'] = 1;
 
         $courseID = Course::insertGetId($data);
         if ($courseID) {
             $this->showMessagesSuccess();
+            $this->syncTagCourse($courseID, $request->tags);
             RenderUrlSeoCourseService::init($request->c_slug, SeoEdutcation::TYPE_COURSE, $courseID);
             return redirect()->route('get_admin.course.index');
         }
         $this->showMessagesError();
         return redirect()->back();
+    }
+
+    protected function syncTagCourse($courseID, $tags)
+    {
+        if (!empty($tags))
+        {
+            \DB::table('courses_tags')->where('ct_course_id', $courseID)->delete();
+            foreach ($tags as $item)
+            {
+                CourseTag::insert([
+                    'ct_course_id' => $courseID,
+                    'ct_tag_id' => $item
+                ]);
+            }
+        }
     }
 
     public function edit($id)
@@ -66,11 +88,18 @@ class AdminCourseController extends AdminController
         $categories = Category::orderByDesc('c_sort')
             ->get();
         $teachers = Teacher::orderByDesc('id')->get();
+        $tags = Tag::all();
+
+        $tagOld = CourseTag::where('ct_course_id', $id)
+            ->pluck('ct_tag_id')
+            ->toArray() ?? [];
 
         $viewData = [
             'course' => $course,
             'categories' => $categories,
-            'teachers' => $teachers
+            'teachers' => $teachers,
+            'tags' => $tags,
+            'tagOld' => $tagOld
         ];
         return view('admin::pages.course.update', $viewData);
     }
@@ -78,7 +107,7 @@ class AdminCourseController extends AdminController
     public function update(AdminCourseRequest $request, $id)
     {
         $course = Course::findOrFail($id);
-        $data = $request->except(['avatar', 'save', '_token']);
+        $data = $request->except(['avatar', 'save', '_token','c_position_1']);
         $data['updated_at'] = Carbon::now();
 
         if (!$request->c_title_seo) $data['c_title_seo'] = $request->c_name;
@@ -86,8 +115,11 @@ class AdminCourseController extends AdminController
         if (!$request->c_sale) $data['c_sale'] = 0;
         if (!$request->c_total_time) $data['c_total_time'] = 0;
         if (!$request->c_price) $data['c_price'] = 0;
+        if($request->c_position_1) $data['c_position_1'] = 1;
 
         $course->fill($data)->save();
+        $this->syncTagCourse($id, $request->tags);
+
         RenderUrlSeoCourseService::init($request->c_slug, SeoEdutcation::TYPE_COURSE, $id);
         $this->showMessagesSuccess();
         return redirect()->route('get_admin.course.index');
