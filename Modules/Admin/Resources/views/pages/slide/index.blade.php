@@ -29,7 +29,7 @@
                                         <th>Name</th>
                                         <th>Sort</th>
                                         <th>Status</th>
-                                        <th>Time</th>
+                                        <th>Banner</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -44,7 +44,11 @@
                                         <td>
                                             <span class="badge {{ $item->getStatus($item->s_status)['class']  }}">{{ $item->getStatus($item->s_status)['name']  }}</span>
                                         </td>
-                                        <td>{{ $item->created_at }}</td>
+                                        <td>
+                                            <a href="{{ $item->s_link }}" target="_blank" style="width: 200px;height: 100px;display: inline-block">
+                                                <img style="height: 100%;border-radius: 10px;border: 1px solid #dedede;width: 100%" src="{{ pare_url_file($item->s_banner) }}" alt="">
+                                            </a>
+                                        </td>
                                         <td>
                                             <a href="{{ route('get_admin.slide.edit', $item->id) }}" class="btn btn-xs btn-info"><i class="la la-edit"></i></a>
                                             <a href="{{ route('get_admin.slide.delete', $item->id) }}" class="btn btn-xs js-delete btn-danger"><i class="la la-trash"></i></a>
