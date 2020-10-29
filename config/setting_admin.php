@@ -28,5 +28,15 @@ return [
                 ],
             ]
         ],
+        [
+            'name' => 'Dữ liệu nền',
+            'class-icon' => 'la la-database',
+            'sub' => [
+                [
+                    'name' => 'Slide',
+                    'route' => 'get_admin.slide.index'
+                ]
+            ]
+        ],
     ]
 ];

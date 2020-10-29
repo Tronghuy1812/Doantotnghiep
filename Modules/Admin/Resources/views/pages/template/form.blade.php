@@ -6,7 +6,7 @@
                 <div class="card-body pt-3">
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="required">Name <span>(*)</span></label>
-                        <input type="text" class="form-control keypress-count" data-title-seo=".title_seo" data-slug=".slug" name="c_name" placeholder="Name">
+                        <input type="text" class="form-control keypress-count" data-title-seo=".title_seo" data-slug=".slug" name="c_name">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="required">Slug <span>(*)</span></label>

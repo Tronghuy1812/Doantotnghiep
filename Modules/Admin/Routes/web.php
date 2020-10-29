@@ -50,6 +50,15 @@ Route::prefix('admin')->group(function() {
         Route::get('delete/{id}', 'AdminCourseController@delete')->name('get_admin.course.delete');
     });
 
+    Route::prefix('slide')->group(function (){
+        Route::get('/', 'AdminSlideController@index')->name('get_admin.slide.index');
+        Route::get('/create', 'AdminSlideController@create')->name('get_admin.slide.create');
+        Route::post('/create', 'AdminSlideController@store');
+        Route::get('update/{id}', 'AdminSlideController@edit')->name('get_admin.slide.edit');
+        Route::post('update/{id}', 'AdminSlideController@update');
+        Route::get('delete/{id}', 'AdminSlideController@delete')->name('get_admin.slide.delete');
+    });
+
     Route::prefix('ajax')->namespace('Ajax')->group(function (){
         Route::post('/upload/image', 'AdminAjaxUploadImageController@processUpload')->name('post_ajax_admin.uploads');
     });

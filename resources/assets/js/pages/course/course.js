@@ -6,5 +6,5 @@ var Course = {
 }
 
 $(function (){
-    Course.init()
+    Teacher.init()
 })

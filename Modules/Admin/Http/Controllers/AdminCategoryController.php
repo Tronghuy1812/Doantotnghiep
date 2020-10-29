@@ -85,6 +85,5 @@ class AdminCategoryController extends AdminController
         }
 
         return redirect()->to('/');
-
     }
 }
