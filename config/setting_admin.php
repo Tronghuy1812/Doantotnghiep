@@ -29,6 +29,16 @@ return [
             ]
         ],
         [
+            'name' => 'Người dùng',
+            'class-icon' => 'la la-user',
+            'sub' => [
+                [
+                    'name' => 'Thành viên',
+                    'route' => 'get_admin.user.index'
+                ]
+            ]
+        ],
+        [
             'name' => 'Dữ liệu nền',
             'class-icon' => 'la la-database',
             'sub' => [
@@ -36,6 +46,24 @@ return [
                     'name' => 'Slide',
                     'route' => 'get_admin.slide.index'
                 ]
+            ]
+        ],
+        [
+            'name' => 'Admin',
+            'class-icon' => 'la la-cogs',
+            'sub' => [
+                [
+                    'name' => 'Permission',
+                    'route' => 'get_admin.permission.index'
+                ],
+                [
+                    'name' => 'Role',
+                    'route' => 'get_admin.role.index'
+                ],
+                [
+                    'name' => 'Quản trị viên',
+                    'route' => 'get_admin.account.index'
+                ],
             ]
         ],
     ]

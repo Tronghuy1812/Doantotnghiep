@@ -206,7 +206,7 @@
                             <div class="d-flex wd-100p">
                                 <div class="main-img-user"><img alt="" src="{{ asset('img/faces/6.jpg') }}" class=""></div>
                                 <div class="ml-3 my-auto">
-                                    <h6>Petey Cruiser</h6>
+                                    <h6>{{ get_data_user('admins','name') }}</h6>
                                     <span>Premium Member</span>
                                 </div>
                             </div>
@@ -216,7 +216,7 @@
                         <a class="dropdown-item" href="empty"><i class="bx bxs-inbox"></i>Inbox</a>
                         <a class="dropdown-item" href="empty"><i class="bx bx-envelope"></i>Messages</a>
                         <a class="dropdown-item" href="empty"><i class="bx bx-slider-alt"></i> Account Settings</a>
-                        <a class="dropdown-item" href="page-signin"><i class="bx bx-log-out"></i> Sign Out</a>
+                        <a class="dropdown-item" href="{{ route('get_admin.logout') }}" title="Đăng xuất"><i class="bx bx-log-out"></i> Sign Out</a>
                     </div>
                 </div>
                 <div class="dropdown main-header-message right-toggle">

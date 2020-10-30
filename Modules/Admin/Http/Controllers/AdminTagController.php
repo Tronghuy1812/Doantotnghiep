@@ -37,9 +37,13 @@ class AdminTagController extends AdminController
     {
         $data = $request->except(['avatar','save','_token']);
         $data['created_at'] = Carbon::now();
+        $data['t_position_1'] = 0;
+        $data['t_position_2'] = 0;
 
         if(!$request->t_title_seo)             $data['t_title_seo'] = $request->t_name;
         if(!$request->t_description_seo) $data['t_description_seo'] = $request->t_name;
+        if($request->t_position_1) $data['c_position_1'] = 1;
+        if($request->t_position_2) $data['c_position_2'] = 1;
 
         $tagID = Tag::insertGetId($data);
         if($tagID)
@@ -60,12 +64,14 @@ class AdminTagController extends AdminController
     public function update(AdminTagRequest $request, $id)
     {
         $tag = Tag::findOrFail($id);
-        $data = $request->except(['avatar','save','_token']);
+        $data = $request->except(['avatar','save','_token','t_position_1','t_position_2']);
         $data['updated_at'] = Carbon::now();
 
         if(!$request->t_title_seo)             $data['t_title_seo'] = $request->t_name;
         if(!$request->t_description_seo) $data['t_description_seo'] = $request->t_name;
-
+        if($request->t_position_1) $data['t_position_1'] = 1;
+        if($request->t_position_2) $data['t_position_2'] = 1;
+//        dd($request->all());
         $tag->fill($data)->save();
         RenderUrlSeoCourseService::init($request->t_slug,SeoEdutcation::TYPE_TAG, $id);
         $this->showMessagesSuccess();

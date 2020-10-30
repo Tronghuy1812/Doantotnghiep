@@ -28,18 +28,22 @@
                         @endif
                     </div>
                     <div class="form-group">
+                        <label for="exampleInputEmail1"> Parent <span>(*)</span></label>
+                        <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button" aria-expanded="true">
+                            <select name="c_parent_id" class="form-control SlectBox SumoUnder"  tabindex="-1">
+                                <option title="ROOT" value="0">__ROOT__</option>
+                                @foreach($categories as $item)
+                                    <option value="{{ $item->id }}" {{ ($category->c_parent_id ?? 0) == $item->id ? "selected" : "" }}>{{ $item->c_name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label for="exampleInputEmail1" class="required">Sort <span>(*)</span></label>
                         <input type="number"  class="form-control"  name="c_sort" value="{{ old('c_sort', $category->c_sort ?? '0') }}">
                         <span class="d-block text-warning">Thứ thự được sắp xếp từ bé đến lớn</span>
                     </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1"> Parent <span>(*)</span></label>
-                        <div class="SumoSelect sumo_somename" tabindex="0" role="button" aria-expanded="true">
-                            <select name="c_parent_id" class="form-control SlectBox SumoUnder" onclick="console.log($(this).val())" onchange="console.log('change is firing')" tabindex="-1">
-                                <option title="ROOT" value="0">__ROOT__</option>
-                            </select>
-                        </div>
-                    </div>
+
                 </div>
             </div>
             <div class="card  box-shadow-0">

@@ -11,20 +11,13 @@
                 <div class="box-25 mr20">
                     <section>
                         <div class="box-sidebar">
-                            <h2 class="box-sidebar-title">Kỹ năng quản trị</h2>
+                            <h2 class="box-sidebar-title">{{ $category->c_name }}</h2>
                             <ul class="b-s-category">
-                                <li>
-                                    <a href=""><i class="fa fa-comments"></i> Khoá học combo</a>
-                                </li>
-                                <li>
-                                    <a href=""><i class="fa fa-comments"></i> Khoá học combo</a>
-                                </li>
-                                <li>
-                                    <a href=""><i class="fa fa-comments"></i> Khoá học combo</a>
-                                </li>
-                                <li class="turn-back">
-                                    <a href=""><i class="fa fa-angle-left"></i> Xem danh mục khác</a>
-                                </li>
+                                @foreach($categoryChild as $item)
+                                    <li>
+                                        <a href="{{ route('get.course.render',['slug' => $item->c_slug.'-c']) }}" title="{{ $item->c_name }}"><i class="{{ $category->c_icon }}"></i> {{ $item->c_name }}</a>
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
                     </section>
@@ -32,10 +25,10 @@
                         <div class="box-sidebar">
                             <h2 class="box-sidebar-title">Chủ đề hót</h2>
                             <ul class="b-s-tags">
-                                <li><a href="">Bán hàng</a></li>
-                                <li><a href="">Tiếng nhật</a></li>
-                                <li><a href="">Tiếng anh</a></li>
-                                <li><a href="">Bất động sản</a></li>
+                                @foreach($tags as $item)
+                                    <li><a href="{{ route('get.course.render',['slug' => $item->t_slug.'-t']) }}" target="_blank"
+                                           title="{{ $item->t_name }}">{{ $item->t_name }}</a></li>
+                                @endforeach
                                 <div style="clear:both;"></div>
                             </ul>
                         </div>

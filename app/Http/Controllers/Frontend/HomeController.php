@@ -61,6 +61,13 @@ class HomeController extends Controller
         // lay giao vien
         $teachers = Teacher::orderByDesc('id')->get();
 
+        \SEOMeta::setTitle('Đây là trang chủ');
+        \SEOMeta::setDescription('Đây là mô tả');
+        \SEOMeta::setCanonical(\Request::url());
+        \OpenGraph::setDescription('Đây là mô tả');
+        \OpenGraph::setTitle('Đây là trang chủ');
+        \OpenGraph::setUrl(\Request::url());
+        \OpenGraph::addProperty('type', 'articles');
 
         $viewData = [
             'tagsHot' => $tagsHot,

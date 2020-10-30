@@ -24,7 +24,9 @@ class AdminCategoryController extends AdminController
 
     public function create()
     {
-        return view('admin::pages.category.create');
+        $categories = Category::orderByDesc('c_sort')->get();
+
+        return view('admin::pages.category.create',compact('categories'));
     }
 
     public function store(AdminCategoryRequest  $request)
@@ -51,7 +53,8 @@ class AdminCategoryController extends AdminController
     public function edit($id)
     {
         $category = Category::findOrFail($id);
-        return view('admin::pages.category.update',compact('category'));
+        $categories = Category::orderByDesc('c_sort')->get();
+        return view('admin::pages.category.update',compact('category','categories'));
     }
 
     public function update(AdminCategoryRequest $request, $id)

@@ -16,7 +16,6 @@ class AdminCategoryRequest extends FormRequest
         return [
             'c_name' => 'required',
             'c_slug' => 'required|unique:categories,c_slug,'.$this->id,
-            'c_icon' => 'required',
         ];
     }
 
@@ -24,7 +23,6 @@ class AdminCategoryRequest extends FormRequest
     {
         return [
             'c_name.required' => 'Dữ liệu không được để trống',
-            'c_icon.required' => 'Dữ liệu không được để trống',
             'c_slug.required' => 'Dữ liệu không được để trống',
             'c_slug.unique'   => 'Slug đã tồn tại',
         ];

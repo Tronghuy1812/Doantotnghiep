@@ -16,14 +16,15 @@
                     <a href="" class="google"><i class="fa fa-google"></i> Google</a>
                 </div>
                 <p class="mb10">- Hoặc đăng nhập bằng tài khoản Kyna -</p>
-                <form action="">
+                <form action="{{ route('get.login') }}" method="POST">
+                    @csrf
                     <div class="form-group">
                         <span class="icon icon-mail"></span>
-                        <input type="text" class="form-control" placeholder="Email  của bạn">
+                        <input type="email" name="email" class="form-control" placeholder="Email  của bạn">
                     </div>
                     <div class="form-group">
                         <span class="icon icon-lock"></span>
-                        <input type="password" class="form-control" placeholder="******">
+                        <input type="password" name="password" class="form-control" placeholder="******">
                         <div class="password-show js-show-password"><i class="fa fa-eye"></i></div>
                     </div>
                     <div class="remember-login flex flex-jc-sb">

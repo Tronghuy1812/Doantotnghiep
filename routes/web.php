@@ -14,7 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['namespace' => 'Frontend'], function (){
-    Route::get('/','HomeController@index');
+    Route::post('/dang-nhap','LoginController@index')->name('get.login');
+    Route::get('/','HomeController@index')->name('get.home');
     Route::get('/danh-muc/{slug?}','CategoryController@index')->name('get.category');
     Route::get('/khoa-hoc/{slug?}','HubCourseController@render')->name('get.course.render');
     Route::get('tat-ca-khoa-hoc','CategoryController@index')->name('get.category.all');
