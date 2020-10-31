@@ -1,10 +1,6 @@
 /node_modules
 /public/hot
 /public/storage
-/public/css
-/public/css_admin
-/public/js
-/public/js_admin
 /public/uploads
 /storage/*.key
 /vendor
