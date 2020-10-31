@@ -2,6 +2,19 @@
     .text-wrap .example .form-group {
         margin-bottom: 1rem;
     }
+    .tab-course-content .lists .item{
+        border: 1px solid #dedede;
+        margin-bottom: 10px;
+        padding: 10px;
+    }
+    .tab-course-content .lists .item p{
+        margin-bottom: 0.2rem;
+    }
+    .tab-course-content .lists .item p:last-child span{
+        font-size: 13px;
+        color: #000;
+        font-weight: 700;
+    }
 </style>
 <form class="form-horizontal" autocomplete="off" method="POST" action="">
     @csrf
@@ -16,7 +29,9 @@
                                     <!-- Tabs -->
                                     <ul class="nav panel-tabs main-nav-line">
                                         <li class="nav-item"><a href="#tab1" class="nav-link active" data-toggle="tab">Thông tin cơ bản</a></li>
-                                        <li class="nav-item"><a href="#tab2" class="nav-link" data-toggle="tab">Nội dung khoá học</a></li>
+                                        @if(isset($course))
+                                            <li class="nav-item"><a href="#tab2" class="nav-link" data-toggle="tab">Nội dung khoá học</a></li>
+                                        @endif
                                         <li class="nav-item"><a href="#tab3" class="nav-link " data-toggle="tab">Giới thiệu</a></li>
                                     </ul>
                                 </div>
@@ -104,14 +119,56 @@
                                         </div>
 
                                     </div>
+                                    @if(isset($course))
                                     <div class="tab-pane" id="tab2">
-                                        <p>dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
-                                        <p>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime</p>
-                                        <p class="mb-0">placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="tab-course-content">
+                                                    <div class="lists" id="tab-content-course">
+                                                        @foreach($courseContent as $item)
+                                                            <div class="item">
+                                                                <p>{{ $item->cc_name }}</p>
+                                                                <p>
+                                                                    <span class="la la-video"> {{ $item->cc_total_video }} Bideo</span>
+                                                                    <span class="fa fa-question-circle"> {{ $item->cc_total_question }} Bài tập</span>
+                                                                </p>
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label for="exampleInputEmail1" class="required">Tiêu đề <span>(*)</span></label>
+                                                            <input type="text" class="form-control" value="" name="cc_name" id="nameCourse">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <div class="form-group">
+                                                            <label for="exampleInputEmail1" class="required">Tổng số video <span>(*)</span></label>
+                                                            <input type="text" class="form-control" value="" name="cc_total_video" id="videoCourse">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <div class="form-group">
+                                                            <label for="exampleInputEmail1" class="required">Bài tập <span>(*)</span></label>
+                                                            <input type="text" class="form-control" value="" name="cc_total_question" id="questionCourse">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <label for="exampleInputEmail1" class="required">Mô tả nội dung <span>(*)</span></label>
+                                                <textarea name="cc_content" class="form-control" id="contentCourse" cols="30" rows="4"></textarea>
+                                            </div>
+                                            <div class="com-sm-12" style="margin-top: 20px;">
+                                                <a href="{{ route('get_admin.course_content.create', $course->id) }}" class="btn btn-primary js-course-content">Thêm mới</a>
+                                            </div>
+                                        </div>
                                     </div>
+                                    @endif
                                     <div class="tab-pane" id="tab3">
-                                        <p>praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident,</p>
-                                        <p class="mb-0">similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
+                                        <textarea name="c_about" class="form-control" id="" cols="30" rows="10">{{ $course->c_about ?? '' }}</textarea>
                                     </div>
                                 </div>
                             </div>

@@ -4,6 +4,7 @@ namespace Modules\Admin\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Education\Course;
+use App\Models\Education\CourseContent;
 use App\Models\Education\CourseTag;
 use App\Models\Education\SeoEdutcation;
 use App\Models\Education\Tag;
@@ -94,11 +95,17 @@ class AdminCourseController extends AdminController
             ->pluck('ct_tag_id')
             ->toArray() ?? [];
 
+        $courseContent = CourseContent::where('cc_course_id', $id)
+            ->orderBy('cc_sort','asc')
+            ->get();
+
+
         $viewData = [
             'course' => $course,
             'categories' => $categories,
             'teachers' => $teachers,
             'tags' => $tags,
+            'courseContent' => $courseContent,
             'tagOld' => $tagOld
         ];
         return view('admin::pages.course.update', $viewData);

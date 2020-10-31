@@ -55,6 +55,8 @@ Route::prefix('admin')->middleware('checkLoginAdmin')->group(function() {
         Route::get('update/{id}', 'AdminCourseController@edit')->name('get_admin.course.edit')->middleware('permission:course_update|full');
         Route::post('update/{id}', 'AdminCourseController@update');
         Route::get('delete/{id}', 'AdminCourseController@delete')->name('get_admin.course.delete')->middleware('permission:course_delete|full');
+        Route::post('content/add/{id}', 'AdminCourseContentController@store')->name('get_admin.course_content.create')->middleware('permission:course_content_update|full');
+
     });
 
     Route::prefix('slide')->group(function (){

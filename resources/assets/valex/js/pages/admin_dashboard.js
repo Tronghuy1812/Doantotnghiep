@@ -23,10 +23,17 @@ import FilepondUpload from '../components/_init_filepond.js'
 import SEO from '../components/_inc_seo.js'
 import Messages from "../../../components/_inc_run_message";
 import Delete from "./../components/_inc_delete"
+import Course from "../components/_inc_course";
 
 $(function (){
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
     FilepondUpload.inti()
     SEO.init()
+    Course.init()
     Delete.init()
     Messages.init()
 })
