@@ -11,9 +11,9 @@
                 <div class="box-25 mr20">
                     <section>
                         <div class="box-sidebar">
-                            <h2 class="box-sidebar-title">{{ $category->c_name }}</h2>
+                            <h2 class="box-sidebar-title">{{ $category->c_name ?? "Tất cả khoá học"}}</h2>
                             <ul class="b-s-category">
-                                @foreach($categoryChild as $item)
+                                @foreach($categoryChild ?? [] as $item)
                                     <li>
                                         <a href="{{ route('get.course.render',['slug' => $item->c_slug.'-c']) }}" title="{{ $item->c_name }}"><i class="{{ $category->c_icon }}"></i> {{ $item->c_name }}</a>
                                     </li>
@@ -25,7 +25,7 @@
                         <div class="box-sidebar">
                             <h2 class="box-sidebar-title">Chủ đề hót</h2>
                             <ul class="b-s-tags">
-                                @foreach($tags as $item)
+                                @foreach($tags ?? [] as $item)
                                     <li><a href="{{ route('get.course.render',['slug' => $item->t_slug.'-t']) }}" target="_blank"
                                            title="{{ $item->t_name }}">{{ $item->t_name }}</a></li>
                                 @endforeach

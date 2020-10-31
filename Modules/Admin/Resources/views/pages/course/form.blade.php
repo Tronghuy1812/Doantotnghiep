@@ -12,7 +12,7 @@
     }
     .tab-course-content .lists .item p:last-child span{
         font-size: 13px;
-        color: #000;
+        color: #031b4e;
         font-weight: 700;
     }
 </style>
@@ -259,7 +259,7 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1"> Avatar </label>
                         <input type="file" class="filepond" name="avatar">
-                        <input type="hidden" name="c_avatar" id="avatar_uploads">
+                        <input type="hidden" name="c_avatar" value="{{ $course->c_avatar ?? '' }}" id="avatar_uploads">
                     </div>
                 </div>
             </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Education\Course;
+use App\Models\Education\CourseContent;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -22,8 +23,13 @@ class CourseController extends Controller
             ->orderByDesc('id')
             ->paginate(3);
 
+        $courseContent = CourseContent::where('cc_course_id', $id)
+            ->orderBy('cc_sort','asc')
+            ->get();
+
         $viewData = [
             'courses' => $courses,
+            'courseContent' => $courseContent,
             'courseDetail' => $courseDetail
         ];
 

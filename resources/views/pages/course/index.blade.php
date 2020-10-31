@@ -18,8 +18,22 @@
                 </div>
                 <div class="box-section">
                     <h4 class="box-title">Nội dung khoá học</h4>
-                    <div class="box-content">
-                        Đang cập nhật
+                    <div class="box-content course-content">
+                        <div class="lists">
+                            @foreach($courseContent as $item)
+                                <div class="item js-load-content-course">
+                                    <div class="item-info">
+                                        <h6>{{ $item->cc_name }}</h6>
+                                        <p>
+                                            <span><i class="fa fa-play-circle"></i> {{ $item->cc_total_video }} Video</span>
+                                            <span><i class="fa fa-question-circle"></i> {{ $item->cc_total_question }} Bài tập</span>
+                                        </p>
+                                    </div>
+                                    <div class="item-content">{!! $item->cc_content !!}</div>
+                                    <a href="" class="icon"><i class="fa fa-chevron-down"></i></a>
+                                </div>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
                 <div class="box-section">
@@ -116,7 +130,7 @@
             </div>
             <div class="box-30" id="rightSidebar">
                 <div class="right-section" style="padding: 0">
-                    <img class="thumb" src="http://127.0.0.1:8888/images/thumb.jpg" alt="">
+                    <img class="thumb" src="{{ pare_url_file($courseDetail->c_avatar) }}" alt="{{ $courseDetail->c_name }}">
                     <div class="right-section-box">
                         <p class="price"><i class="fa fa-tags"></i> <span>{{ number_format($courseDetail->c_price,0,',','.') }} đ</span></p>
                         <a href="" class="btn btn-success btn-radius">Mua ngay</a>
