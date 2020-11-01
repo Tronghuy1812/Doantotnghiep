@@ -8,7 +8,7 @@
                 <div class="item">
                     <div class="item-header">
                         <a href="" title="{{ $item->t_name }}">
-                            <img src="{{ pare_url_file($item->t_avatar) }}" alt="{{ $item->t_name }}">
+                            <img src="{{ pare_url_file($item->t_avatar) }}" onerror="this.onerror=null;this.src='{{ config('frontend.image.default_error') }}';" alt="{{ $item->t_name }}">
                         </a>
                     </div>
                     <div class="info">

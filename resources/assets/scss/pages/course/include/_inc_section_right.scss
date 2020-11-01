@@ -1,0 +1,72 @@
+.right-section {
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 5px;
+    font-size: 1rem;
+    padding: 1.25rem;
+    background: #fff;
+    position: relative;
+    margin: 15px 0;
+    .thumb {
+        width: 100%;
+        object-fit: cover;
+    }
+    &-box {
+        padding: 1.25rem;
+    }
+    &-title {
+        font-size: 18px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid #dbdbdb;
+        margin-bottom: 10px;
+        font-weight: 500;
+    }
+    .list-course {
+        a {
+            display: block;
+            color: #000;
+            font-size: 13px;
+            margin-bottom: 10px;
+            &:hover {
+                cursor: pointer;
+                color: #fb6a00;
+            }
+            i {
+                color: #fb6a00 !important;
+                margin-right: 5px;
+            }
+        }
+    }
+    .thumb {
+
+    }
+    .price {
+        font-weight: 700;
+        font-size: 1.5rem;
+        color: #fb6a00;
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        i {
+            margin-right: 5px;
+        }
+    }
+    .footer {
+        margin-top: 20px;
+        a {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-block;
+            text-align: center;
+            line-height: 30px;
+        }
+        a.facebook {
+            background-color: #3B5998;
+            color: white;
+        }
+        a.google {
+            background-color: #dd4b39;
+            color: white;
+        }
+    }
+}

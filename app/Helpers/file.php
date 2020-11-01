@@ -3,7 +3,7 @@ if (!function_exists('pare_url_file')) {
     function pare_url_file($image, $folder = '')
     {
         if (!$image) {
-            return '/images/default.jpg';
+            return '/images/default.png';
         }
         $explode = explode('__', $image);
 

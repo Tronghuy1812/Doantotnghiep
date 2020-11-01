@@ -87,69 +87,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="box-section teacher-course">
-                    <h4 class="box-title">Khoá học phù hợp với bạn <a href="" title="Xem thêm">Xem thêm </a></h4>
-                    <div class="box-content">
-                        <div class="lists " style="margin: -10px;">
-                            @forelse($courses as $item)
-                                @include('pages.category.include._item_course',['course' => $item])
-                            @empty
-                                <p>Dữ liệu chưa được cập nhật</p>
-                            @endforelse
-                            <div class="clear"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="box-section vote">
-                    <h4 class="box-title">Học viên nói gì</h4>
-                    <div class="box-content">
-                        <div class="box">
-                            <div class="box-30 dashboard">
-                                <div class="vote-total-age">0</div>
-                                <p class="vote-star">
-                                    @for ($i = 1 ;$i <= 5 ;$i++)
-                                        <span class="fa fa-star"></span>
-                                    @endfor
-                                </p>
-                                <p class="desc">(<span class="vote-total">0</span> Đánh giá)</p>
-                            </div>
-                            <div class="box-70">
-                                <div class="list-vote">
-                                    @for($i = 5 ; $i >0 ; $i --)
-                                        <div class="item flex flex-jc-sb">
-                                            <span class="first">{{ $i }} <i class="fa fa-star"></i></span>
-                                            <div style=""><div class="progress" style="width: 0%"></div></div>
-                                            <span class="last">5 %</span>
-                                        </div>
-                                    @endfor
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @include('pages.course.include._inc_course_you',['courses' => $courses])
+                @include('pages.course.include._inc_vote')
             </div>
             <div class="box-30" id="rightSidebar">
-                <div class="right-section" style="padding: 0">
-                    <img class="thumb" src="{{ pare_url_file($courseDetail->c_avatar) }}" alt="{{ $courseDetail->c_name }}">
-                    <div class="right-section-box">
-                        <p class="price"><i class="fa fa-tags"></i> <span>{{ number_format($courseDetail->c_price,0,',','.') }} đ</span></p>
-                        <a href="" class="btn btn-success btn-radius">Mua ngay</a>
-                        <a href="" class="btn btn-pink btn-radius">Thêm giỏ hàng</a>
-                        <div class="footer">
-                            <a href="" class="facebook"><i class="fa fa-facebook"></i></a>
-                            <a href="" class="google"><i class="fa fa-google"></i></a>
-                            <a href="" class="twitch"><i class="fa fa-twitch"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="right-section">
-                    <h4 class="right-section-title">{{ $courseDetail->c_name }}</h4>
-                    <div class="list-course">
-                        <a href=""><i class="fa fa-play-circle"></i> Bài mở đầu</a>
-                        <a href=""><i class="fa fa-play-circle"></i> Bài 1. Nếu tăng giá</a>
-                        <a href=""><i class="fa fa-play-circle"></i> Bài 2. Nếu tăng tiền</a>
-                    </div>
-                </div>
+                @include('pages.course.include._inc_box_right',['courseDetail' => $courseDetail])
             </div>
         </div>
     </div>

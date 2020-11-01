@@ -1,3 +1,5 @@
+import Cart from "../../../components/_inc_cart";
+import AutoloadJs from '../../../components/_inc_autoload'
 var Course = {
     init : function ()
     {
@@ -23,4 +25,6 @@ var Course = {
 
 $(function (){
     Course.init()
+    Cart.init()
+    AutoloadJs.init()
 })
