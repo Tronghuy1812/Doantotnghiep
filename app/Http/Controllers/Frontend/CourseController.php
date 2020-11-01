@@ -27,6 +27,8 @@ class CourseController extends Controller
             ->orderBy('cc_sort','asc')
             ->get();
 
+        \SEOMeta::setTitle($courseDetail->c_name);
+
         $viewData = [
             'courses' => $courses,
             'courseContent' => $courseContent,

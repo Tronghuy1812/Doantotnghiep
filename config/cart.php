@@ -75,5 +75,27 @@ return [
         'thousand_separator' => ',',
 
     ],
+    'pay_type' => [
+        [
+            'name' => 'Chuyển khoản',
+            'type' => '1',
+            'class' => ''
+        ],
+        [
+            'name' => 'MOMO',
+            'type' => '2',
+            'class' => ''
+        ],
+        [
+            'name' => 'Thẻ Visa/  Mastercard',
+            'type' => '1',
+            'class' => ''
+        ],
+        [
+            'name' => 'Thanh toán tại cửa hàng',
+            'type' => '1',
+            'class' => ''
+        ],
+    ]
 
 ];

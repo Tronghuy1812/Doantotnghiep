@@ -4,6 +4,7 @@ var Cart = {
     init : function (){
         this.buyNow()
         this.addCart()
+        this.changePayType()
     },
 
     buyNow()
@@ -55,7 +56,7 @@ var Cart = {
                 if(results.status === 200)
                 {
                     console.log('404')
-                    Toastr.success('Xử lý thành công')
+                    Toastr.success(results.message)
                 }
             },
             error: function(results){

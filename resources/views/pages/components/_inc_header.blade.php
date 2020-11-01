@@ -15,7 +15,7 @@
         </div>
         <div class="header-right flex flex-jc-sb flex-a-c">
             <a href="" class="btn-cdo cdo"><i class="fa fa-unlock-alt"></i> Kích hoạt COD</a>
-            <div class="cart"><i class="fa fa-cart-arrow-down"></i> <span>(0)</span></div>
+            <a href="{{ route('get_user.cart') }}" title="Giỏ hàng" class="cart"><i class="fa fa-cart-arrow-down"></i> <span>({{ \Cart::count() }})</span></a>
             @if(get_data_user('web'))
                 <div class="auth-login">
                     <a href="">{{ get_data_user('web','name') }}</a>

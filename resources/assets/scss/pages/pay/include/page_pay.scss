@@ -1,0 +1,97 @@
+.pay-process {
+    ul {
+        margin: 0px 0px 25px 0px;
+        padding: 0px;
+        display: table;
+        overflow: hidden;
+        font-size: 16px;
+        font-weight: bold;
+        width: 100%;
+        li {
+            display: table-cell;
+            background: #50ad4e;
+            color: white;
+            height: 50px;
+            line-height: 50px !important;
+            padding-left: 30px;
+            position: relative;
+            width: calc(100% /3 );
+
+            .checkout-span {
+                width: 100%;
+                display: inline-block;
+                text-align: center;
+            }
+
+            .checkout-triangle-right, .checkout-triangle-right-last
+            {
+                border-top: 25px solid transparent;
+                border-left: 20px solid #50ad4e;
+                border-bottom: 25px solid transparent;
+                position: absolute;
+            }
+
+            .checkout-triangle-left{
+                border-top: 30px solid transparent;
+                border-left: 25px solid white;
+                border-bottom: 30px solid transparent;
+                position: absolute;
+                left: 0px;
+                top: -5px;
+            }
+            .checkout-triangle-right {
+                right: -20px;
+                z-index: 1;
+                top: 0px;
+
+            }
+            &:last-child{
+                background: #e4e7eb;
+                color: #272727;
+                padding-right: 30px;
+            }
+        }
+    }
+}
+
+.box-fix {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    background: white;
+    left: 0;
+    padding-top: 15px;
+    box-shadow: 0 -10px 15px rgba(0, 0, 0, .1);
+    border-top: 1px solid #ddd;
+    height: 80px;
+    z-index: 1;
+    .item {
+        width: calc(100%/4);
+        span {
+            &:first-child{
+                font-weight: bold;
+                font-size: 16px;
+                border-bottom: 1px dotted #dedede;
+                margin-bottom: 5px;
+                padding-bottom: 5px;
+                display: inline-block;
+            }
+        }
+    }
+    .checkout-button {
+        display: inline-block;
+        background: #fb6a00;
+        height: auto;
+        padding: 10px 50px;
+        width: 100%;
+        border-right: none;
+        border-radius: 3px;
+        margin-bottom: 20px;
+        border: none;
+        font-size: 18px;
+        font-weight: bold;
+        color: white;
+    }
+}
+
+
