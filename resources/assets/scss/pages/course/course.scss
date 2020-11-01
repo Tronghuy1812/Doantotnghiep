@@ -1,10 +1,13 @@
 @import "./../../../bases/init";
 @import "~jquery-modal";
+@import "~toastr";
 @import "./../../components/inc_header";
 @import "./../../components/inc_breadcrumb";
 @import "./../../components/inc_item_course";
 @import "./include/inc_header_course";
 @import "./include/inc_page_course";
+@import "./include/inc_section_right";
 @import "./include/inc_vote";
-
+@import "../../components/inc_popup";
+@import "../../components/inc_popup_auth";
 @import "../../components/inc_footer";

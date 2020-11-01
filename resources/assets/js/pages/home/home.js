@@ -1,6 +1,5 @@
 import 'owl.carousel'
 import AutoloadJs from '../../../components/_inc_autoload'
-import Toastr from "toastr";
 var Home = {
     init : function ()
     {

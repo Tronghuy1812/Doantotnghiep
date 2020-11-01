@@ -9,7 +9,7 @@
                     <div class="avatar">
                         <div class="img">
                             <a href="{{ route('get.course.render',['slug' => $item->c_slug.'-cr']) }}" title="{{ $item->c_name }}">
-                                <img src="{{ asset('images/thumb.jpg') }}" alt="{{ $item->c_name }}">
+                                <img src="{{ pare_url_file($item->c_avatar) }}" alt="{{ $item->c_name }}">
                             </a>
                             <div class="img_badget">
                                 <p class="flex flex-jc-sb pl10 pr10">
