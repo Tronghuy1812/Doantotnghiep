@@ -1686,6 +1686,10 @@ strong {
   font-weight: 700;
 }
 
+.color-orange {
+  color: #FB6A00 !important;
+}
+
 .flex {
   display: flex;
 }
@@ -1855,6 +1859,11 @@ strong {
 
 .lists .item-4 {
   width: calc(100%/4 - 10px);
+  float: left;
+}
+
+.lists .item-2 {
+  width: calc(100%/2 - 10px);
   float: left;
 }
 

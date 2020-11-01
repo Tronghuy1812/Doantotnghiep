@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -11793,81 +11793,6 @@ var AutoloadJs = {
 
 /***/ }),
 
-/***/ "./resources/assets/components/_inc_cart.js":
-/*!**************************************************!*\
-  !*** ./resources/assets/components/_inc_cart.js ***!
-  \**************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var toastr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! toastr */ "./node_modules/toastr/toastr.js");
-/* harmony import */ var toastr__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(toastr__WEBPACK_IMPORTED_MODULE_0__);
-
-var Cart = {
-  init: function init() {
-    this.buyNow();
-    this.addCart();
-    this.changePayType();
-  },
-  buyNow: function buyNow() {
-    $(".js-buy-now").click(function (event) {
-      event.preventDefault();
-      var $this = $(this);
-      console.log($this);
-    });
-  },
-  addCart: function addCart() {
-    var _this = this;
-
-    $(".js-add-cart").click(function (event) {
-      event.preventDefault();
-      var $this = $(this);
-      var URL = $this.attr('data-url');
-
-      if (typeof URL !== "undefined") {
-        _this.processAddCart(URL, $this);
-      }
-
-      console.log(URL);
-    });
-  },
-  processAddCart: function processAddCart(URL, $element) {
-    $.ajax({
-      url: URL,
-      success: function success(results) {
-        console.log(results);
-
-        if (results.status === 401) {
-          $('.js-popup-auth').modal({
-            escapeClose: true,
-            clickClose: true,
-            showClose: true
-          });
-          return false;
-        }
-
-        if (results.status === 404) {
-          console.log('404');
-          toastr__WEBPACK_IMPORTED_MODULE_0___default.a.error('Dữ liệu không tồn tại');
-          return false;
-        }
-
-        if (results.status === 200) {
-          console.log('404');
-          toastr__WEBPACK_IMPORTED_MODULE_0___default.a.success(results.message);
-        }
-      },
-      error: function error(results) {}
-    });
-  }
-};
-/* harmony default export */ __webpack_exports__["default"] = (Cart);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
-
-/***/ }),
-
 /***/ "./resources/assets/components/_inc_run_message.js":
 /*!*********************************************************!*\
   !*** ./resources/assets/components/_inc_run_message.js ***!
@@ -11902,55 +11827,45 @@ var Messages = {
 
 /***/ }),
 
-/***/ "./resources/assets/js/pages/course/course.js":
-/*!****************************************************!*\
-  !*** ./resources/assets/js/pages/course/course.js ***!
-  \****************************************************/
+/***/ "./resources/assets/js/pages/cart/cart.js":
+/*!************************************************!*\
+  !*** ./resources/assets/js/pages/cart/cart.js ***!
+  \************************************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var _components_inc_cart__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../components/_inc_cart */ "./resources/assets/components/_inc_cart.js");
-/* harmony import */ var _components_inc_autoload__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../components/_inc_autoload */ "./resources/assets/components/_inc_autoload.js");
+/* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var _components_inc_autoload__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../components/_inc_autoload */ "./resources/assets/components/_inc_autoload.js");
 
-
-var Course = {
+var CartPage = {
   init: function init() {
-    this.showContentCourse();
+    this.changePayType();
   },
-  showContentCourse: function showContentCourse() {
-    $(".js-load-content-course").click(function (event) {
-      console.log("click");
+  changePayType: function changePayType() {
+    $(".js-pay-type").click(function (event) {
       var $this = $(this);
-      var $icon = $this.find(".icon i");
-      $(this).find(".item-content").slideToggle();
-
-      if ($icon.hasClass('fa-chevron-down')) {
-        $icon.removeClass('fa-chevron-down').addClass('fa-chevron-up');
-      } else {
-        $icon.addClass('fa-chevron-down').removeClass('fa-chevron-up');
-      }
+      var valueType = $this.find('b').text();
+      $(".js-pay-type-preview").text(valueType);
     });
   }
 };
 $(function () {
-  Course.init();
-  _components_inc_cart__WEBPACK_IMPORTED_MODULE_0__["default"].init();
-  _components_inc_autoload__WEBPACK_IMPORTED_MODULE_1__["default"].init();
+  CartPage.init();
+  _components_inc_autoload__WEBPACK_IMPORTED_MODULE_0__["default"].init();
 });
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
 
 /***/ }),
 
-/***/ 2:
-/*!**********************************************************!*\
-  !*** multi ./resources/assets/js/pages/course/course.js ***!
-  \**********************************************************/
+/***/ 4:
+/*!******************************************************!*\
+  !*** multi ./resources/assets/js/pages/cart/cart.js ***!
+  \******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/mac/Documents/web/work/duan/education/resources/assets/js/pages/course/course.js */"./resources/assets/js/pages/course/course.js");
+module.exports = __webpack_require__(/*! /Users/mac/Documents/web/work/duan/education/resources/assets/js/pages/cart/cart.js */"./resources/assets/js/pages/cart/cart.js");
 
 
 /***/ })

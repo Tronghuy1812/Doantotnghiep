@@ -7,6 +7,7 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
 {{--        <title>Khoá học Online  @yield('title_page')</title>--}}
         {!! SEO::generate() !!}
+        <link rel="icon" href="/img/brand/favicon.png" type="image/x-icon"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         @yield('style')
     </head>

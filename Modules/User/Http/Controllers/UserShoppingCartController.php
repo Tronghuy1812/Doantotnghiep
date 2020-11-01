@@ -6,6 +6,7 @@ use App\Models\Education\Course;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Log;
 
 class UserShoppingCartController extends UserController
 {
@@ -26,11 +27,35 @@ class UserShoppingCartController extends UserController
                        'status' => 404
                     ]);
                 }
-            }
-            return response([
-                'status' => 200
-            ]);
 
+                $listCarts = \Cart::content();
+
+                // Kierm tra xem đã lưu khoá học chưa
+                $checkExist = $listCarts->search(function ($cartItem) use ($id) {
+                    if($cartItem->id == $id) return $id;
+                });
+
+                // Nếu chưa có giỏ hàng thì mặc định thêm
+                if($listCarts->isEmpty() || !$checkExist) {
+                    Log::info("[Cart]: Empty" );
+                    \Cart::add([
+                        'id' => $id,
+                        'name' => $course->c_name,
+                        'qty' => 1,
+                        'price' => $course->c_price,
+                        'weight' => 1,
+                        'options' => [
+                            'images' => pare_url_file($course->c_avatar),
+                            'sale' => $course->c_sale
+                        ]
+                    ]);
+                }
+
+                return response([
+                    'status' => 200,
+                    'message' => !$checkExist ? "Mua khoá học thành công" : "Khoá học đã tồn tại"
+                ]);
+            }
         }
     }
 

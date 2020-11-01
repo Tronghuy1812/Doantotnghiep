@@ -15424,6 +15424,17 @@ $(function () {
 
 /***/ }),
 
+/***/ "./resources/assets/scss/pages/pay/pay.scss":
+/*!**************************************************!*\
+  !*** ./resources/assets/scss/pages/pay/pay.scss ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ "./resources/assets/scss/pages/teacher/teacher.scss":
 /*!**********************************************************!*\
   !*** ./resources/assets/scss/pages/teacher/teacher.scss ***!
@@ -15447,9 +15458,9 @@ $(function () {
 /***/ }),
 
 /***/ 0:
-/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** multi ./resources/assets/js/pages/home/home.js ./resources/assets/scss/pages/home/home.scss ./resources/assets/scss/pages/category/category.scss ./resources/assets/scss/pages/course/course.scss ./resources/assets/scss/pages/teacher/teacher.scss ./resources/assets/valex/scss/pages/admin_dashboard.scss ***!
-  \*********************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** multi ./resources/assets/js/pages/home/home.js ./resources/assets/scss/pages/home/home.scss ./resources/assets/scss/pages/category/category.scss ./resources/assets/scss/pages/course/course.scss ./resources/assets/scss/pages/teacher/teacher.scss ./resources/assets/scss/pages/pay/pay.scss ./resources/assets/valex/scss/pages/admin_dashboard.scss ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15458,6 +15469,7 @@ __webpack_require__(/*! /Users/mac/Documents/web/work/duan/education/resources/a
 __webpack_require__(/*! /Users/mac/Documents/web/work/duan/education/resources/assets/scss/pages/category/category.scss */"./resources/assets/scss/pages/category/category.scss");
 __webpack_require__(/*! /Users/mac/Documents/web/work/duan/education/resources/assets/scss/pages/course/course.scss */"./resources/assets/scss/pages/course/course.scss");
 __webpack_require__(/*! /Users/mac/Documents/web/work/duan/education/resources/assets/scss/pages/teacher/teacher.scss */"./resources/assets/scss/pages/teacher/teacher.scss");
+__webpack_require__(/*! /Users/mac/Documents/web/work/duan/education/resources/assets/scss/pages/pay/pay.scss */"./resources/assets/scss/pages/pay/pay.scss");
 module.exports = __webpack_require__(/*! /Users/mac/Documents/web/work/duan/education/resources/assets/valex/scss/pages/admin_dashboard.scss */"./resources/assets/valex/scss/pages/admin_dashboard.scss");
 
 

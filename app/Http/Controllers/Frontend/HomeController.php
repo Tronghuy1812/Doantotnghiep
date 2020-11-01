@@ -8,7 +8,6 @@ use App\Models\Education\Course;
 use App\Models\Education\Tag;
 use App\Models\Education\Teacher;
 use App\Models\System\Slide;
-use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
