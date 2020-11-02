@@ -4,7 +4,7 @@
         @foreach(config('cart.pay_type') as $key => $item)
             <div class="item item-2">
                 <label class="box-checkbox js-pay-type">
-                    <input type="radio" name="type_pay" {{ $key == 0 ? "checked" : ""}} value="{{ $item['type'] }}">
+                    <input type="radio" name="type_pay"  {{ $key == 0 ? "checked" : ""}} value="{{ $item['type'] }}">
                     <b>{{ $item['name'] }}</b>
                     <span class="checkmark"></span>
                 </label>
@@ -16,7 +16,7 @@
     <div class="lists lists-info">
         <div class="item item-2">
             <div class="form-group">
-                <input type="email" name="email" class="form-control" placeholder="Name" value="{{ get_data_user('web','name') }}">
+                <input type="text" name="email" class="form-control" placeholder="Name" value="{{ get_data_user('web','name') }}">
             </div>
         </div>
         <div class="item item-2">
@@ -26,12 +26,12 @@
         </div>
         <div class="item item-2">
             <div class="form-group">
-                <input type="email" name="email" class="form-control" placeholder="Phone  của bạn" value="{{ get_data_user('web','phone') }}">
+                <input type="text" name="email" class="form-control" placeholder="Phone  của bạn" value="{{ get_data_user('web','phone') }}">
             </div>
         </div>
         <div class="item item-2">
             <div class="form-group">
-                <input type="email" name="email" class="form-control" placeholder="Adress  của bạn" value="{{ get_data_user('web','address') }}">
+                <input type="text" name="email" class="form-control" placeholder="Adress  của bạn" value="{{ get_data_user('web','address') }}">
             </div>
         </div>
     </div>

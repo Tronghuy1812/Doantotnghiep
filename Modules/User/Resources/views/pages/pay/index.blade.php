@@ -5,7 +5,7 @@
 @section('content')
     @include('user::pages.pay.include._inc_process')
     <div class="container">
-        <form action="">
+        <form action="" method="POST" id="formTransaction">
             <div class="box mb20">
                 <div class="box-70">
                     @include('user::pages.pay.include._inc_pay_left')
@@ -29,7 +29,7 @@
                         <span>{{ get_data_user('web','email') }}</span>
                     </div>
                     <div class="item">
-                        <button type="submit" class="checkout-button btn ">Hoàn tất đơn hàng</button>
+                        <button type="submit" class="checkout-button btn js-save-cart" data-url="{{ route('post_user.cart.pay',['type' => 'course']) }}">Hoàn tất đơn hàng</button>
                     </div>
                 </div>
             </div>

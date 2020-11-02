@@ -1,7 +1,7 @@
 <div class="pay-right">
     <div class="pay-box-item">
          <h4 class="flex flex-jc-sb">
-            <span><i class="fa fa-shopping-bag"></i> 2 Khoá học</span>
+            <span><i class="fa fa-shopping-bag"></i> {{ \Cart::content()->count() }} Khoá học</span>
             <a href="{{ route('get_user.cart') }}" title="Thay đổi">Thay đổi</a>
         </h4>
         <ul class="pay-cart-lists">

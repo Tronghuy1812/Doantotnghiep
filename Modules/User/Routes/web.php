@@ -14,6 +14,7 @@
 Route::prefix('user')->middleware('checkLoginUser')->group(function() {
     Route::get('/', 'UserController@index');
     Route::prefix('cart')->group(function (){
+        Route::post('save/{type}', 'UserPayController@processPayCart')->name('post_user.cart.pay');
         Route::get('{id}/{type}/add', 'UserShoppingCartController@processCart')->name('get_user.cart.add');
     });
 });

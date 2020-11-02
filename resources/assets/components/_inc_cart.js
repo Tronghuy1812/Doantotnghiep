@@ -4,7 +4,33 @@ var Cart = {
     init : function (){
         this.buyNow()
         this.addCart()
-        this.changePayType()
+        this.processCartPay()
+    },
+
+    processCartPay()
+    {
+        console.log('111')
+        $(".js-save-cart").click(function (event){
+            event.preventDefault()
+            let $this = $(this)
+            let URL = $this.attr('data-url')
+            if(URL)
+            {
+                $.ajax({
+                    url: URL,
+                    method : "POST",
+                    data :  {
+                        type : $("input[name='type_pay']:checked").val()
+                    },
+                    success:function(results){
+                        console.log(results)
+                    },
+                    error: function(results){
+
+                    }
+                });
+            }
+        })
     },
 
     buyNow()

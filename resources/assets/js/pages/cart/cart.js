@@ -1,4 +1,5 @@
 import AutoloadJs from '../../../components/_inc_autoload'
+import Cart from "../../../components/_inc_cart";
 var CartPage = {
     init : function ()
     {
@@ -12,10 +13,11 @@ var CartPage = {
             let valueType = $this.find('b').text()
             $(".js-pay-type-preview").text(valueType)
         })
-    },
+    }
 }
 
 $(function (){
     CartPage.init()
+    Cart.init()
     AutoloadJs.init()
 })
