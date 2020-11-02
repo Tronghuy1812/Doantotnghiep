@@ -1,10 +1,51 @@
 import Toastr from "toastr";
 
 var Cart = {
+    flagClick : false,
     init : function (){
         this.buyNow()
         this.addCart()
-        this.changePayType()
+        this.processCartPay()
+    },
+
+    processCartPay()
+    {
+        let _this = this
+        $(".js-save-cart").click(function (event){
+            event.preventDefault()
+            let $this = $(this)
+            if (_this.flagClick === true) {
+                return  false
+            }
+            $this.addClass('active')
+            _this.flagClick = true
+
+            let URL = $this.attr('data-url')
+            if(URL)
+            {
+                let htmlOld = $this.html()
+                $.ajax({
+                    beforeSend: function( xhr ) {
+                        $this.html(`<i class="fa fa-spinner fa-spin"></i> Đang xử lý`)
+                    },
+                    url: URL,
+                    method : "POST",
+                    data :  {
+                        type : $("input[name='type_pay']:checked").val()
+                    },
+                    success:function(results){
+                        _this.flagClick = false
+                        $this.html(htmlOld)
+                        $this.removeClass('active')
+                        window.location.href = '/'
+                    },
+                    error: function(results){
+                        $this.html(htmlOld)
+                        $this.removeClass('active')
+                    }
+                });
+            }
+        })
     },
 
     buyNow()

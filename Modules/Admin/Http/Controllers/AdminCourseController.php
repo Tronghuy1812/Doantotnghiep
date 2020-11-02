@@ -48,6 +48,7 @@ class AdminCourseController extends AdminController
     {
         $data = $request->except(['avatar', 'save', '_token','tags']);
         $data['c_position_1'] = 0;
+        $data['c_price'] = str_replace(',','', $request->c_price);
         $data['created_at'] = Carbon::now();
 
         if (!$request->c_title_seo) $data['c_title_seo'] = $request->c_name;
@@ -123,6 +124,7 @@ class AdminCourseController extends AdminController
         if (!$request->c_total_time) $data['c_total_time'] = 0;
         if (!$request->c_price) $data['c_price'] = 0;
         if($request->c_position_1) $data['c_position_1'] = 1;
+        $data['c_price'] = str_replace(',','', $request->c_price);
 
         $course->fill($data)->save();
         $this->syncTagCourse($id, $request->tags);

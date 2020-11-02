@@ -2,9 +2,10 @@
 
 namespace Modules\User\Http\Controllers;
 
-use Illuminate\Contracts\Support\Renderable;
+use App\Models\Cart\Order;
+use App\Models\Cart\Transaction;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
 
 class UserPayController extends UserController
 {
@@ -12,9 +13,44 @@ class UserPayController extends UserController
     {
         \SEOMeta::setTitle('Thanh toán');
         $listCarts = \Cart::content();
+
+        if($listCarts->isEmpty()) return redirect()->to('/');
+
         $viewData = [
             'listCarts' => $listCarts
         ];
         return view('user::pages.pay.index', $viewData);
+    }
+
+    public function processPayCart(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = [
+                't_user_id' => get_data_user('web'),
+                't_total_money' => \Cart::subtotal(0, 0, ''),
+                't_type_pay' => $request->type ? $request->type : 1,
+                'created_at' => Carbon::now()
+            ];
+            $idTransaction = Transaction::insertGetId($data);
+            if ($idTransaction) {
+                $listCart = \Cart::content();
+                foreach ($listCart as $item) {
+                    Order::insert([
+                        'o_transaction_id' => $idTransaction,
+                        'o_action_id' => $item->id,
+                        'o_sale' => 0,
+                        'o_price' => $item->price,
+                        'o_status' => 1
+                    ]);
+                }
+                \Cart::destroy();
+            }
+
+            return response([
+                'status' => 200,
+            ]);
+        }
+
+        return redirect()->to('/');
     }
 }

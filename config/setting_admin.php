@@ -39,6 +39,16 @@ return [
             ]
         ],
         [
+            'name' => 'Đơn hàng',
+            'class-icon' => 'la la-cart-arrow-down',
+            'sub' => [
+                [
+                    'name' => 'Danh sách',
+                    'route' => 'get_admin.transaction.index'
+                ]
+            ]
+        ],
+        [
             'name' => 'Dữ liệu nền',
             'class-icon' => 'la la-database',
             'sub' => [

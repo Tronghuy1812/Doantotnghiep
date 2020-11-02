@@ -69,7 +69,7 @@
                                             <div class="col-sm-3">
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1" class="required">Price <span>(*)</span></label>
-                                                    <input type="number"  class="form-control"   name="c_price" value="{{ old('c_price',$course->c_price ?? '') }}">
+                                                    <input type="text"  class="form-control price"  name="c_price" value="{{ old('c_price',number_format($course->c_price ?? 0,0,'.',',')) }}">
                                                     @if($errors->first('c_price'))
                                                         <span class="text-danger">{{ $errors->first('c_price') }}</span>
                                                     @endif

@@ -82,4 +82,5 @@ Route::prefix('admin')->middleware('checkLoginAdmin')->group(function() {
     });
 
     require_once 'route_acl.php';
+    require_once 'route_cart.php';
 });

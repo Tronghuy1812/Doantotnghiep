@@ -88,12 +88,12 @@ return [
         ],
         [
             'name' => 'Thẻ Visa/  Mastercard',
-            'type' => '1',
+            'type' => '3',
             'class' => ''
         ],
         [
             'name' => 'Thanh toán tại cửa hàng',
-            'type' => '1',
+            'type' => '4',
             'class' => ''
         ],
     ]

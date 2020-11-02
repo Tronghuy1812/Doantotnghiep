@@ -24,6 +24,7 @@ import SEO from '../components/_inc_seo.js'
 import Messages from "../../../components/_inc_run_message";
 import Delete from "./../components/_inc_delete"
 import Course from "../components/_inc_course";
+import PriceJs from "../components/_inc_price";
 
 $(function (){
     $.ajaxSetup({
@@ -33,6 +34,7 @@ $(function (){
     });
     FilepondUpload.inti()
     SEO.init()
+    PriceJs.init()
     Course.init()
     Delete.init()
     Messages.init()

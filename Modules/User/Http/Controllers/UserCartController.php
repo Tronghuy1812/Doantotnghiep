@@ -11,6 +11,10 @@ class UserCartController extends Controller
     public function index()
     {
         \SEOMeta::setTitle('Giỏ hàng');
-        return view('user::pages.cart.index');
+        $listCarts = \Cart::content();
+
+        if($listCarts->isEmpty()) return redirect()->to('/');
+
+        return view('user::pages.cart.index',compact('listCarts'));
     }
 }
