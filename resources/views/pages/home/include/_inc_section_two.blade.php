@@ -13,8 +13,8 @@
                             </a>
                             <div class="img_badget">
                                 <p class="flex flex-jc-sb pl10 pr10">
-                                    <span><i class="fa fa-play-circle"></i> 25</span>
-                                    <span><i class="fa fa-star"></i>4.8</span>
+                                    <span><i class="fa fa-play-circle"></i> {{ $item->c_total_video ?? 0 }}</span>
+                                    <span><i class="fa fa-star"></i>0</span>
                                 </p>
                             </div>
                         </div>
@@ -35,7 +35,11 @@
                             <a href="" class="video">
                                 <i class="fa fa-play-circle"></i> Học thử
                             </a>
-                            <span class="price">Miễn phí</span>
+                            @if($item->c_price > 0)
+                                <span class="price">{{ number_format($item->c_price,0,',','.') }} đ</span>
+                            @else
+                                <span class="price">Miễn phí</span>
+                            @endif
                         </p>
                     </div>
                 </div>

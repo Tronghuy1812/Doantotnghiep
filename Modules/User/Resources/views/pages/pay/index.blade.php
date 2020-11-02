@@ -36,7 +36,6 @@
         </form>
     </div>
 @stop
-
 @section('script')
     <script src="{{ asset('js/cart.js') }}"></script>
 @stop

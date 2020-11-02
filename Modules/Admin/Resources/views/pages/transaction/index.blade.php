@@ -23,7 +23,9 @@
                                         <th>ID</th>
                                         <th>Info</th>
                                         <th>Money</th>
+{{--                                        <th>Type</th>--}}
                                         <th>Status</th>
+                                        <th>Time</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -31,9 +33,22 @@
                                 @forelse($transactions as $item)
                                     <tr>
                                         <th scope="row">{{ $item->id }}</th>
-                                        <td>Joan Powell</td>
-                                        <td>Associate Developer</td>
-                                        <td>Associate Developer</td>
+                                        <td>
+                                            <p><span>Name</span> <span>{{ $item->user->name ?? "[N\A]" }}</span></p>
+                                            <p><span>Email</span> <span>{{ $item->user->email ?? "[N\A]" }}</span></p>
+                                        </td>
+                                        <td>
+                                            <b>{{ number_format($item->t_total_money,0,',','.') }} đ</b>
+                                        </td>
+{{--                                        <td>--}}
+{{--                                            <span class="badge {{ $item->getStatus($item->t_status)['class']  }}">{{ $item->getStatus($item->t_status)['name']  }}</span>--}}
+{{--                                        </td>--}}
+                                        <td>
+                                            <span class="badge {{ $item->getStatus($item->t_status)['class']  }}">{{ $item->getStatus($item->t_status)['name']  }}</span>
+                                        </td>
+                                        <td>
+                                            {{ $item->created_at }}
+                                        </td>
                                         <td>
                                             <a href="" class="btn btn-xs btn-info"><i class="la la-edit"></i></a>
                                             <a href="" class="btn btn-xs btn-danger"><i class="la la-trash"></i></a>

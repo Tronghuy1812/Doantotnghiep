@@ -11,7 +11,7 @@ class AdminTransactionController extends Controller
 {
     public function index()
     {
-        $transactions = Transaction::orderByDesc('id')
+        $transactions = Transaction::with('user:id,name,email')->orderByDesc('id')
             ->paginate(20);
 
         $viewData = [

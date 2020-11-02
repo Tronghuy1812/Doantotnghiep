@@ -91,6 +91,17 @@
         font-size: 18px;
         font-weight: bold;
         color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        i {
+            margin-right: 10px;
+            font-size: 24px;
+        }
+        &.active {
+            cursor: not-allowed;
+            background-color: $pink;
+        }
     }
 }
 

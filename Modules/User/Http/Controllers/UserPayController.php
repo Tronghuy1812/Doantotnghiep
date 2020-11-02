@@ -5,10 +5,7 @@ namespace Modules\User\Http\Controllers;
 use App\Models\Cart\Order;
 use App\Models\Cart\Transaction;
 use Carbon\Carbon;
-use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\Log;
 
 class UserPayController extends UserController
 {
@@ -16,6 +13,9 @@ class UserPayController extends UserController
     {
         \SEOMeta::setTitle('Thanh toán');
         $listCarts = \Cart::content();
+
+        if($listCarts->isEmpty()) return redirect()->to('/');
+
         $viewData = [
             'listCarts' => $listCarts
         ];

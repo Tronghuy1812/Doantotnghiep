@@ -16,7 +16,9 @@
         @include('pages.components._inc_header')
         @yield('content')
         @include('pages.components._inc_footer')
-        @include('pages.components.auth._inc_popup_auth')
+        @if(!get_data_user('web'))
+            @include('pages.components.auth._inc_popup_auth')
+        @endif
     </body>
     @yield('script')
 </html>

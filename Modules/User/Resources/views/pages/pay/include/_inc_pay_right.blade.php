@@ -19,7 +19,7 @@
         <div class="pay-footer">
             <p>
                 <span>Học phí gốc</span>
-                <span>120.000đ</span>
+                <span>{{ \Cart::subtotal(0,0,'.') }}đ</span>
             </p>
             <p>
                 <span>Tổng giảm</span>
@@ -27,7 +27,7 @@
             </p>
             <p class="color-orange box-total-pay">
                 <span>Thành tiền</span>
-                <span>20.000</span>
+                <span>{{ \Cart::subtotal(0,0,'.') }}đ</span>
             </p>
         </div>
     </div>
