@@ -9,7 +9,9 @@
     "/css/teacher.css": "/css/teacher.css",
     "/css/pay.css": "/css/pay.css",
     "/css/cart.css": "/css/cart.css",
+    "/css/user.css": "/css/user.css",
     "/css_admin/admin_dashboard.css": "/css_admin/admin_dashboard.css",
     "/js/teacher.js": "/js/teacher.js",
+    "/js/user.js": "/js/user.js",
     "/js_admin/admin_dashboard.js": "/js_admin/admin_dashboard.js"
 }

@@ -18,7 +18,7 @@
             <a href="{{ route('get_user.cart') }}" title="Giỏ hàng" class="cart"><i class="fa fa-cart-arrow-down"></i> <span>({{ \Cart::count() }})</span></a>
             @if(get_data_user('web'))
                 <div class="auth-login">
-                    <a href="">{{ get_data_user('web','name') }}</a>
+                    <a href="{{ route('get_user.dashboard') }}" title="Dashboard">{{ get_data_user('web','name') }}</a>
                 </div>
             @else
                 <div class="auth flex flex-a-c">
@@ -45,3 +45,5 @@
         </div>
     </div>
 </div>
+
+

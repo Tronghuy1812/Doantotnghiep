@@ -17,7 +17,8 @@
         "laravel/framework": "^8.0",
         "laravel/tinker": "^2.0",
         "nwidart/laravel-modules": "^8.0",
-        "spatie/laravel-permission": "^3.17"
+        "spatie/laravel-permission": "^3.17",
+        "spatie/laravel-pjax": "^2.1"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.5",

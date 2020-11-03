@@ -106,3 +106,27 @@
         left: 10px;
     }
 }
+
+@media only screen and (max-width: 768px) {
+    .banners {
+        .box-categories {
+            display: none;
+        }
+        .box-banner {
+            width: 100%;
+            margin-left: 0;
+            .banner_top .js-banner {
+                .owl-item a img {
+                    height: 25vh;
+                }
+            }
+            .banner_bottom {
+                a {
+                    img {
+                        height: 120px;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -70,3 +70,14 @@ footer {
         text-align: center;
     }
 }
+@media only screen and (max-width: 768px) {
+    .footer-top {
+        .lists
+        {
+            .item {
+                //width: 100%;
+                text-align: center;
+            }
+        }
+    }
+}

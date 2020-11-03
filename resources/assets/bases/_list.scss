@@ -34,3 +34,15 @@
         float: left;
     }
 }
+
+@media only screen and (max-width: 768px) {
+    .lists-mb {
+        display: flex;
+        flex-direction: column;
+        .item{
+            //width: calc(100%/4 - 10px);
+            //float: left;
+            width: 100%;
+        }
+    }
+}

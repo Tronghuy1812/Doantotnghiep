@@ -11,7 +11,7 @@
                 @endforeach
             </div>
         </div>
-        <div class="lists" id="coursesHtml">`
+        <div class="lists lists-course-mb" id="coursesHtml">`
             @include('pages.home.include._inc_course_list',['courses' => $courses])
         </div>
     </div>
