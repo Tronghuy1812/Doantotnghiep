@@ -15,10 +15,17 @@ Route::prefix('user')->middleware('checkLoginUser')->group(function() {
     Route::get('/', 'UserDashboardController@index')->name('get_user.dashboard');
     Route::get('transaction', 'UserTransactionController@index')->name('get_user.transaction');
     Route::get('favourite', 'UserFavouriteController@index')->name('get_user.favourite');
+    Route::get('info', 'UserInfoController@index')->name('get_user.info');
+    Route::get('info/edit/{id}', 'UserInfoController@edit')->name('get_user.info.edit');
+    Route::post('info/edit/{id}', 'UserInfoController@update');
 
     Route::prefix('cart')->group(function (){
         Route::post('save/{type}', 'UserPayController@processPayCart')->name('post_user.cart.pay');
         Route::get('{id}/{type}/add', 'UserShoppingCartController@processCart')->name('get_user.cart.add');
+    });
+    Route::prefix('favourite')->group(function (){
+        Route::post('save/{type}', 'UserPayController@processPayCart')->name('post_user.cart.pay');
+        Route::post('{id}/{type}/add', 'UserFavouriteController@processFavourite')->name('get_user.favourite.add');
     });
 });
 
