@@ -1,0 +1,16 @@
+.menu_user {
+    background-color: white;
+    border-top: 1px solid #dedede;
+    ul {
+        display: flex;
+        justify-content: center;
+        li {
+            a {
+                padding: 10px 15px;
+                font-size: 16px;
+                color: #212121;
+                display: inline-block;
+            }
+        }
+    }
+}

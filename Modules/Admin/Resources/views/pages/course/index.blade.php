@@ -61,6 +61,9 @@
                                 </tbody>
                             </table>
                         </div>
+                        <div>
+                            {!! $courses->links() !!}
+                        </div>
                     </div>
                 </div>
             </div>

@@ -12,7 +12,10 @@
 */
 
 Route::prefix('user')->middleware('checkLoginUser')->group(function() {
-    Route::get('/', 'UserController@index');
+    Route::get('/', 'UserDashboardController@index')->name('get_user.dashboard');
+    Route::get('transaction', 'UserTransactionController@index')->name('get_user.transaction');
+    Route::get('favourite', 'UserFavouriteController@index')->name('get_user.favourite');
+
     Route::prefix('cart')->group(function (){
         Route::post('save/{type}', 'UserPayController@processPayCart')->name('post_user.cart.pay');
         Route::get('{id}/{type}/add', 'UserShoppingCartController@processCart')->name('get_user.cart.add');

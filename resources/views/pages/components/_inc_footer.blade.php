@@ -1,7 +1,7 @@
 <footer>
     <div class="footer-top">
         <div class="container">
-            <div class="lists">
+            <div class="lists lists-mb">
                 <div class="item item-4">
                     <h4 class="title">KẾT NỐI VỚI KYNA</h4>
                     <p class="item-social">

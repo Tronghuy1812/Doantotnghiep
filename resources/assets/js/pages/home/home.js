@@ -26,22 +26,52 @@ var Home = {
         $('.js-tags').owlCarousel({
             animateOut: 'slideOutDown',
             animateIn: 'flipInX',
-            items:7,
+            // items:7,
             navigation: true,
             smartSpeed:450,
-            navText: ["<i class='fa fa-chevron-left '></i>","<i class='fa fa-chevron-right'></i>"]
+            navText: ["<i class='fa fa-chevron-left '></i>","<i class='fa fa-chevron-right'></i>"],
+            responsive:{
+                // 0:{
+                //     items:2,
+                //     nav:true
+                // },
+                600:{
+                    items:3,
+                    nav:false
+                },
+                1000:{
+                    items:7,
+                    nav:true,
+                    loop:false
+                }
+            }
         })
     },
 
     runCourse()
     {
         $(".js-lists-course-home").owlCarousel({
-            items:4,
+            // items:4,
             loop:true,
             nav: true,
             navigation: true,
             smartSpeed:450,
-            navText: ["<i class='fa fa-chevron-left '></i>","<i class='fa fa-chevron-right'></i>"]
+            navText: ["<i class='fa fa-chevron-left '></i>","<i class='fa fa-chevron-right'></i>"],
+            responsive:{
+                0:{
+                    items:1.5,
+                    nav:true
+                },
+                600:{
+                    items:3,
+                    nav:false
+                },
+                1000:{
+                    items:4,
+                    nav:true,
+                    loop:false
+                }
+            }
         })
         $(".js-tags-home").owlCarousel({
             animateOut: 'slideOutDown',

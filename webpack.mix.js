@@ -17,6 +17,7 @@ mix.sass('resources/assets/scss/pages/course/course.scss', 'public/css');
 mix.sass('resources/assets/scss/pages/teacher/teacher.scss', 'public/css');
 mix.sass('resources/assets/scss/pages/pay/pay.scss', 'public/css');
 mix.sass('resources/assets/scss/pages/cart/cart.scss', 'public/css');
+mix.sass('resources/assets/scss/pages/user/user.scss', 'public/css');
 
 
 // ADMIN
@@ -29,6 +30,7 @@ mix.js('resources/assets/js/pages/category/category.js', 'public/js');
 mix.js('resources/assets/js/pages/course/course.js', 'public/js');
 mix.js('resources/assets/js/pages/teacher/teacher.js', 'public/js');
 mix.js('resources/assets/js/pages/cart/cart.js', 'public/js');
+mix.js('resources/assets/js/pages/user/user.js', 'public/js');
 
 // ADMIN
 mix.js('resources/assets/valex/js/pages/admin_dashboard.js', 'public/js_admin');
