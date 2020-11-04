@@ -89,6 +89,7 @@
                 </div>
                 @include('pages.course.include._inc_course_you',['courses' => $courses])
                 @include('pages.course.include._inc_vote')
+                @include('pages.course.include._inc_box_bottom')
             </div>
             <div class="box-30" id="rightSidebar">
                 @include('pages.course.include._inc_box_right',['courseDetail' => $courseDetail])

@@ -20,7 +20,7 @@
             <p class="info-auth">
                 <span class="icon"><i class="fa fa-user-md"></i></span> <span class="name">{{ $course->teacher->t_name }}</span>
             </p>
-            <p class="info-auth">
+            <p class="info-auth" style="min-height: 42px">
                 <span class="icon"><i class="fa fa-briefcase"></i></span> <span class="name">
                       {{ $course->teacher->t_job }}</span>
             </p>

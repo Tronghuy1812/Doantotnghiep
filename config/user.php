@@ -8,6 +8,11 @@ return [
             'icon' => ''
         ],
         [
+            'title' => 'Thông tin',
+            'route' => 'get_user.info',
+            'icon' => ''
+        ],
+        [
             'title' => 'Giao dịch',
             'route' => 'get_user.transaction',
             'icon' => ''

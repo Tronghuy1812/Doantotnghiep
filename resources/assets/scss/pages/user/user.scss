@@ -1,7 +1,15 @@
 @import "./../../../bases/init";
 @import "~jquery-modal";
 @import "./../../components/inc_header";
+@import "./../../components/inc_item_course";
 @import "./../../components/loading/inc_loading";
 @import "../../components/inc_footer";
 @import "../../components/inc_popup";
 @import "include/inc_menu_user";
+#pjax-pages {
+    background-color: white;
+}
+
+.pages_user {
+    min-height: 50vh;
+}
