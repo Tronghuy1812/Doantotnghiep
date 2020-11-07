@@ -1,0 +1,34 @@
+.update_info {
+    background-color: white;
+    .info_nav {
+        a {
+            color: #212121;
+            padding: 10px 0;
+            display: inline-block;
+            margin-right: 15px;
+            position: relative;
+        }
+        a.active {
+            &:before{
+                content: "";
+                position: absolute;
+                height: 2px;
+                background-color: #0a7ffb;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+            }
+        }
+        border-bottom: 1px solid #dedede;
+    }
+    .info_content {
+        .disabled {
+            input {
+                background-color: #f2f2f2;
+                opacity: 0.5;
+            }
+        }
+    }
+}
+
+

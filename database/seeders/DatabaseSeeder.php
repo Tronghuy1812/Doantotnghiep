@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Database\Factories\TagFactory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Log;
 
@@ -35,5 +36,7 @@ class DatabaseSeeder extends Seeder
         }catch (\Exception $exception){
             Log::error("[Seed User] ". $exception->getMessage());
         }
+
+        $this->run(TagFactory::class);
     }
 }

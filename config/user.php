@@ -5,22 +5,22 @@ return [
         [
             'title' => 'Tổng quan',
             'route' => 'get_user.dashboard',
-            'icon' => ''
+            'icon' => 'fa fa-dashboard'
         ],
         [
             'title' => 'Thông tin',
             'route' => 'get_user.info',
-            'icon' => ''
+            'icon' => 'fa fa-info'
         ],
         [
             'title' => 'Giao dịch',
             'route' => 'get_user.transaction',
-            'icon' => ''
+            'icon' => 'fa fa-paypal'
         ],
         [
             'title' => 'Yêu thích',
             'route' => 'get_user.favourite',
-            'icon' => ''
+            'icon' => 'fa fa-heart'
         ]
     ]
 ];

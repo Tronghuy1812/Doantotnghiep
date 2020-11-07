@@ -26,7 +26,6 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Name</th>
                                         <th>SEO</th>
                                         <th>Time</th>
                                         <th>Action</th>
@@ -36,7 +35,6 @@
                                     @forelse($courses as $item)
                                         <tr>
                                             <th scope="row">{{ $item->id }}</th>
-                                            <td>{{ $item->c_name }}</td>
                                             <td>
                                                 <div class="existed-seo-meta">
                                                     <span class="page-title-seo title_seo">{{ $item->c_title_seo }}</span>
@@ -51,6 +49,7 @@
                                             </td>
                                             <td>{{ $item->created_at }}</td>
                                             <td>
+                                                <a href="{{ route('get_admin.course_content.index', $item->id) }}" class="btn btn-xs btn-success"><i class="la la-eye"></i></a>
                                                 <a href="{{ route('get_admin.course.edit', $item->id) }}" class="btn btn-xs btn-info"><i class="la la-edit"></i></a>
                                                 <a href="{{ route('get_admin.course.delete', $item->id) }}" class="btn btn-xs js-delete btn-danger"><i class="la la-trash"></i></a>
                                             </td>

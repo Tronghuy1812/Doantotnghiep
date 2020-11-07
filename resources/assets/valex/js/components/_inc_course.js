@@ -1,6 +1,19 @@
 var Course = {
     init : function (){
         this.saveCourseContent()
+        this.nextTab()
+    },
+
+    nextTab()
+    {
+        $(".js-tabs-customer").click(function (event){
+            $(".nav-link").removeClass('active')
+            $(".js-tab-pane").removeClass('active')
+            console.log("Click")
+            $(this).addClass('active')
+            console.log($($(this).attr('data-id')))
+            $($(this).attr('data-id')).addClass('active')
+        })
     },
 
     saveCourseContent()

@@ -52,10 +52,33 @@ Route::prefix('admin')->middleware('checkLoginAdmin')->group(function() {
         Route::get('/', 'AdminCourseController@index')->name('get_admin.course.index')->middleware('permission:course_index|full');
         Route::get('/create', 'AdminCourseController@create')->name('get_admin.course.create')->middleware('permission:course_create|full');
         Route::post('/create', 'AdminCourseController@store');
-        Route::get('update/{id}', 'AdminCourseController@edit')->name('get_admin.course.edit')->middleware('permission:course_edit|full');
+        Route::get('update/{id}', 'AdminCourseController@edit')->name('get_admin.course.edit')->middleware('permission:course_update|full');
+        Route::prefix('view')->group(function (){
+            Route::get('{id}', 'AdminCourseController@show')->name('get_admin.course.show')->middleware('permission:course_show|full');
+        });
+
+        Route::prefix('content')->group(function (){
+            Route::get('{id}/index', 'AdminCourseContentController@index')->name('get_admin.course_content.index')->middleware('permission:course_content_index|full');
+            Route::get('{id}/create', 'AdminCourseContentController@create')->name('get_admin.course_content.create')->middleware('permission:course_content_create|full');
+            Route::post('{id}/create', 'AdminCourseContentController@store');
+
+            Route::get('{id}/update/{contentId}', 'AdminCourseContentController@edit')->name('get_admin.course_content.edit')->middleware('permission:course_content_edit|full');
+            Route::post('{id}/update/{contentId}', 'AdminCourseContentController@update');
+            Route::get('{id}/delete/{contentId}', 'AdminCourseContentController@delete')->name('get_admin.course_content.delete')->middleware('permission:course_content_delete|full');
+        });
+
+        Route::prefix('video')->group(function (){
+            Route::get('{id}/index', 'AdminCourseVideoController@index')->name('get_admin.course_video.index')->middleware('permission:course_video_index|full');
+            Route::get('{id}/create', 'AdminCourseVideoController@create')->name('get_admin.course_video.create')->middleware('permission:course_video_create|full');
+            Route::post('{id}/create', 'AdminCourseVideoController@store');
+
+            Route::get('{id}/update/{videoId}', 'AdminCourseVideoController@edit')->name('get_admin.course_video.edit')->middleware('permission:course_video_edit|full');
+            Route::post('{id}/update/{videoId}', 'AdminCourseVideoController@update');
+            Route::get('{id}/delete/{videoId}', 'AdminCourseVideoController@delete')->name('get_admin.course_video.delete')->middleware('permission:course_video_delete|full');
+        });
+
         Route::post('update/{id}', 'AdminCourseController@update');
         Route::get('delete/{id}', 'AdminCourseController@delete')->name('get_admin.course.delete')->middleware('permission:course_delete|full');
-        Route::post('content/add/{id}', 'AdminCourseContentController@store')->name('get_admin.course_content.create')->middleware('permission:course_content_add|full');
 
     });
 
