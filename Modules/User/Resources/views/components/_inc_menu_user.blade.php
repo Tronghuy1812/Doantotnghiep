@@ -1,9 +1,14 @@
 <div class="menu_user">
-    <ul>
-        @foreach(config('user.menu') as $menu)
-            <li>
-                <a href="{{ route($menu['route']) }}" title="{{ $menu['title'] }}">{{ $menu['title'] }}</a>
-            </li>
-        @endforeach
-    </ul>
+    <div class="container">
+        <ul>
+            @foreach(config('user.menu') as $menu)
+                <li>
+                    <a data-pjax href="{{ route($menu['route']) }}" title="{{ $menu['title'] }}">
+                        <i class="{{ $menu['icon'] }}"></i>
+                        {{ $menu['title'] }}
+                    </a>
+                </li>
+            @endforeach
+        </ul>
+    </div>
 </div>

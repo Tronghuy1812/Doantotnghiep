@@ -2,14 +2,22 @@
 
 namespace Modules\User\Http\Controllers;
 
-use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Http\Request;
+use App\Models\Cart\Transaction;
 use Illuminate\Routing\Controller;
 
 class UserDashboardController extends Controller
 {
     public function index()
     {
-        return view('user::pages.dashboard.index');
+        $transactions = Transaction::where('t_user_id', get_data_user('web'))
+            ->orderByDesc('id')
+            ->limit(10)
+            ->get();
+
+        $viewData = [
+            'transactions' => $transactions
+        ];
+
+        return view('user::pages.dashboard.index', $viewData);
     }
 }

@@ -46,9 +46,9 @@ class AdminCourseController extends AdminController
 
     public function store(AdminCourseRequest $request)
     {
-        $data = $request->except(['avatar', 'save', '_token','tags']);
+        $data = $request->except(['avatar', 'save', '_token', 'tags']);
         $data['c_position_1'] = 0;
-        $data['c_price'] = str_replace(',','', $request->c_price);
+        $data['c_price'] = str_replace(',', '', $request->c_price);
         $data['created_at'] = Carbon::now();
 
         if (!$request->c_title_seo) $data['c_title_seo'] = $request->c_name;
@@ -56,7 +56,7 @@ class AdminCourseController extends AdminController
         if (!$request->c_sale) $data['c_sale'] = 0;
         if (!$request->c_total_time) $data['c_total_time'] = 0;
         if (!$request->c_price) $data['c_price'] = 0;
-        if($request->c_position_1) $data['c_position_1'] = 1;
+        if ($request->c_position_1) $data['c_position_1'] = 1;
 
         $courseID = Course::insertGetId($data);
         if ($courseID) {
@@ -71,17 +71,20 @@ class AdminCourseController extends AdminController
 
     protected function syncTagCourse($courseID, $tags)
     {
-        if (!empty($tags))
-        {
+        if (!empty($tags)) {
             \DB::table('courses_tags')->where('ct_course_id', $courseID)->delete();
-            foreach ($tags as $item)
-            {
+            foreach ($tags as $item) {
                 CourseTag::insert([
                     'ct_course_id' => $courseID,
                     'ct_tag_id' => $item
                 ]);
             }
         }
+    }
+
+    public function show($id)
+    {
+
     }
 
     public function edit($id)
@@ -93,11 +96,11 @@ class AdminCourseController extends AdminController
         $tags = Tag::all();
 
         $tagOld = CourseTag::where('ct_course_id', $id)
-            ->pluck('ct_tag_id')
-            ->toArray() ?? [];
+                ->pluck('ct_tag_id')
+                ->toArray() ?? [];
 
         $courseContent = CourseContent::where('cc_course_id', $id)
-            ->orderBy('cc_sort','asc')
+            ->orderBy('cc_sort', 'asc')
             ->get();
 
 
@@ -115,7 +118,7 @@ class AdminCourseController extends AdminController
     public function update(AdminCourseRequest $request, $id)
     {
         $course = Course::findOrFail($id);
-        $data = $request->except(['avatar', 'save', '_token','c_position_1']);
+        $data = $request->except(['avatar', 'save', '_token', 'c_position_1']);
         $data['updated_at'] = Carbon::now();
 
         if (!$request->c_title_seo) $data['c_title_seo'] = $request->c_name;
@@ -123,8 +126,8 @@ class AdminCourseController extends AdminController
         if (!$request->c_sale) $data['c_sale'] = 0;
         if (!$request->c_total_time) $data['c_total_time'] = 0;
         if (!$request->c_price) $data['c_price'] = 0;
-        if($request->c_position_1) $data['c_position_1'] = 1;
-        $data['c_price'] = str_replace(',','', $request->c_price);
+        if ($request->c_position_1) $data['c_position_1'] = 1;
+        $data['c_price'] = str_replace(',', '', $request->c_price);
 
         $course->fill($data)->save();
         $this->syncTagCourse($id, $request->tags);
