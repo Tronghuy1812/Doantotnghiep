@@ -41,7 +41,7 @@
         <div class="box-right">
             <a href="{{ route('get.course.pay_selling') }}" title="Khoá học bán chạy"><i class="fa fa-thumbs-o-up"></i> <span>Bán chạy nhất</span></a>
             <a href="{{ route('get.course.favourite') }}" title="Khoá học yêu thích"><i class="fa fa-star"></i> <span>Khoá học yêu thích</span></a>
-            <a href=""><i class="fa fa-rss"></i> <span>Blog</span></a>
+            <a href="{{ route('get_blog.home') }}" title="Bài viết" target="_blank"><i class="fa fa-rss"></i> <span>Blog</span></a>
         </div>
     </div>
 </div>

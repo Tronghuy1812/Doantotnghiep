@@ -11,6 +11,6 @@
 |
 */
 
-Route::prefix('blog')->group(function() {
-    Route::get('/', 'BlogController@index');
+Route::prefix('bai-viet')->group(function() {
+    Route::get('/', 'BlogHomeController@index')->name('get_blog.home');
 });

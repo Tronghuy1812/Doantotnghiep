@@ -18,6 +18,7 @@ mix.sass('resources/assets/scss/pages/teacher/teacher.scss', 'public/css');
 mix.sass('resources/assets/scss/pages/pay/pay.scss', 'public/css');
 mix.sass('resources/assets/scss/pages/cart/cart.scss', 'public/css');
 mix.sass('resources/assets/scss/pages/user/user.scss', 'public/css');
+mix.sass('resources/assets/scss/pages/blog/blog_home.scss', 'public/css');
 
 
 // ADMIN

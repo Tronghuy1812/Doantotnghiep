@@ -1,0 +1,33 @@
+.box-heading {
+    border-bottom: 1px solid #2267af;
+    padding-bottom: 5px;
+    .heading-h3 {
+        background-color: #2267af;
+        display: inline-block;
+        margin-bottom: 1px;
+        padding: 7px 13px;
+        border-radius: 2px;
+        color: #fff;
+        font-family: inherit;
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 1;
+        text-transform: uppercase;
+        letter-spacing: 0.025em;
+    }
+    ul {
+        display: inline-block;
+        float: right;
+        li {
+            display: inline-block;
+            margin-right: 5px;
+            a{
+                color: #999;
+                font-size: 13px;
+                &.active {
+                    color: #161616;
+                }
+            }
+        }
+    }
+}
