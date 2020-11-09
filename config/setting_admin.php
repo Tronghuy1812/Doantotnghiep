@@ -29,6 +29,24 @@ return [
             ]
         ],
         [
+            'name' => 'Tin tức && Sự kiện',
+            'class-icon' => 'la la-edit',
+            'sub' => [
+                [
+                    'name' => 'Từ khoá',
+                    'route' => 'get_admin.keyword.index'
+                ],
+                [
+                    'name' => 'Menu',
+                    'route' => 'get_admin.menu.index'
+                ],
+                [
+                    'name' => 'Bài viết',
+                    'route' => 'get_admin.article.index'
+                ],
+            ]
+        ],
+        [
             'name' => 'Người dùng',
             'class-icon' => 'la la-user',
             'sub' => [

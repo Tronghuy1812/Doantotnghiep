@@ -25,6 +25,11 @@
         width: calc(100%/3);
         float: left;
     }
+
+    .item-3-10 {
+        width: calc(100%/3 - 10px);
+        float: left;
+    }
     .item-5 {
         width: calc(100%/5 - 10px);
         float: left;
