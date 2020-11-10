@@ -3,6 +3,8 @@
 namespace Modules\Admin\Http\Controllers\Blog;
 
 use App\Models\Blog\Keyword;
+use App\Models\BLog\SeoBlog;
+use App\Service\Seo\RenderUrlSeoBLogService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Modules\Admin\Http\Controllers\AdminController;
@@ -40,7 +42,7 @@ class AdminKeywordController extends AdminController
         if($keywordID)
         {
             $this->showMessagesSuccess();
-//            RenderUrlSeoCourseService::init($request->t_slug,SeoEdutcation::TYPE_TAG, $tagID);
+            RenderUrlSeoBLogService::init($request->k_slug,SeoBlog::TYPE_KEYWORD, $keywordID);
             return redirect()->route('get_admin.keyword.index');
         }
         $this->showMessagesError();
@@ -62,7 +64,7 @@ class AdminKeywordController extends AdminController
         if(!$request->k_description_seo) $data['k_description_seo'] = $request->k_name;
 
         $keyword->fill($data)->save();
-//        RenderUrlSeoCourseService::init($request->t_slug,SeoEdutcation::TYPE_TAG, $id);
+        RenderUrlSeoBLogService::init($request->k_slug,SeoBlog::TYPE_KEYWORD, $id);
         $this->showMessagesSuccess();
         return redirect()->route('get_admin.keyword.index');
     }
@@ -73,6 +75,7 @@ class AdminKeywordController extends AdminController
         {
             $keyword = Keyword::findOrFail($id);
             if ($keyword){
+                RenderUrlSeoBLogService::deleteUrlSeo(SeoBlog::TYPE_KEYWORD, $id);
                 $keyword->delete();
             }
             return response()->json([
