@@ -18,11 +18,11 @@
                 <a href="{{ route('get.course.render',['slug' => $course->c_slug.'-cr']) }}" title="{{ $course->c_name }}">{{ $course->c_name }}</a>
             </h3>
             <p class="info-auth">
-                <span class="icon"><i class="fa fa-user-md"></i></span> <span class="name">{{ $course->teacher->t_name }}</span>
+                <span class="icon"><i class="fa fa-user-md"></i></span> <span class="name">{{ $course->teacher->t_name  ?? "[N\A]"  }}</span>
             </p>
             <p class="info-auth" style="min-height: 42px">
                 <span class="icon"><i class="fa fa-briefcase"></i></span> <span class="name">
-                      {{ $course->teacher->t_job }}</span>
+                      {{ $course->teacher->t_job  ?? "[N\A]"  }}</span>
             </p>
             <p class="flex flex-jc-sb mt10">
                 <a href="" class="video">

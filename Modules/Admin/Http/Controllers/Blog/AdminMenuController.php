@@ -3,6 +3,8 @@
 namespace Modules\Admin\Http\Controllers\Blog;
 
 use App\Models\Blog\Menu;
+use App\Models\BLog\SeoBlog;
+use App\Service\Seo\RenderUrlSeoBLogService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Modules\Admin\Http\Controllers\AdminController;
@@ -40,7 +42,7 @@ class AdminMenuController extends AdminController
         if($menuID)
         {
             $this->showMessagesSuccess();
-//            RenderUrlSeoCourseService::init($request->c_slug,SeoEdutcation::TYPE_CATEGORY, $categoryID);
+            RenderUrlSeoBLogService::init($request->m_slug,SeoBlog::TYPE_MENU, $menuID);
             return redirect()->route('get_admin.menu.index');
         }
         $this->showMessagesError();
@@ -64,7 +66,7 @@ class AdminMenuController extends AdminController
         if(!$request->m_description_seo) $data['m_description_seo'] = $request->m_name;
 
         $menu->fill($data)->save();
-//        RenderUrlSeoCourseService::init($request->c_slug,SeoEdutcation::TYPE_CATEGORY, $id);
+        RenderUrlSeoBLogService::init($request->m_slug,SeoBlog::TYPE_MENU, $id);
         $this->showMessagesSuccess();
         return redirect()->route('get_admin.menu.index');
     }
@@ -78,7 +80,7 @@ class AdminMenuController extends AdminController
             if ($menu)
             {
                 $menu->delete();
-//                RenderUrlSeoCourseService::deleteUrlSeo(SeoEdutcation::TYPE_CATEGORY, $id);
+                RenderUrlSeoBLogService::deleteUrlSeo(SeoBlog::TYPE_MENU, $id);
             }
             return response()->json([
                 'status' => 200,

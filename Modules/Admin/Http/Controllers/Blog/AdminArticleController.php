@@ -6,6 +6,7 @@ use App\Models\Blog\Article;
 use App\Models\Blog\ArticleKeyword;
 use App\Models\Blog\Keyword;
 use App\Models\Blog\Menu;
+use App\Models\BLog\SeoBlog;
 use App\Models\Category;
 use App\Models\Education\Course;
 use App\Models\Education\CourseContent;
@@ -13,6 +14,7 @@ use App\Models\Education\CourseTag;
 use App\Models\Education\SeoEdutcation;
 use App\Models\Education\Tag;
 use App\Models\Education\Teacher;
+use App\Service\Seo\RenderUrlSeoBLogService;
 use App\Service\Seo\RenderUrlSeoCourseService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -59,7 +61,7 @@ class AdminArticleController extends AdminController
         if ($articleID) {
             $this->showMessagesSuccess();
             $this->syncKeywordsArticle($articleID, $request->keywords);
-//            RenderUrlSeoCourseService::init($request->c_slug, SeoEdutcation::TYPE_COURSE, $courseID);
+            RenderUrlSeoBLogService::init($request->a_slug,SeoBlog::TYPE_ARTICLE, $articleID);
             return redirect()->route('get_admin.article.index');
         }
         $this->showMessagesError();
@@ -110,7 +112,7 @@ class AdminArticleController extends AdminController
         $article->fill($data)->save();
         $this->syncKeywordsArticle($id, $request->keywords);
 
-//        RenderUrlSeoCourseService::init($request->c_slug, SeoEdutcation::TYPE_COURSE, $id);
+        RenderUrlSeoBLogService::init($request->a_slug,SeoBlog::TYPE_ARTICLE, $id);
         $this->showMessagesSuccess();
         return redirect()->route('get_admin.article.index');
     }
@@ -121,7 +123,7 @@ class AdminArticleController extends AdminController
             $article = Article::findOrFail($id);
             if ($article) {
                 $article->delete();
-//                RenderUrlSeoCourseService::deleteUrlSeo(SeoEdutcation::TYPE_COURSE, $id);
+                RenderUrlSeoBLogService::deleteUrlSeo(SeoBlog::TYPE_ARTICLE, $id);
             }
             return response()->json([
                 'status' => 200,
