@@ -34,7 +34,7 @@
                                         </td>
                                         <td style="text-align: center">{{ number_format($item->t_total_money,0,',','.') }} đ</td>
                                         <td style="text-align: center">{{ $item->created_at }}</td>
-                                        <td style="text-align: center"> <span class="label label-default"> Tiếp nhận </span> </td>
+                                        <td style="text-align: center"> <span class="label {{ $item->getStatus($item->t_status)['class'] }}"> {{ $item->getStatus($item->t_status)['name'] }} </span> </td>
                                         <td style="text-align: center"> <a href="" target="_blank" class="btn-xs label-success js-show-invoice_transaction" style="color: white"><i class="fa fa-save"></i> Export</a> </td>
                                         <td style="text-align: center"> <a href="" class="btn-xs label-danger" style="color: white"><i class="fa fa-save"></i> Huỷ đơn</a> </td>
                                     </tr>

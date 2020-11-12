@@ -42,6 +42,7 @@
                         Đang cập nhật
                     </div>
                 </div>
+                @if(isset($courseDetail->teacher))
                 <div class="box-section teacher">
                     <h4 class="box-title">Thông tin giảng viên <a href="">Chi tiết <i class="fa fa-chevron-right"></i> </a></h4>
                     <div class="box-content">
@@ -49,33 +50,37 @@
                             <div class="box-30">
                                 <div class="info">
                                     <a href="">
-                                        <img src="{{ asset('images/avatar.jpg') }}" alt="">
+                                        <img src="{{ pare_url_file($courseDetail->teacher->t_avatar) }}" alt="">
                                     </a>
-                                    <p class="name"><strong>Phan Trung Phú</strong></p>
-                                    <p class="job"><i class="fa fa-briefcase"></i> Nhân viên IT</p>
+                                    <p class="name"><strong>{{ $courseDetail->teacher->t_name }}</strong></p>
+                                    <p class="job"><i class="fa fa-briefcase"></i> {{ $courseDetail->teacher->t_job }}</p>
                                 </div>
                             </div>
                             <div class="box-70">
                                 <div class="content">
-                                    <div class="item">
-                                        <p>Chức vụ :</p>
-                                        <p>Nguyên giám đốc Chiến lược Công ty Chứng khoán Mirea Asset (Hàn Quốc)</p>
-                                    </div>
-                                    <div class="item">
-                                        <p>Chức vụ :</p>
-                                        <p>Nguyên giám đốc Chiến lược Công ty Chứng khoán Mirea Asset (Hàn Quốc)</p>
-                                    </div>
-                                    <div class="item">
-                                        <p>Chức vụ :</p>
-                                        <p>Nguyên giám đốc Chiến lược Công ty Chứng khoán Mirea Asset (Hàn Quốc)</p>
-                                    </div>
+                                    {!! $courseDetail->teacher->t_content !!}
+{{--                                    <div class="item">--}}
+{{--                                        <p>Chức vụ :</p>--}}
+{{--                                        <p>Nguyên giám đốc Chiến lược Công ty Chứng khoán Mirea Asset (Hàn Quốc)</p>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="item">--}}
+{{--                                        <p>Chức vụ :</p>--}}
+{{--                                        <p>Nguyên giám đốc Chiến lược Công ty Chứng khoán Mirea Asset (Hàn Quốc)</p>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="item">--}}
+{{--                                        <p>Chức vụ :</p>--}}
+{{--                                        <p>Nguyên giám đốc Chiến lược Công ty Chứng khoán Mirea Asset (Hàn Quốc)</p>--}}
+{{--                                    </div>--}}
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                @endif
                 <div class="box-section teacher-course">
-                    <h4 class="box-title">Khoá học của giảng viên <b style="color: #50ad4e">TrungPhuNA</b> <a href="" title="Xem thêm">Xem thêm </a></h4>
+                    <h4 class="box-title">Khoá học của giảng viên
+                        <b style="color: #50ad4e">{{ $courseDetail->teacher->t_name ?? "[N\A]" }}</b>
+                        <a href="{{ route('get.teacher.course', $courseDetail->teacher->t_slug ?? '') }}" title="Xem thêm">Xem thêm </a></h4>
                     <div class="box-content">
                         <div class="lists " style="margin: -10px;">
                             @forelse($courses as $item)
