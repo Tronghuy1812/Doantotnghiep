@@ -92,10 +92,11 @@
                 @include('pages.course.include._inc_box_bottom')
             </div>
             <div class="box-30" id="rightSidebar">
-                @include('pages.course.include._inc_box_right',['courseDetail' => $courseDetail])
+                @include('pages.course.include._inc_box_right',['courseDetail' => $courseDetail,'courseVideo' => $courseVideo])
             </div>
         </div>
     </div>
+    @include('pages.course.include._inc_popup_view_course')
 @stop
 
 @section('script')

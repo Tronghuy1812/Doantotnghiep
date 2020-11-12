@@ -6,6 +6,7 @@ var Course = {
     {
         this.showContentCourse()
         this.addFavourites()
+        this.showPopupViewCourse()
     },
 
     showContentCourse()
@@ -23,6 +24,20 @@ var Course = {
             }
         })
     },
+
+    showPopupViewCourse()
+    {
+        $(".js-view-course").click(function (event){
+            event.preventDefault()
+            console.log("ok")
+            $('#popup-view-course').modal({
+                escapeClose: true,
+                clickClose: true,
+                showClose: true
+            })
+        })
+    },
+
     addFavourites()
     {
         let _this = this

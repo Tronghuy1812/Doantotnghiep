@@ -7,6 +7,8 @@ use App\Models\Education\CourseVideo;
 use Carbon\Carbon;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 use Modules\Admin\Http\Requests\AdminCourseContentVideoRequest;
 
 class AdminCourseVideoController extends AdminController
@@ -52,8 +54,15 @@ class AdminCourseVideoController extends AdminController
      */
     public function store(AdminCourseContentVideoRequest $request, $id)
     {
-        $data = $request->except(['save', '_token']);
+        $data = $request->except(['save', '_token','video']);
         $data['created_at'] = Carbon::now();
+        if($video = $request->video)
+        {
+            $fileVideo = $this->processUploadVideo($video);
+        }
+
+        if(isset($fileVideo) && $fileVideo) $data['cv_path'] = $fileVideo;
+
         $idVideo = CourseVideo::insertGetId($data);
         if ($idVideo) {
             $this->showMessagesSuccess();
@@ -93,7 +102,14 @@ class AdminCourseVideoController extends AdminController
     public function update(AdminCourseContentVideoRequest $request, $id, $videoID)
     {
         $courseVideo = CourseVideo::findOrFail($videoID);
-        $data = $request->except(['save', '_token']);
+        $data = $request->except(['save', '_token','video']);
+        if($video = $request->video)
+        {
+            $fileVideo = $this->processUploadVideo($video);
+        }
+
+        if(isset($fileVideo) && $fileVideo) $data['cv_path'] = $fileVideo;
+
         $data['updated_at'] = Carbon::now();
         $courseVideo->fill($data)->save();
         $this->showMessagesSuccess();
@@ -111,5 +127,32 @@ class AdminCourseVideoController extends AdminController
             ]);
         }
         return redirect()->to('/');
+    }
+
+    public function processUploadVideo($fileName)
+    {
+        try{
+            $ext = $fileName->getClientOriginalExtension();
+
+            $extension = [
+                'mp4','mov'
+            ];
+
+            if(!in_array($ext, $extension)) return false;
+
+            $filename = str_replace($ext,'',$fileName->getClientOriginalName());
+            $filename = date('Y-m-d__'). Str::slug($filename).'.'.$ext;
+            $path = public_path().'/uploads_video/'. date('Y/m/d');
+            if(!\File::exists($path)) mkdir($path,0777, true);
+
+            $fileName->move($path, $filename);
+
+            return  $filename;
+        }catch (\Exception $exception)
+        {
+            Log::error("[processUploadVideo] :". $exception->getMessage());
+        }
+
+        return  null;
     }
 }
