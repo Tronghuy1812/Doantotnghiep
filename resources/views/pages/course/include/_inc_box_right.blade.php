@@ -16,7 +16,7 @@
     <h4 class="right-section-title">{{ $courseDetail->c_name }}</h4>
     <div class="list-course">
         @forelse($courseVideo as $video)
-        <a href="" class="js-view-course"><i class="fa fa-play-circle"></i> {{ $video->cv_name }}</a>
+        <a href="{{ route('ajax_get.course.view_course', $video->id) }}" class="{{ get_data_user('web') ? 'js-view-course' : 'js-show-login' }}"><i class="fa fa-play-circle"></i> {{ $video->cv_name }}</a>
         @empty
             <a href="">Chưa cập nhật</a>
         @endforelse

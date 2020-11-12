@@ -1,3 +1,4 @@
+import Toastr from 'toastr';
 import Cart from "../../../components/_inc_cart";
 import AutoloadJs from '../../../components/_inc_autoload'
 var Course = {
@@ -29,12 +30,32 @@ var Course = {
     {
         $(".js-view-course").click(function (event){
             event.preventDefault()
-            console.log("ok")
-            $('#popup-view-course').modal({
-                escapeClose: true,
-                clickClose: true,
-                showClose: true
-            })
+
+            // $('#popup-view-course').modal({
+            //     escapeClose: true,
+            //     clickClose: true,
+            //     showClose: true
+            // })
+            let $this = $(this)
+            let URL = $this.attr('href')
+            $.ajax({
+                beforeSend: function( xhr ) {
+                    // $this.html(`<i class="fa fa-spinner fa-spin"></i> Đang xử lý`)
+                },
+                url: URL,
+                method : "GET",
+                success:function(results){
+                    if(results.status === 404 || results.code === 401)
+                    {
+                        Toastr.warning(results.message)
+                        return  false
+                    }
+
+                },
+                error: function(results){
+                    console.log(results)
+                }
+            });
         })
     },
 
