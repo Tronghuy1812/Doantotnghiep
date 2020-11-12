@@ -2,7 +2,10 @@
 /public/hot
 /public/storage
 /public/uploads
-/public/uploads_video
+/public/css
+/public/js
+/public/css_admin
+/public/js_admin
 /storage/*.key
 /vendor
 .env
