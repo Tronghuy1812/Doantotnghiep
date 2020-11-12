@@ -50,7 +50,7 @@
                                             {{ $item->created_at }}
                                         </td>
                                         <td>
-                                            <a href="" class="btn btn-xs btn-info"><i class="la la-edit"></i></a>
+                                            <a href="{{ route('get_admin.transaction.edit', $item->id) }}" class="btn btn-xs btn-info"><i class="la la-edit"></i></a>
                                             <a href="" class="btn btn-xs btn-danger"><i class="la la-trash"></i></a>
                                         </td>
                                     </tr>

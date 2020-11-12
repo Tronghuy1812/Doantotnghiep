@@ -18,7 +18,7 @@ class Transaction extends Model
     const STATUS_PROCESS = 2;
     const STATUS_SUCCESS = 3;
     const STATUS_CANCEL = -1;
-
+    public $statusGlobal;
     protected $status = [
         self::STATUS_DEFAULT => [
             'name' => 'Tiếp nhận',
@@ -37,6 +37,12 @@ class Transaction extends Model
             'class' => 'badge-dange'
         ]
     ];
+
+    public static function getStatusGlobal()
+    {
+        $that = new self();
+        return $that->status;
+    }
 
     public function getStatus()
     {

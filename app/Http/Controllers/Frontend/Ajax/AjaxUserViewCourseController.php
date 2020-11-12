@@ -11,10 +11,9 @@ class AjaxUserViewCourseController extends Controller
 {
     public function viewCourseByVideoID(Request $request, $id)
     {
-        if($request->ajax())
-        {
+        if ($request->ajax()) {
             $user = $this->getUser();
-            if(!$user) {
+            if (!$user) {
                 return response([
                     'status' => 401,
                     'message' => "Mời bạn đăng nhập"
@@ -42,10 +41,20 @@ class AjaxUserViewCourseController extends Controller
                 ]);
             }
 
+            if ($order->o_status === Order::STATUS_SUCCESS) {
+
+                $html = view('pages.course.include._inc_video', ['video' => $video])->render();
+                return response([
+                    'status' => 200,
+                    'html' => $html,
+                    'message' => "Khoá học đã thanh toán"
+                ]);
+            }
+
 
             return response([
                 'status' => 200,
-                'data' => $user
+                'message' => "Khoá học chưa thanh toán"
             ]);
         }
     }

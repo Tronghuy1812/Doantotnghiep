@@ -31,11 +31,6 @@ var Course = {
         $(".js-view-course").click(function (event){
             event.preventDefault()
 
-            // $('#popup-view-course').modal({
-            //     escapeClose: true,
-            //     clickClose: true,
-            //     showClose: true
-            // })
             let $this = $(this)
             let URL = $this.attr('href')
             $.ajax({
@@ -45,11 +40,20 @@ var Course = {
                 url: URL,
                 method : "GET",
                 success:function(results){
+                    console.log(results)
                     if(results.status === 404 || results.code === 401)
                     {
                         Toastr.warning(results.message)
                         return  false
                     }
+                    $("#contentVideo").html(results.html)
+                    $('#popup-view-course').modal({
+                        escapeClose: true,
+                        clickClose: true,
+                        showClose: true
+                    })
+
+                    Toastr.success(results.message)
 
                 },
                 error: function(results){
