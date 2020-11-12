@@ -38,6 +38,7 @@ class UserPayController extends UserController
                     Order::insert([
                         'o_transaction_id' => $idTransaction,
                         'o_action_id' => $item->id,
+                        'o_user_id' => get_data_user('web'),
                         'o_sale' => 0,
                         'o_price' => $item->price,
                         'o_status' => 1

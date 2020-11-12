@@ -1,6 +1,6 @@
 <?php
 if (!function_exists('pare_url_file')) {
-    function pare_url_file($image, $folder = '')
+    function pare_url_file($image, $folder = 'uploads')
     {
         if (!$image) {
             return '/images/default.png';
@@ -9,7 +9,7 @@ if (!function_exists('pare_url_file')) {
 
         if (isset($explode[0])) {
             $time = str_replace('_', '/', $explode[0]);
-            return '/uploads' . $folder . '/' . date('Y/m/d', strtotime($time)) . '/' . $image;
+            return '/' . $folder . '/' . date('Y/m/d', strtotime($time)) . '/' . $image;
         }
     }
 }
