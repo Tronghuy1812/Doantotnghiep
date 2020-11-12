@@ -29,8 +29,8 @@ class RenderUrlSeoBLogService
                     $prefix = self::PREFIX_KEYWORD;
                     break;
 
-                case self::PREFIX_MENU:
-                    $prefix = self::TYPE_MENU;
+                case self::TYPE_MENU:
+                    $prefix = self::PREFIX_MENU;
                     break;
 
                 case self::TYPE_ARTICLE:

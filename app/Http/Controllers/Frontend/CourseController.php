@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Education\Course;
 use App\Models\Education\CourseContent;
+use App\Models\Education\CourseVideo;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -24,7 +25,11 @@ class CourseController extends Controller
             ->paginate(3);
 
         $courseContent = CourseContent::where('cc_course_id', $id)
-            ->orderBy('cc_sort','asc')
+            ->orderBy('cc_sort', 'asc')
+            ->get();
+
+        $courseVideo = CourseVideo::where('cv_course_id', $id)
+            ->orderBy('id', 'asc')
             ->get();
 
         \SEOMeta::setTitle($courseDetail->c_name);
@@ -32,7 +37,8 @@ class CourseController extends Controller
         $viewData = [
             'courses' => $courses,
             'courseContent' => $courseContent,
-            'courseDetail' => $courseDetail
+            'courseDetail' => $courseDetail,
+            'courseVideo' => $courseVideo
         ];
 
         return view('pages.course.index', $viewData);

@@ -15,8 +15,10 @@
 <div class="right-section">
     <h4 class="right-section-title">{{ $courseDetail->c_name }}</h4>
     <div class="list-course">
-        <a href=""><i class="fa fa-play-circle"></i> Bài mở đầu</a>
-        <a href=""><i class="fa fa-play-circle"></i> Bài 1. Nếu tăng giá</a>
-        <a href=""><i class="fa fa-play-circle"></i> Bài 2. Nếu tăng tiền</a>
+        @forelse($courseVideo as $video)
+        <a href="" class="js-view-course"><i class="fa fa-play-circle"></i> {{ $video->cv_name }}</a>
+        @empty
+            <a href="">Chưa cập nhật</a>
+        @endforelse
     </div>
 </div>

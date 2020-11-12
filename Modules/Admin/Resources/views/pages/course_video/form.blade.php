@@ -1,4 +1,4 @@
-<form class="form-horizontal" autocomplete="off" method="POST" action="">
+<form class="form-horizontal" autocomplete="off" method="POST" action="" enctype="multipart/form-data" >
     @csrf
     <div class="row">
         <div class="col-lg-8">
@@ -25,13 +25,13 @@
                             <span class="text-danger">{{ $errors->first('cv_course_content_id') }}</span>
                         @endif
                     </div>
-{{--                    <div class="form-group">--}}
-{{--                        <label for="exampleInputEmail1" class="required">Mô tả nội dung <span>(*)</span></label>--}}
-{{--                        <textarea name="cc_content" class="form-control" id="contentCourse" cols="30" rows="4"></textarea>--}}
-{{--                        @if($errors->first('cc_content'))--}}
-{{--                            <span class="text-danger">{{ $errors->first('cc_content') }}</span>--}}
-{{--                        @endif--}}
-{{--                    </div>--}}
+                    <div class="form-group">
+                        <label for="exampleInputEmail1" class="required">File Video <span>(*)</span></label>
+                        <input type="file" class="form-control" name="video">
+                        @if(isset($courseVideo) && $courseVideo->cv_path)
+                            <p>{{ $courseVideo->cv_path }}</p>
+                        @endif
+                    </div>
                     <input type="hidden" name="cv_course_id" value="{{ $id }}">
                 </div>
             </div>
