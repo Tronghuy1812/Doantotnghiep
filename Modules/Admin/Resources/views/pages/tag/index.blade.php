@@ -36,7 +36,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse($keywords as $item)
+                                    @forelse($tags as $item)
                                         <tr>
                                             <th scope="row">{{ $item->id }}</th>
                                             <td>{{ $item->t_name }}</td>

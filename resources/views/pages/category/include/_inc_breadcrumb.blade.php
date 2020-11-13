@@ -8,7 +8,7 @@
                 </a>
                 <meta itemprop="position" content="1">
             </li>
-            @if (isset($category))
+            @if (isset($category) && $category)
             <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem" class="active">
                 <span itemprop="name">{{ $category->c_name }}</span>
                 <meta itemprop="url" content="">
