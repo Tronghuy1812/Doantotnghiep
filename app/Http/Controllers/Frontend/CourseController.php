@@ -12,7 +12,8 @@ class CourseController extends Controller
 {
     public function getCourseDetail($id, $request)
     {
-        $courseDetail = Course::where([
+        $courseDetail = Course::with('teacher:id,t_name,t_avatar,t_slug,t_job')
+        ->where([
             'id' => $id,
             'c_status' => Course::STATUS_DEFAULT
         ])->first();

@@ -8,12 +8,13 @@
                 </a>
                 <meta itemprop="position" content="1">
             </li>
-            <li><a href="">Danh sách khóa học</a></li>
+            @if (isset($category))
             <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem" class="active">
-                <span itemprop="name">Con người</span>
+                <span itemprop="name">{{ $category->c_name }}</span>
                 <meta itemprop="url" content="">
                 <meta itemprop="position" content="2">
             </li>
+            @endif
             <div style="clear: both"></div>
         </ul>
     </div>
