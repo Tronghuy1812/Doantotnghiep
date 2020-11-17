@@ -11,4 +11,9 @@ class Teacher extends Model
 
     public $table = 'teachers';
     protected $guarded = [''];
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class,'teachers_tags','tt_teacher_id','tt_tag_id');
+    }
 }

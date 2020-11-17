@@ -2,6 +2,7 @@
 
 namespace Modules\Admin\Http\Controllers\Cart;
 
+use App\Models\Cart\Order;
 use App\Models\Cart\Transaction;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
@@ -41,6 +42,14 @@ class AdminTransactionController extends AdminController
             ->update([
                 'o_status' => $request->t_status
             ]);
+        if($request->t_status == Transaction::STATUS_SUCCESS)
+        {
+            $orders = Order::where('o_transaction_id', $id)->get();
+            foreach ($orders as $item)
+            {
+                \DB::table('courses')->where('id', $item->o_action_id)->increment('c_total_pay');
+            }
+        }
         $this->showMessagesSuccess('Cập nhật thành công');
         return redirect()->back();
     }

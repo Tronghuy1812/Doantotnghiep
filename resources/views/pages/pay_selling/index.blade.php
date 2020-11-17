@@ -29,10 +29,14 @@
                 </div>
                 <div class="box-75 box-content">
                     <div class="results mb10 mt10">
-                        <b>20</b> khoá học <b>Con người</b>
+                        <b>{{ $courses->total() }}</b> khoá học <b>bán chạy</b>
                     </div>
                     <div class="lists ">
-
+                        @forelse($courses as $item)
+                            @include('pages.category.include._item_course',['course' => $item])
+                        @empty
+                            <p>Dữ liệu chưa được cập nhật</p>
+                        @endforelse
                         <div class="clear"></div>
                     </div>
                 </div>

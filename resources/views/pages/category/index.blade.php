@@ -38,7 +38,7 @@
                 </div>
                 <div class="box-75 box-content box-75-mb">
                     <div class="results mb10 mt10">
-                        <b>20</b> khoá học <b>Con người</b>
+                        <b>{{ $courses->count() }}</b> khoá học
                     </div>
                     <div class="lists ">
                         @forelse($courses as $item)

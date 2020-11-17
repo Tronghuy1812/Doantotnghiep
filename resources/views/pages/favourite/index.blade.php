@@ -32,7 +32,11 @@
                         <b>20</b> khoá học <b>Con người</b>
                     </div>
                     <div class="lists ">
-
+                        @forelse($courses as $item)
+                            @include('pages.category.include._item_course',['course' => $item])
+                        @empty
+                            <p>Dữ liệu chưa được cập nhật</p>
+                        @endforelse
                         <div class="clear"></div>
                     </div>
                 </div>

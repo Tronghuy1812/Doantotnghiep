@@ -89,6 +89,10 @@ var Course = {
                         _this.flagClick = false
                         $this.html(htmlOld)
                         $this.removeClass('active')
+                        if(results.status === 200)
+                        {
+                            Toastr.success("Thêm yêu thích thành công")
+                        }
                     },
                     error: function(results){
                         $this.html(htmlOld)

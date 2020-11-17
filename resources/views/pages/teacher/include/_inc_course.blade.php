@@ -3,13 +3,13 @@
         <h4 class="g-title mt20">Các khoá học giảng dạy</h4>
         <div class="box-content">
             <div class="lists mt20" style="margin: -10px">
-                @for ($i = 1 ; $i <= 12 ; $i++)
+                @foreach($courses as $item)
                     <div class="item list-course item-4-0  mb20">
                         <div class="box-course" style="margin: 10px">
                             <div class="avatar">
                                 <div class="img">
-                                    <a href="">
-                                        <img src="{{ asset('images/thumb.jpg') }}" alt="">
+                                    <a href="{{ route('get.course.render',['slug' => $item->c_slug.'-cr']) }}" title="{{ $item->c_name }}">
+                                        <img src="{{ pare_url_file($item->c_avatar) }}" alt="{{ $item->c_name }}">
                                     </a>
                                     <div class="img_badget">
                                         <p class="flex flex-jc-sb pl10 pr10">
@@ -21,25 +21,29 @@
                             </div>
                             <div class="info">
                                 <h3 class="title">
-                                    <a href="">1212112121</a>
+                                    <a href="{{ route('get.course.render',['slug' => $item->c_slug.'-cr']) }}" title="{{ $item->c_name }}">{{ $item->c_name }}</a>
                                 </h3>
                                 <p class="info-auth">
-                                    <span class="icon"><i class="fa fa-user-md"></i></span> <span class="name">Name</span>
+                                    <span class="icon"><i class="fa fa-user-md"></i></span> <span class="name">{{ $teacher->t_name }}</span>
                                 </p>
                                 <p class="info-auth">
-                                    <span class="icon"><i class="fa fa-briefcase"></i></span> <span class="name">Job</span>
+                                    <span class="icon"><i class="fa fa-briefcase"></i></span> <span class="name">{{ $teacher->t_job }}</span>
                                 </p>
                                 <p class="flex flex-jc-sb mt10">
                                     <a href="" class="video">
                                         <i class="fa fa-play-circle"></i> Học thử
                                     </a>
-                                    <span class="price">Miễn phí</span>
+                                    @if($item->c_price)
+                                        <span class="price">{{ number_format($item->c_price,0,',','.') }}đ</span>
+                                    @else
+                                        <span class="price">Miễn phí</span>
+                                    @endif
+
                                 </p>
                             </div>
                         </div>
                     </div>
-                @endfor
-
+                @endforeach
                 <div class="clear"></div>
             </div>
         </div>

@@ -2,6 +2,7 @@
 
 namespace App\Models\Education;
 
+use App\Models\Favourite;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
@@ -38,5 +39,10 @@ class Course extends Model
     public function tags()
     {
         return $this->belongsToMany(Tag::class,'courses_tags','ct_course_id','ct_tag_id');
+    }
+
+    public function favourite()
+    {
+        return $this->hasMany(Favourite::class,'f_user_id');
     }
 }

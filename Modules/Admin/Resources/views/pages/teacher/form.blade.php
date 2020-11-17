@@ -34,11 +34,23 @@
                         @endif
                     </div>
                     <div class="form-group">
+                        <label for="exampleInputEmail1">Tag </label>
+                        <select name="tags[]" class="form-control js-select2" tabindex="-1" multiple>
+                            @foreach($tags as $tag)
+                                <option title="{{ $tag->t_name }}" {{ in_array($tag->id, $tagOld) ? "selected" : "" }} value="{{ $tag->id }}">{{ $tag->t_name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label for="exampleInputEmail1" class="required">Email <span>(*)</span></label>
                         <input type="email"  class="form-control" id="inputEmail3" name="t_email" value="{{ old('t_email', $teacher->t_email ?? "") }}">
                         @if($errors->first('t_email'))
                             <span class="text-danger">{{ $errors->first('t_email') }}</span>
                         @endif
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1" class="required">Nội dung <span>(*)</span></label>
+                        <textarea name="t_content" id="content" cols="30" rows="5">{!! old('t_content',$teacher->t_content ?? '') !!}</textarea>
                     </div>
                 </div>
             </div>
@@ -67,3 +79,7 @@
         </div>
     </div>
 </form>
+<script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace( 'content' );
+</script>
