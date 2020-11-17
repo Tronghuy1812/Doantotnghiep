@@ -34,7 +34,7 @@
     </div>
     <div class="header-button container mt10 flex flex-jc-sb">
         <div class="box-category">
-            <a href="">
+            <a href="/" title="Danh mục khoá học">
                 <i class="fa fa-bars"></i> <span>Danh mục khoá học</span>
             </a>
         </div>

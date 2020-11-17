@@ -50,4 +50,10 @@ class Tag extends Model
     {
         return Arr::get($this->hot, $this->t_hot, "[N\A]");
     }
+
+    public function teacher()
+    {
+        return $this->belongsToMany(Teacher::class,'teachers_tags','tt_tag_id','tt_teacher_id');
+    }
+
 }

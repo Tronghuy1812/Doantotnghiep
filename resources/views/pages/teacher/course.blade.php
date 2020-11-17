@@ -4,9 +4,9 @@
 @stop
 @section('content')
     @include('pages.teacher.include._inc_breadcrumb')
-    @include('pages.teacher.include._inc_header')
-    @include('pages.teacher.include._inc_content')
-    @include('pages.teacher.include._inc_course')
+    @include('pages.teacher.include._inc_header',['teacher' => $teacher])
+    @include('pages.teacher.include._inc_content',['teacher' => $teacher,'tags' => $tags ?? []])
+    @include('pages.teacher.include._inc_course',['courses' => $courses])
 @stop
 
 @section('script')
