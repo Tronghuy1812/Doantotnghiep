@@ -22,6 +22,7 @@ Route::group(['namespace' => 'Frontend'], function (){
     Route::get('/khoa-hoc/{slug?}','HubCourseController@render')->name('get.course.render');
     Route::get('tat-ca-khoa-hoc','CategoryController@index')->name('get.category.all');
     Route::get('giang-vien/{slug}','TeacherController@getCourseByTeacherSlug')->name('get.teacher.course');
+    Route::get('tim-kiem','SearchController@search')->name('get.search');
 
     Route::group(['namespace' => 'Ajax','prefix' => 'ajax'], function(){
         Route::get('course/list-by-category/{id}','AjaxHomeController@getCourseByCategory')

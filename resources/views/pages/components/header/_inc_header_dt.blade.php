@@ -7,8 +7,8 @@
                 </a>
             </div>
             <div class="form_search">
-                <form action="" class="flex">
-                    <input type="text" class="form-control" placeholder="Từ khoá tìm kiếm ...">
+                <form action="{{ route('get.search') }}" class="flex">
+                    <input type="text" class="form-control" name="k" value="{{ \Request::get('k') }}" placeholder="Từ khoá tìm kiếm ...">
                     <button><i class="fa fa-search"></i></button>
                 </form>
             </div>
