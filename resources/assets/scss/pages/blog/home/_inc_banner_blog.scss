@@ -10,8 +10,8 @@
     .item {
         height: 100%;
         margin-right: 1rem;
-        a {
-            display: inline-block;
+        a> {
+            display: block;
             height: 100%;
             width: 100%;
             img {

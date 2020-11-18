@@ -3,7 +3,7 @@
     <link rel="stylesheet" href="{{ asset('css/blog_home.css') }}">
 @stop
 @section('content')
-    @include('blog::pages.home.include.inc_blog_banner')
+    @include('blog::pages.home.include.inc_blog_banner',['articlesHotOne' => $articlesHotOne])
     <div class="container">
         <div class="box">
             <div class="box-70">
