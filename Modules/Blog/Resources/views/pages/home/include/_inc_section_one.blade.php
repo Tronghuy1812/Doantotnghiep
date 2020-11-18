@@ -1,21 +1,27 @@
+@if(isset($menuPosition))
 <div class="section mt20">
     <div class="box-heading">
-        <h3 class="heading-h3"><a href=""></a>{{ $title }}</h3>
+        <h3 class="heading-h3">
+            <a href="{{ route('get_blog.render',['slug' => $menuPosition->m_slug.'-m']) }}" title="{{ $menuPosition->m_name }}">{{ $menuPosition->m_name }}</a>
+        </h3>
     </div>
     <div class="box-content mr10">
         <div class="lists">
-            @for($i = 1 ; $i <= 6 ; $i ++)
-                <div class="item item-3-10">
-                    <a href="" class="post-avatar">
-                        <img src="/uploads/2020/11/03/2020-11-03__27.jpg" alt="">
-                    </a>
-                    <h2 class="post-title">
-                        <a href="">Học hỏi bí quyết bán hàng từ bậc thầy Tony Robbins</a>
-                    </h2>
-                    <h6 class="post-desc">Biết rõ mục đích của mình, hiểu rằng mọi người, cả khách hàng và đối…</h6>
-                </div>
-            @endfor
+            @if(isset($menuPosition->articles) && !$menuPosition->articles->isEmpty() && $articles = $menuPosition->articles)
+                @foreach($articles as $item)
+                    <div class="item item-3-10">
+                        <a href="{{ route('get_blog.render',['slug' => $item->a_slug.'-a']) }}" title="{{ $item->a_name }}" class="post-avatar">
+                            <img src="{{ pare_url_file($item->a_avatar) }}" alt="{{ $item->a_name }}">
+                        </a>
+                        <h2 class="post-title">
+                            <a href="{{ route('get_blog.render',['slug' => $item->a_slug.'-a']) }}" title="{{ $item->a_name }}">{{ $item->a_name }}</a>
+                        </h2>
+                        <h6 class="post-desc">{{ $item->a_description }}</h6>
+                    </div>
+                @endforeach
+            @endif
             <div class="clear"></div>
         </div>
     </div>
 </div>
+@endif

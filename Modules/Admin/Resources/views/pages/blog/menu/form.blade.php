@@ -114,6 +114,43 @@
             <div class="card  box-shadow-0 ">
                 <div class="card-body pt-3">
                     <div class="form-group">
+                        <label class="" for="exampleInputEmail1"> Position </label>
+                        <div class="form-group">
+                            <label class="box-checkbox"> Mặc định
+                                <input type="radio" name="m_position" {{ ($menu->m_position ?? 0) == 0 ? 'checked' : '' }} value="0">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="box-checkbox"> Vị trí 1
+                                <input type="radio" name="m_position" {{ ($menu->m_position ?? 0) == 1 ? 'checked' : '' }} value="1">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="box-checkbox"> Vị trí 2
+                                <input type="radio" name="m_position" {{ ($menu->m_position ?? 0) == 2 ? 'checked' : '' }} value="2">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="box-checkbox"> Vị trí 3
+                                <input type="radio" name="m_position" {{ ($menu->m_position ?? 0) == 3 ? 'checked' : '' }} value="3">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="box-checkbox"> Vị trí 4
+                                <input type="radio" name="m_position" {{ ($menu->m_position ?? 0) == 4 ? 'checked' : '' }} value="4">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card  box-shadow-0 ">
+                <div class="card-body pt-3">
+                    <div class="form-group">
                         <label for="exampleInputEmail1"> Avatar </label>
                         <input type="file" class="filepond" name="avatar">
                         <input type="hidden" name="m_avatar" id="avatar_uploads">

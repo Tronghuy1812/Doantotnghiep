@@ -7,8 +7,8 @@
     <div class="container">
         <div class="box">
             <div class="box-70">
-                @include('blog::pages.home.include._inc_section_one',['title' => 'Kinh doanh'])
-                @include('blog::pages.home.include._inc_section_one',['title' => 'Văn phòng'])
+                @include('blog::pages.home.include._inc_section_one',['menuPosition' => $menuPositionOne])
+                @include('blog::pages.home.include._inc_section_one',['menuPosition' => $menuPositionTwo])
                 @include('blog::pages.home.include._inc_section_two',['title' => 'Học ngoại ngữ'])
             </div>
             <div class="box-30 ml15">
