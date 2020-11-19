@@ -11,6 +11,8 @@
     "/css/cart.css": "/css/cart.css",
     "/css/user.css": "/css/user.css",
     "/css/blog_home.css": "/css/blog_home.css",
+    "/css/blog_menu.css": "/css/blog_menu.css",
+    "/css/blog_article.css": "/css/blog_article.css",
     "/css_admin/admin_dashboard.css": "/css_admin/admin_dashboard.css",
     "/js/teacher.js": "/js/teacher.js",
     "/js/user.js": "/js/user.js",
