@@ -2,9 +2,10 @@
     .item {
         &-avatar {
             max-width: 295px;
+            width: 295px;
             float: left;
             a {
-                display: inline-block;
+                display: block;
                 img {
                     max-width: 100%;
                     width: 100%;
