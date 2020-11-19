@@ -29,6 +29,7 @@
             padding-left: 14px;
             margin: 7px 0;
             position: relative;
+            min-height: 35px;
             &:before{
                 content: " ";
                 display: block;
@@ -47,6 +48,11 @@
             border-bottom: 0;
             padding-bottom: 0;
             color: #949697;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            height: 60px;
         }
     }
     .item-flex{

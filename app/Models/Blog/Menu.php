@@ -28,4 +28,9 @@ class Menu extends Model
     {
         return Arr::get($this->status, $this->m_status, "[N\A]");
     }
+
+    public function articles()
+    {
+        return $this->hasMany(Article::class,'a_menu_id');
+    }
 }

@@ -13,4 +13,5 @@
 
 Route::prefix('bai-viet')->group(function() {
     Route::get('/', 'BlogHomeController@index')->name('get_blog.home');
+    Route::get('/{slug}', 'BlogHubController@renderBlog')->name('get_blog.render');
 });

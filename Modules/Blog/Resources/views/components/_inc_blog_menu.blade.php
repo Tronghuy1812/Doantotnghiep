@@ -2,10 +2,9 @@
     <div class="container">
         <ul>
             <li class="active"><a href="">Home</a></li>
-            <li><a href="">Học ngoai ngữ</a></li>
-            <li><a href="">Học marketing</a></li>
-            <li><a href="">Kỹ năng mềm</a></li>
-            <li><a href="">Tin học văn phòng</a></li>
+            @foreach($menuBlog as $item)
+                <li class=""><a href="{{ route('get_blog.render',['slug' => $item->m_slug.'-m']) }}" title="{{ $item->m_name }}">{{ $item->m_name }}</a></li>
+            @endforeach
             <div class="clear"></div>
         </ul>
     </div>
