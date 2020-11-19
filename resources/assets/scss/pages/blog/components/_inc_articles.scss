@@ -1,0 +1,35 @@
+.articles {
+    .item {
+        &-avatar {
+            max-width: 295px;
+            float: left;
+            a {
+                display: inline-block;
+                img {
+                    max-width: 100%;
+                    width: 100%;
+                    //height: auto;
+                    height: 185px;
+                }
+            }
+        }
+        &-content{
+            float: right;
+            width: calc(100% - 310px);
+            h3 {
+                margin-bottom: 1rem;
+                a {
+                    font-size: 15px;
+                    color: #19232d;
+                    &:hover{
+                        text-decoration:underline;
+                        cursor: pointer;
+                    }
+                }
+            }
+            h5 {
+                color: #949697;
+            }
+        }
+    }
+}

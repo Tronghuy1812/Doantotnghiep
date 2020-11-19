@@ -19,6 +19,8 @@ mix.sass('resources/assets/scss/pages/pay/pay.scss', 'public/css');
 mix.sass('resources/assets/scss/pages/cart/cart.scss', 'public/css');
 mix.sass('resources/assets/scss/pages/user/user.scss', 'public/css');
 mix.sass('resources/assets/scss/pages/blog/blog_home.scss', 'public/css');
+mix.sass('resources/assets/scss/pages/blog/blog_menu.scss', 'public/css');
+mix.sass('resources/assets/scss/pages/blog/blog_article.scss', 'public/css');
 
 
 // ADMIN
