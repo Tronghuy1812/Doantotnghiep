@@ -3,12 +3,14 @@
 @import "./../../components/inc_header";
 @import "./../../components/inc_item_course";
 @import "./../../components/loading/inc_loading";
+@import "./../../components/inc_tab";
 @import "../../components/inc_footer";
 @import "../../components/inc_popup";
 @import "include/inc_menu_user";
 @import "include/inc_update_info";
 @import "include/inc_box_avatar";
 @import "include/inc_dashboard";
+@import "../../components/inc_vote";
 #pjax-pages {
     background-color: white;
 }

@@ -3,7 +3,7 @@
         <div class="header-left flex flex-jc-sb flex-a-c">
             <div class="logo">
                 <a href="/" title="Logo">
-                    <img src="{{ asset('images/logo.png') }}" alt="">
+                    <img src="{{ isset($configuration->logo) ? pare_url_file($configuration->logo) : asset('images/logo.png') }}" alt="">
                 </a>
             </div>
             <div class="form_search">

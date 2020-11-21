@@ -1,0 +1,35 @@
+.box-tab {
+    .tab-nav {
+        &-item {
+            //border: 1px solid #dedede;
+            display: inline-block;
+            position: relative;
+            padding: 10px;
+            color: #212121;
+            font-weight: 500;
+            &.active {
+                border: 1px solid #dedede;
+                border-top: 2px solid #50ad4e;
+                &:before{
+                    position: absolute;
+                    content: "";
+                    height: 5px;
+                    background-color: white;
+                    bottom: -2px;
+                    width: 100%;
+                    left: 0;
+                }
+            }
+        }
+    }
+    .tab-content {
+        border: 1px solid #dedede;
+        padding: 10px;
+        &-item {
+            //display: none;
+            //&.active {
+            //    display: block;
+            //}
+        }
+    }
+}

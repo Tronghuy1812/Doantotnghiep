@@ -3,7 +3,7 @@
     <link rel="stylesheet" href="{{ asset('css/cart.css') }}">
 @stop
 @section('content')
-    <div class="container page-shopping-cart mt20">
+    <div class="container page-shopping-cart mt20" id="pjax-pages-page">
         <div class="table-responsive pt20">
             <table class="table table-striped">
                 <thead>

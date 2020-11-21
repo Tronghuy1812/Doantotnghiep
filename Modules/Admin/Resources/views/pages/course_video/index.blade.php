@@ -25,6 +25,7 @@
                             <ul class="nav panel-tabs main-nav-line">
                                 <li><a href="{{ route('get_admin.course_content.index',['id' => $id]) }}" class="nav-link" >Nội dung khoá học</a></li>
                                 <li><a href="{{ route('get_admin.course_video.index',['id' => $id]) }}"  class="nav-link  active">Video khoá học</a></li>
+                                <li><a href="{{ route('get_admin.course_vote.index', $id) }}"  class="nav-link ">Đánh giá khoá học</a></li>
                             </ul>
                         </div>
                     </div>

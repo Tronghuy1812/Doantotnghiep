@@ -2,6 +2,7 @@
 
 namespace App\Models\Cart;
 
+use App\Models\Education\Course;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -16,4 +17,9 @@ class Order extends Model
 
     protected $guarded = [''];
     protected $table = 'orders';
+
+    public function course()
+    {
+        return $this->belongsTo(Course::class,'o_action_id');
+    }
 }

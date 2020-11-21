@@ -4,7 +4,7 @@
 @stop
 @section('content')
     @include('user::components._inc_menu_user')
-    <div class="container">
+    <div class="container" id="pjax-pages-page">
         <div class="pages_user">
             <div class="box">
                 <div class="box-30">

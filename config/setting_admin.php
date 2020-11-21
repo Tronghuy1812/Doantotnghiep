@@ -73,7 +73,11 @@ return [
                 [
                     'name' => 'Slide',
                     'route' => 'get_admin.slide.index'
-                ]
+                ],
+                [
+                    'name' => 'Config Data',
+                    'route' => 'get_admin.configuration.index'
+                ],
             ]
         ],
         [
