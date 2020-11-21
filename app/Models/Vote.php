@@ -11,4 +11,9 @@ class Vote extends Model
     const TYPE_COURSE = 1;
     protected $table = 'votes';
     protected $guarded = [''];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class,'v_user_id');
+    }
 }

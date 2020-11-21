@@ -12,6 +12,7 @@ class UserTransactionController extends Controller
 {
     public function index()
     {
+        \SEOMeta::setTitle('Danh sách đơn hàng của bạn');
         $transactions = Transaction::where('t_user_id', get_data_user('web'))
             ->orderByDesc('id')
             ->paginate(20);
@@ -25,6 +26,7 @@ class UserTransactionController extends Controller
 
     public function viewTransaction($idTransaction, Request $request)
     {
+        \SEOMeta::setTitle('Chi tiết đơn hàng');
         $orders = Order::with('course:id,c_name')
             ->where('o_transaction_id', $idTransaction)
             ->get();

@@ -58,4 +58,32 @@
         border-color: #008d4c;
         color: white;
     }
+    .lists-vote {
+        .item {
+            align-items: center;
+            border: 1px solid #dedede;
+            margin-bottom: 1rem;
+            padding: 10px 0;
+            &-avatar {
+                width: 120px;
+                text-align: center;
+                a {
+                    display: inline-block;
+                    img {
+                        width: 80px;
+                        height: 80px;
+                        border-radius: 50%;
+                        border: 2px solid #dedede;
+                    }
+                }
+            }
+            &-info {
+                margin-left: 10px;
+                width: calc(100% - 120px);
+                i.active {
+                    color: #f57223;
+                }
+            }
+        }
+    }
 }

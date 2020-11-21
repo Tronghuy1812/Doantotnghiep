@@ -20,7 +20,7 @@
                                         @for($i = 1 ; $i <= 5 ; $i ++)
                                                 <i class="fa fa-star active" data-i="{{ $i }}"></i>
                                             @endfor
-                                    </span>
+                                        </span>
                                     </p>
                                     <p class="reviews-text" id="reviews-text"> <span>Rất tốt</span></p>
                                 </div>
@@ -28,6 +28,35 @@
                                 <input type="hidden" name="review" id="review_value" value="5">
                                 <button type="submit" class="btn btn-pink btn-radius mt10">Gửi đánh giá</button>
                             </form>
+                            <div class="lists-vote mt10 mb10">
+                                 <div class="lists">
+                                     @foreach($votes as $item)
+                                         <div class="item-1 item flex">
+                                             <div class="item-avatar">
+                                                 <a href="">
+                                                     <img src="{{ pare_url_file($item->user->avatar ?? '') }}" alt="">
+                                                 </a>
+                                                 @if($item->created_at)
+                                                    <p>{{ $item->created_at->format('d/m/Y') ?? "[N\A]" }}</p>
+                                                 @else
+                                                     <p>"[N\A]"</p>
+                                                 @endif
+                                             </div>
+                                             <div class="item-info">
+                                                 <p>
+                                                     <span><b>{{ $item->user->name ?? "[N\A]" }}</b></span>
+                                                     <span>
+                                                    @for($i = 1 ; $i <= 5; $i ++)
+                                                         <i class="fa fa-star {{ $item->v_number >= $i  ? 'active' : '' }}"></i>
+                                                     @endfor
+                                                </span>
+                                                 </p>
+                                                 <p>{{ $item->v_content }}</p>
+                                             </div>
+                                         </div>
+                                     @endforeach
+                                 </div>
+                            </div>
                         </div>
                     </div>
                 </div>

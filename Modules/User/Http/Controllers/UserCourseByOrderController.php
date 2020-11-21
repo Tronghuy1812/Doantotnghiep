@@ -10,6 +10,8 @@ class UserCourseByOrderController extends Controller
 {
     public function viewCourse($idTransaction, $idCourse, Request $request)
     {
+        \SEOMeta::setTitle('Nội dung khoá học');
+
         $viewData = [
             'idTransaction' => $idTransaction,
             'idCourse'      => $idCourse
