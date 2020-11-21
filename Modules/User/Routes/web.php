@@ -14,6 +14,14 @@
 Route::prefix('user')->middleware('checkLoginUser')->group(function() {
     Route::get('/', 'UserDashboardController@index')->name('get_user.dashboard');
     Route::get('transaction', 'UserTransactionController@index')->name('get_user.transaction');
+
+    Route::group(['prefix' => 'transaction'], function(){
+        Route::get('/', 'UserTransactionController@index')->name('get_user.transaction');
+        Route::get('{idTransaction}/view', 'UserTransactionController@viewTransaction')->name('get_user.transaction.view');
+        Route::get('{idTransaction}/view/course/{idCourse}', 'UserCourseByOrderController@viewCourse')->name('get_user.transaction.view_course');
+        Route::get('{idTransaction}/view/course/vote/{idCourse}', 'UserVoteController@vote')->name('get_user.transaction.vote');
+        Route::post('{idTransaction}/view/course/vote/{idCourse}', 'UserVoteController@storeVote');
+    });
     Route::get('favourite', 'UserFavouriteController@index')->name('get_user.favourite');
     Route::get('info', 'UserInfoController@index')->name('get_user.info');
     Route::get('info/edit/{id}', 'UserInfoController@edit')->name('get_user.info.edit');

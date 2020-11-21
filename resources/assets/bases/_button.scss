@@ -231,3 +231,19 @@ button {
         color: #777;
     }
 }
+.badge {
+    font-size: 10px !important;
+    font-weight: 500 !important;
+    display: inline-block;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 3px;
+    padding: 3px 5px 4px !important;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    &-success {
+        color: #fff;
+        background-color: #22c03c;
+    }
+}

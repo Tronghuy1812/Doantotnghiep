@@ -2,6 +2,7 @@
 
 namespace Modules\User\Http\Controllers;
 
+use App\Models\Cart\Order;
 use App\Models\Cart\Transaction;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
@@ -20,5 +21,18 @@ class UserTransactionController extends Controller
         ];
 
         return view('user::pages.transaction.index', $viewData);
+    }
+
+    public function viewTransaction($idTransaction, Request $request)
+    {
+        $orders = Order::with('course:id,c_name')
+            ->where('o_transaction_id', $idTransaction)
+            ->get();
+
+        $viewData = [
+            'orders'        => $orders,
+            'idTransaction' => $idTransaction
+        ];
+        return view('user::pages.transaction.order', $viewData);
     }
 }

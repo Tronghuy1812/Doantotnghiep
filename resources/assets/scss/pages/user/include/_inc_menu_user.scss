@@ -10,6 +10,9 @@
                 font-size: 16px;
                 color: #212121;
                 display: inline-block;
+                &.active {
+                    border-bottom: 2px solid #2267af;
+                }
             }
         }
     }

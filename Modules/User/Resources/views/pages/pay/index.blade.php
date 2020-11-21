@@ -4,7 +4,7 @@
 @stop
 @section('content')
     @include('user::pages.pay.include._inc_process')
-    <div class="container">
+    <div class="container" id="pjax-pages-page">
         <form action="" method="POST" id="formTransaction">
             <div class="box mb20">
                 <div class="box-70">
