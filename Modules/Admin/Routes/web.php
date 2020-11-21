@@ -76,6 +76,10 @@ Route::prefix('admin')->middleware('checkLoginAdmin')->group(function() {
             Route::post('{id}/update/{videoId}', 'AdminCourseVideoController@update');
             Route::get('{id}/delete/{videoId}', 'AdminCourseVideoController@delete')->name('get_admin.course_video.delete')->middleware('permission:course_video_delete|full');
         });
+        Route::prefix('vote')->group(function (){
+            Route::get('{id}/index', 'AdminCourseVoteController@index')->name('get_admin.course_vote.index')->middleware('permission:course_vote_index|full');
+            Route::get('{id}/delete/{voteId}', 'AdminCourseVoteController@delete')->name('get_admin.course_vote.delete')->middleware('permission:course_vote_delete|full');
+        });
 
         Route::post('update/{id}', 'AdminCourseController@update');
         Route::get('delete/{id}', 'AdminCourseController@delete')->name('get_admin.course.delete')->middleware('permission:course_delete|full');
@@ -89,6 +93,11 @@ Route::prefix('admin')->middleware('checkLoginAdmin')->group(function() {
         Route::get('update/{id}', 'AdminSlideController@edit')->name('get_admin.slide.edit')->middleware('permission:slide_edit|full');
         Route::post('update/{id}', 'AdminSlideController@update');
         Route::get('delete/{id}', 'AdminSlideController@delete')->name('get_admin.slide.delete')->middleware('permission:slide_delete|full');
+    });
+    Route::prefix('configuration')->group(function (){
+        Route::get('/', 'AdminConfigurationController@index')->name('get_admin.configuration.index')
+            ->middleware('permission:configuration_index|full');
+        Route::post('/', 'AdminConfigurationController@store');
     });
 
     Route::prefix('ajax')->namespace('Ajax')->group(function (){

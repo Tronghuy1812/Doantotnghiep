@@ -23,7 +23,9 @@
                                 <a data-pjax
                                    href="{{ route('get_user.transaction.view_course', ['idTransaction' => $idTransaction,'idCourse' => $item->o_action_id]) }}">Thông tin khoá học</a>
                             </td>
-                            <td class="text-center">{{ $item->course->c_name ?? "[N\A]" }}</td>
+                            <td class="text-center">
+                                <a href="{{ route('get.course.render',['slug' => ($item->course->c_slug ?? '').'-cr']) }}" target="_blank">{{ $item->course->c_name ?? "[N\A]" }}</a>
+                            </td>
                             <td style="text-align: center">{{ number_format($item->o_price,0,',','.') }} đ</td>
                             <td style="text-align: center">Huỷ bỏ</td>
                         </tr>

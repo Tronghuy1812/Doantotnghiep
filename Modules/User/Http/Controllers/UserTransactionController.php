@@ -27,7 +27,7 @@ class UserTransactionController extends Controller
     public function viewTransaction($idTransaction, Request $request)
     {
         \SEOMeta::setTitle('Chi tiết đơn hàng');
-        $orders = Order::with('course:id,c_name')
+        $orders = Order::with('course:id,c_name,c_slug')
             ->where('o_transaction_id', $idTransaction)
             ->get();
 

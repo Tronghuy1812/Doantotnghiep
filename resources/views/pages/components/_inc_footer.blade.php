@@ -10,11 +10,11 @@
                     </p>
                     <p class="item-contact">
                         <span>Hotline</span>
-                        <a href="">1900.6335.07</a>
+                        <a href="">{{ $configuration->hotline ?? '0986.420.994' }}</a>
                     </p>
                     <p class="item-contact">
                         <span>Email</span>
-                        <a href="">hotro@kyna.vn</a>
+                        <a href="">{{ $configuration->email ?? 'phupt.humg.94@gmail.com' }}</a>
                     </p>
                 </div>
                 <div class="item-4 item">
@@ -39,12 +39,6 @@
         </div>
     </div>
     <div class="footer-button">
-        <div class="container">
-            <p>© 2019 - Bản quyền của Công Ty TNHH Đào Tạo Nguồn Lực Việt (NLV
-                Training)</p>
-            <p>Trụ sở chính: Tầng 20, Toà nhà E.Town Central, Số 11 Đoàn Văn Bơ, Phường 12, Quận 4, TP. Hồ Chí Minh, Việt Nam</p>
-            <p>
-                Giấy phép ĐKKD số 0315889657 do Sở Kế hoạch và Đầu tư TPHCM cấp </p>
-        </div>
+        <div class="container">{!! nl2br($configuration->footer_bottom ?? '') !!}</div>
     </div>
 </footer>

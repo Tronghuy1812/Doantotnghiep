@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Blog\Menu;
+use App\Models\Configuration;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
@@ -26,13 +27,14 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
-        try{
-            $menuBlog = Menu::orderBy('m_sort','asc')->get();
-        }catch (\Exception $exception)
-        {
+        try {
+            $menuBlog      = Menu::orderBy('m_sort', 'asc')->get();
+            $configuration = Configuration::first();
+        } catch (\Exception $exception) {
 
         }
 
         \View::share('menuBlog', $menuBlog ?? []);
+        \View::share('configuration', $configuration ?? []);
     }
 }
