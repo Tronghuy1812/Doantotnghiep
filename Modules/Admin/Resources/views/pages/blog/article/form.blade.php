@@ -71,7 +71,7 @@
                                                     <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button" aria-expanded="true">
                                                         <select name="a_menu_id" class="form-control SlectBox SumoUnder"  tabindex="-1">
                                                             @foreach($menus as $menu)
-                                                                <option title="{{ $menu->m_name }}" value="{{ $menu->id }}">{{ $menu->m_name }}</option>
+                                                                <option title="{{ $menu->m_name }}" {{ old('a_menu_id',$article->a_menu_id ?? 0 ) == $menu->id ? "selected" : "" }} value="{{ $menu->id }}">{{ $menu->m_name }}</option>
                                                             @endforeach
                                                         </select>
                                                     </div>
@@ -83,7 +83,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1" class="required">Description <span>(*)</span></label>
-                                            <textarea name="a_description" class="form-control" id="" cols="30" rows="3">{{ $article->a_description ?? '' }}</textarea>
+                                            <textarea name="a_description" class="form-control" id="" cols="30" rows="3">{{ old('a_description',$article->a_description ?? '') }}</textarea>
                                             @if($errors->first('a_description'))
                                                 <span class="text-danger">{{ $errors->first('a_description') }}</span>
                                             @endif
@@ -110,7 +110,7 @@
                                         </div>
                                     </div>
                                     <div class="tab-pane" id="tab3">
-                                        <textarea name="a_content" class="form-control" id="" cols="30" rows="10">{{ $article->a_content ?? '' }}</textarea>
+                                        <textarea name="a_content" class="form-control" id="" cols="30" rows="10">{{ old('a_content',$article->a_content ?? '') }}</textarea>
                                         @if($errors->first('a_content'))
                                             <span class="text-danger">{{ $errors->first('a_content') }}</span>
                                         @endif
@@ -140,7 +140,7 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1"> Avatar </label>
                         <input type="file" class="filepond " name="avatar">
-                        <input type="hidden" name="a_avatar" value="{{ $article->a_avatar ?? '' }}" id="avatar_uploads">
+                        <input type="hidden" name="a_avatar" value="{{ old('a_avatar',$article->a_avatar ?? '') }}" id="avatar_uploads">
                     </div>
                 </div>
             </div>
