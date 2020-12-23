@@ -11,4 +11,10 @@ class CourseContent extends Model
 
     protected $table = 'courses_contents';
     protected $guarded = [''];
+
+    public function videos()
+    {
+        return $this->hasMany(CourseVideo::class,'cv_course_content_id');
+    }
+
 }

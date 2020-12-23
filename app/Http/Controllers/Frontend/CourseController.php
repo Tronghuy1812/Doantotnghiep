@@ -26,7 +26,7 @@ class CourseController extends Controller
             ->orderByDesc('id')
             ->paginate(3);
 
-        $courseContent = CourseContent::where('cc_course_id', $id)
+        $courseContent = CourseContent::with('videos')->where('cc_course_id', $id)
             ->orderBy('cc_sort', 'asc')
             ->get();
 
