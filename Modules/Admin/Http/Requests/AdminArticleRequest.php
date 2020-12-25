@@ -12,7 +12,7 @@ class AdminArticleRequest extends FormRequest
             'a_name' => 'required',
             'a_content' => 'required',
             'a_menu_id' => 'required',
-            'a_description' => 'required|max:180',
+            'a_description' => 'required|max:250',
             'a_slug' => 'required|unique:articles,a_slug,' . $this->id,
         ];
     }
@@ -24,7 +24,7 @@ class AdminArticleRequest extends FormRequest
             'a_name.required' => 'Dữ liệu không được để trống',
             'a_content.required' => 'Dữ liệu không được để trống',
             'a_description.required' => 'Dữ liệu không được để trống',
-            'a_description.max' => 'Dữ liệu không quá 180 ký tự',
+            'a_description.max' => 'Dữ liệu không quá 250 ký tự',
             'a_slug.required' => 'Dữ liệu không được để trống',
             'a_slug.unique' => 'Slug đã tồn tại',
         ];

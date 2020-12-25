@@ -25,11 +25,17 @@
                                     <div class="item-info">
                                         <h6>{{ $item->cc_name }}</h6>
                                         <p>
-                                            <span><i class="fa fa-play-circle"></i> {{ $item->cc_total_video }} Video</span>
+                                            <span><i class="fa fa-play-circle"></i> {{ count($item->videos ?? [])  }} Video</span>
                                             <span><i class="fa fa-question-circle"></i> {{ $item->cc_total_question }} Bài tập</span>
                                         </p>
                                     </div>
-                                    <div class="item-content">{!! $item->cc_content !!}</div>
+                                    @if(isset($item->videos) && !$item->videos->isEmpty())
+                                    <div class="item-content">
+                                        @foreach($item->videos as $key => $item)
+                                            <p>Bài : {{ ($key + 1) }} {{ $item->cv_name }}</p>
+                                        @endforeach
+                                    </div>
+                                    @endif
                                     <a href="" class="icon"><i class="fa fa-chevron-down"></i></a>
                                 </div>
                             @endforeach
