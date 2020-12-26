@@ -31,14 +31,16 @@ class AdminCourseController extends AdminController
     {
         $categories = Category::orderByDesc('c_sort')
             ->get();
-        $teachers = Teacher::orderByDesc('id')->get();
-        $tags = Tag::all();
+        $teachers   = Teacher::orderByDesc('id')->get();
+        $tags       = Tag::all();
+        $level      = (new Course())->level;
 
         $viewData = [
             'categories' => $categories,
-            'teachers' => $teachers,
-            'tags' => $tags,
-            'tagOld' => []
+            'teachers'   => $teachers,
+            'tags'       => $tags,
+            'level'      => $level,
+            'tagOld'     => []
         ];
 
         return view('admin::pages.course.create', $viewData);
@@ -46,10 +48,10 @@ class AdminCourseController extends AdminController
 
     public function store(AdminCourseRequest $request)
     {
-        $data = $request->except(['avatar', 'save', '_token', 'tags']);
+        $data                 = $request->except(['avatar', 'save', '_token', 'tags']);
         $data['c_position_1'] = 0;
-        $data['c_price'] = str_replace(',', '', $request->c_price);
-        $data['created_at'] = Carbon::now();
+        $data['c_price']      = str_replace(',', '', $request->c_price);
+        $data['created_at']   = Carbon::now();
 
         if (!$request->c_title_seo) $data['c_title_seo'] = $request->c_name;
         if (!$request->c_description_seo) $data['c_description_seo'] = $request->c_name;
@@ -76,7 +78,7 @@ class AdminCourseController extends AdminController
             foreach ($tags as $item) {
                 CourseTag::insert([
                     'ct_course_id' => $courseID,
-                    'ct_tag_id' => $item
+                    'ct_tag_id'    => $item
                 ]);
             }
         }
@@ -89,11 +91,12 @@ class AdminCourseController extends AdminController
 
     public function edit($id)
     {
-        $course = Course::findOrFail($id);
+        $course     = Course::findOrFail($id);
         $categories = Category::orderByDesc('c_sort')
             ->get();
-        $teachers = Teacher::orderByDesc('id')->get();
-        $tags = Tag::all();
+        $teachers   = Teacher::orderByDesc('id')->get();
+        $tags       = Tag::all();
+        $level      = (new Course())->level;
 
         $tagOld = CourseTag::where('ct_course_id', $id)
                 ->pluck('ct_tag_id')
@@ -105,20 +108,21 @@ class AdminCourseController extends AdminController
 
 
         $viewData = [
-            'course' => $course,
-            'categories' => $categories,
-            'teachers' => $teachers,
-            'tags' => $tags,
+            'course'        => $course,
+            'categories'    => $categories,
+            'teachers'      => $teachers,
+            'tags'          => $tags,
+            'level'         => $level,
             'courseContent' => $courseContent,
-            'tagOld' => $tagOld
+            'tagOld'        => $tagOld
         ];
         return view('admin::pages.course.update', $viewData);
     }
 
     public function update(AdminCourseRequest $request, $id)
     {
-        $course = Course::findOrFail($id);
-        $data = $request->except(['avatar', 'save', '_token', 'c_position_1']);
+        $course             = Course::findOrFail($id);
+        $data               = $request->except(['avatar', 'save', '_token', 'c_position_1']);
         $data['updated_at'] = Carbon::now();
 
         if (!$request->c_title_seo) $data['c_title_seo'] = $request->c_name;
@@ -146,7 +150,7 @@ class AdminCourseController extends AdminController
                 RenderUrlSeoCourseService::deleteUrlSeo(SeoEdutcation::TYPE_COURSE, $id);
             }
             return response()->json([
-                'status' => 200,
+                'status'  => 200,
                 'message' => 'Xoá dữ liệu thành công'
             ]);
         }

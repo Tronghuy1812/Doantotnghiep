@@ -176,6 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
+//        Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
 
     ],
 

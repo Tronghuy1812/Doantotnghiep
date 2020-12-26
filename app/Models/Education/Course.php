@@ -26,6 +26,18 @@ class Course extends Model
         ]
     ];
 
+    public $level = [
+        1 => 'Cơ bản',
+        2 => 'Nâng cao',
+        3 => 'Chuyên sâu',
+        4 => 'Mọi cấp độ',
+    ];
+
+    public function getLevel()
+    {
+        return Arr::get($this->level, $this->c_level,'[N\A]');
+    }
+
     public function getStatus()
     {
         return Arr::get($this->status, $this->t_status, "[N\A]");

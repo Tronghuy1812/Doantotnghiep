@@ -27,6 +27,7 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>SEO</th>
+                                        <th>Level</th>
                                         <th>Time</th>
                                         <th>Action</th>
                                     </tr>
@@ -47,6 +48,7 @@
                                                     </div>
                                                 </div>
                                             </td>
+                                            <td>{{ $item->getLevel($item->c_level) }}</td>
                                             <td>{{ $item->created_at }}</td>
                                             <td>
                                                 <a href="{{ route('get_admin.course_content.index', $item->id) }}" class="btn btn-xs btn-success"><i class="la la-eye"></i></a>

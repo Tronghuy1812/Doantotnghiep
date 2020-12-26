@@ -14,6 +14,6 @@ class LoginController extends Controller
             return redirect()->route('get.home');
         }
 
-        return  "Lỗi login";
+        return redirect()->route('get.home');
     }
 }

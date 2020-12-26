@@ -5,7 +5,7 @@
         <meta name="viewport"
               content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-{{--        <title>Khoá học Online  @yield('title_page')</title>--}}
+        <meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
         {!! SEO::generate() !!}
         <link rel="icon" href="{{ asset('img/brand/favicon.png') }}" type="image/x-icon"/>
         <meta name="csrf-token" content="{{ csrf_token() }}" />

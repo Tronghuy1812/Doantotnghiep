@@ -111,6 +111,18 @@
                                                     @endif
                                                 </div>
                                             </div>
+                                            <div class="col-sm-3">
+                                                <div class="form-group">
+                                                    <label for="exampleInputEmail1" class="required">Level <span>(*)</span></label>
+                                                    <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button" aria-expanded="true">
+                                                        <select name="c_level" class="form-control SlectBox SumoUnder"  tabindex="-1">
+                                                            @foreach($level as $key => $item)
+                                                                <option title="{{ $item }}" {{ ($course->c_level ?? 0) == $key ? "selected" : "" }} value="{{ $key }}">{{ $item }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
 
                                         <div class="form-group">

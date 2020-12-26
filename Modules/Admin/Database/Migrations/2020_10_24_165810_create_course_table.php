@@ -22,6 +22,7 @@ class CreateCourseTable extends Migration
             $table->string('c_avatar')->nullable();
             $table->tinyInteger('c_hot')->default(0);
             $table->tinyInteger('c_sale')->default(0);
+            $table->tinyInteger('c_level')->default(0);
             $table->integer('c_price')->default(0);
             $table->string('c_title_seo')->nullable();
             $table->string('c_keyword_seo')->nullable();

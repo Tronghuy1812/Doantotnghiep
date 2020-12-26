@@ -31,4 +31,6 @@ Route::group(['namespace' => 'Frontend'], function (){
         Route::get('course/view/{videoID}','AjaxUserViewCourseController@viewCourseByVideoID')
             ->name('ajax_get.course.view_course');
     });
+
+    Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 });
