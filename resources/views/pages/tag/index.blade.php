@@ -28,18 +28,7 @@
                             </ul>
                         </div>
                     </section>
-                    <section>
-                        <div class="box-sidebar">
-                            <h2 class="box-sidebar-title">Chủ đề hót</h2>
-                            <ul class="b-s-tags">
-                                <li><a href="">Bán hàng</a></li>
-                                <li><a href="">Tiếng nhật</a></li>
-                                <li><a href="">Tiếng anh</a></li>
-                                <li><a href="">Bất động sản</a></li>
-                                <div style="clear:both;"></div>
-                            </ul>
-                        </div>
-                    </section>
+                    @include('pages.components._inc_tags_hot')
                 </div>
                 <div class="box-75 box-content">
                     <div class="results mb10 mt10">

@@ -23,18 +23,7 @@
                         </div>
                     </section>
                     @endif
-                    <section>
-                        <div class="box-sidebar">
-                            <h2 class="box-sidebar-title">Chủ đề hót</h2>
-                            <ul class="b-s-tags">
-                                @foreach($tags ?? [] as $item)
-                                    <li><a href="{{ route('get.course.render',['slug' => $item->t_slug.'-t']) }}" target="_blank"
-                                           title="{{ $item->t_name }}">{{ $item->t_name }}</a></li>
-                                @endforeach
-                                <div style="clear:both;"></div>
-                            </ul>
-                        </div>
-                    </section>
+                    @include('pages.components._inc_tags_hot')
                 </div>
                 <div class="box-75 box-content box-75-mb">
                     <div class="results mb10 mt10">

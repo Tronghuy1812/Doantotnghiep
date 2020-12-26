@@ -20,7 +20,7 @@ class CategoryController extends Controller
         $courses = Course::with('teacher:id,t_name,t_avatar,t_slug,t_job')
             ->where('c_category_id', $id)
             ->where('c_status', Course::STATUS_DEFAULT);
-        if ($level = $request->level) $courses->where('c_level', $level);
+        if ($lv = $request->level) $courses->where('c_level', $lv);
         if ($time = $request->time) {
             if ($time == 1) {
                 $courses->where('c_total_time', '<=', 3);
@@ -58,11 +58,24 @@ class CategoryController extends Controller
     public function index(Request $request)
     {
         $courses = Course::with('teacher:id,t_name,t_avatar,t_slug,t_job')
-            ->where('c_status', Course::STATUS_DEFAULT)
-            ->orderByDesc('id')
+            ->where('c_status', Course::STATUS_DEFAULT);
+
+        if ($lv = $request->level) $courses->where('c_level', $lv);
+        if ($time = $request->time) {
+            if ($time == 1) {
+                $courses->where('c_total_time', '<=', 3);
+            } else {
+                $courses->where('c_total_time', '>', 3);
+            }
+        }
+
+        $courses = $courses->orderByDesc('id')
             ->paginate(12);
 
+        $level = (new Course())->level;
+
         $viewData = [
+            'level'   => $level,
             'courses' => $courses
         ];
 
