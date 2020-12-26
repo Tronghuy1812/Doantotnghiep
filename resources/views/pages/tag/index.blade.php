@@ -4,7 +4,7 @@
 @stop
 @section('content')
     @include('pages.tag.include._inc_breadcrumb')
-    @include('pages.tag.include._inc_fill_search')
+    @include('pages.components._inc_fill_search')
     <div class="main-content mt20">
         <div class="container">
             <div class="box">

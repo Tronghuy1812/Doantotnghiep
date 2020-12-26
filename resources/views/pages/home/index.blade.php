@@ -6,8 +6,8 @@
     @include('pages.home.include._inc_banner',['slides' => $slides])
     @include('pages.home.include._inc_section_one',['courses' => $coursesHotPositionOne,'categories' => $categoriesHotHome])
     @include('pages.home.include._inc_section_two',['courses' => $coursesFree])
-{{--    @include('pages.home.include._inc_tags_hot',['tags' => $tagsHot])--}}
-{{--    @include('pages.home.include._inc_lecture',['teachers' => $teachers])--}}
+    @include('pages.home.include._inc_tags_hot',['tags' => $tagsHot])
+    @include('pages.home.include._inc_lecture',['teachers' => $teachers])
 @stop
 
 @section('script')

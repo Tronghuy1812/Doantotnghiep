@@ -13,28 +13,42 @@ class CategoryController extends Controller
     public function getCourseByCategory($id, $request)
     {
         $category = Category::find($id);
-        if(!$category) return abort(404);
+        if (!$category) return abort(404);
 
         $categoryChild = Category::where('c_parent_id', $id)->get();
 
         $courses = Course::with('teacher:id,t_name,t_avatar,t_slug,t_job')
             ->where('c_category_id', $id)
-            ->where('c_status',Course::STATUS_DEFAULT)
+            ->where('c_status', Course::STATUS_DEFAULT);
+        if ($level = $request->level) $courses->where('c_level', $level);
+        if ($time = $request->time) {
+            if ($time == 1) {
+                $courses->where('c_total_time', '<=', 3);
+            } else {
+                $courses->where('c_total_time', '>', 3);
+            }
+        }
+
+
+        $level = (new Course())->level;
+
+        $courses = $courses
             ->orderByDesc('id')
             ->paginate(12);
 
         // từ khoá nổi bật category
-
         $tags = Tag::where([
-            't_status' => 1,
+            't_status'     => 1,
             't_position_2' => 1
         ])->get();
 
 
         $viewData = [
-            'courses' => $courses,
-            'category' => $category,
-            'tags' => $tags,
+            'courses'       => $courses,
+            'category'      => $category,
+            'tags'          => $tags,
+            'level'         => $level,
+            'query'         => $request->query(),
             'categoryChild' => $categoryChild
         ];
 
@@ -44,7 +58,7 @@ class CategoryController extends Controller
     public function index(Request $request)
     {
         $courses = Course::with('teacher:id,t_name,t_avatar,t_slug,t_job')
-            ->where('c_status',Course::STATUS_DEFAULT)
+            ->where('c_status', Course::STATUS_DEFAULT)
             ->orderByDesc('id')
             ->paginate(12);
 

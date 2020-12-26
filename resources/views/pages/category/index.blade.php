@@ -4,7 +4,7 @@
 @stop
 @section('content')
     @include('pages.category.include._inc_breadcrumb',['category' => $category ?? []])
-    @include('pages.category.include._inc_fill_search')
+    @include('pages.components._inc_fill_search')
     <div class="main-content mt20 main-content-category">
         <div class="container">
             <div class="box box-mb">
