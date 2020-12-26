@@ -1,3 +1,4 @@
+import AutoloadJs from '../../../components/_inc_autoload'
 var Teacher = {
     init : function ()
     {
@@ -7,4 +8,5 @@ var Teacher = {
 
 $(function (){
     Course.init()
+    AutoloadJs.init()
 })

@@ -1,0 +1,20 @@
+.twitter-typeahead {
+    width: 100%;
+}
+.tt-menu {
+    width: 100%;
+    border: 1px solid #50ad4d;
+    padding: 10px;
+    background: #f2f2f2;
+    top: 110%;
+    border-radius: 15px;
+    .item {
+        border-bottom: 1px dotted #dedede;margin: 5px 0;
+        a {
+            display: block;padding-bottom: 4px;
+            color: grey;
+        }
+        :last-child { border-bottom: none}
+    }
+
+}

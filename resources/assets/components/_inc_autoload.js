@@ -1,11 +1,13 @@
 import 'jquery-modal'
 import Auth from './_inc_auth'
 import RunMessage from './_inc_run_message'
+import Search from "./_inc_search";
 var AutoloadJs = {
     init: function ()
     {
         Auth.init()
         RunMessage.init()
+        Search.init()
         this.runToken()
         this.showMessage()
     },

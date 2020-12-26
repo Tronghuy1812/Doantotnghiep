@@ -28,6 +28,8 @@ Route::group(['namespace' => 'Frontend'], function (){
         Route::get('course/list-by-category/{id}','AjaxHomeController@getCourseByCategory')
             ->name('ajax_get.course.by_category');
 
+        Route::get('course/search','AjaxSearchController@search');
+
         Route::get('course/view/{videoID}','AjaxUserViewCourseController@viewCourseByVideoID')
             ->name('ajax_get.course.view_course');
     });
