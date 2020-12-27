@@ -1,4 +1,5 @@
 import 'jquery-modal'
+import {login_google} from "../helpers/function";
 var Auth = {
     init : function ()
     {
@@ -7,6 +8,17 @@ var Auth = {
         this.changeFormAuth()
         this.register()
         this.login()
+        this.handleLoginGoogle()
+    },
+
+    handleLoginGoogle()
+    {
+        let login = login_google('js_login_google');
+        login.done(function (data)
+        {
+            console.log(data)
+            // let result = login_or_register(data.data, url);
+        });
     },
     showPopupAuth()
     {

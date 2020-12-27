@@ -1,3 +1,6 @@
+import './../plugins/jquery.login.google';
+import Service from "../js/config/service";
+
 function to_slug(str)
 {
     // Chuyển hết sang chữ thường
@@ -28,6 +31,34 @@ function to_slug(str)
     return str;
 }
 
+
+function login_google(element)
+{
+    return $(document.getElementById(element)).login_google({
+        appID: Service.google.client_id,
+    });
+}
+
+function login_or_register(data, url)
+{
+    let result = {};
+    $.ajax({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+            "cache-control": "no-cache"
+        },
+        type: "post",
+        async: false,
+        url: url,
+        data: data,
+    }).done(function (data) {
+        result = data;
+    });
+    return result;
+}
+
 export {
-    to_slug
+    to_slug,
+    login_google,
+    login_or_register
 }
