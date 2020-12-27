@@ -17,7 +17,7 @@ class RegisterController extends Controller
         {
             $code =  200;
             try{
-                $data               = $request->except('_token');
+                $data               = $request->except('_token','remember');
                 $data['created_at'] = Carbon::now();
                 $data['password'] = bcrypt($request->password);
                 $id = User::insertGetId($data);
