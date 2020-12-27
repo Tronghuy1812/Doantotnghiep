@@ -13,9 +13,11 @@
             let _this = this;
             console.log(_this)
             _this.loadScript(document, 'script', 'google-login', options.jsSrc, () => {
-                console.log("load Script")
+                console.log("-- load Script")
                 window.gapi.load('auth2', () => {
+                    console.log("-- -- load auth2")
                     if (!window.gapi.auth2.getAuthInstance()) {
+                        console.log("-- -- -- Call Auth2")
                         gapi.load('auth2', function () {
                             _this.authGoogle = gapi.auth2.init({
                                 client_id: _this.settings.appID,
@@ -28,6 +30,7 @@
                         });
                     }
                     if (_this.isApiLoaded) {
+                        console.log("-- --  initAppGoogle")
                         _this.initAppGoogle();
                     }
                 })
