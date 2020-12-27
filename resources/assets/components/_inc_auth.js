@@ -8,7 +8,7 @@ var Auth = {
         this.changeFormAuth()
         this.register()
         this.login()
-        // this.handleLoginGoogle()
+        this.handleLoginGoogle()
     },
 
     handleLoginGoogle()
@@ -17,7 +17,7 @@ var Auth = {
         console.log(login)
         login.done(function (data)
         {
-            console.log(data)
+            console.log(data,'data true')
             // let result = login_or_register(data.data, url);
         });
     },

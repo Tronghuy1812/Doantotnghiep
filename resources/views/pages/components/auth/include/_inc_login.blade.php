@@ -4,11 +4,6 @@
         <div class="social flex flex-column">
 {{--            <a href="" class="facebook"><i class="fa fa-facebook"></i> Facebook</a>--}}
             <a href="" class="google" id="js_login_google"><i class="fa fa-google"></i> Google</a>
-            <!-- Display Google sign-in button -->
-            <div id="gSignIn"></div>
-
-            <!-- Show the user profile details -->
-            <div class="userContent" style="display: none;"></div>
         </div>
         <p class="mb10">- Hoặc đăng nhập bằng tài khoản Kyna -</p>
         <form action="{{ route('get.login') }}" method="POST" id="formLogin">
