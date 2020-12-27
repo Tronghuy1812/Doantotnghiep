@@ -11,6 +11,7 @@
         },
         ggAsyncInit: function (options) {
             let _this = this;
+            console.log(_this)
             _this.loadScript(document, 'script', 'google-login', options.jsSrc, () => {
                 window.gapi.load('auth2', () => {
                     if (!window.gapi.auth2.getAuthInstance()) {

@@ -20119,6 +20119,8 @@ $(function () {
     ggAsyncInit: function ggAsyncInit(options) {
       var _this = this;
 
+      console.log(_this);
+
       _this.loadScript(document, 'script', 'google-login', options.jsSrc, function () {
         window.gapi.load('auth2', function () {
           if (!window.gapi.auth2.getAuthInstance()) {
