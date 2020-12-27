@@ -1,0 +1,40 @@
+.course-content {
+    border-radius: 5px;
+    .lists {
+        .item {
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #dedede;
+            padding-bottom: 0.5rem;
+            position: relative;
+            &:last-child{
+                border-bottom: 0;
+                margin-bottom: 0;
+            }
+            &-info {
+                h6 {
+                    font-weight: bold;
+                    margin-bottom: 0.2rem;
+                }
+            }
+            &-content {
+                display: none;
+                background: white;
+                padding: 10px;
+                margin-top: 0.5rem;
+            }
+            &:hover {
+                cursor: pointer;
+            }
+            a {
+                position: absolute;
+                right: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+                i {
+                    font-size: 11px;
+                    color: #212121;
+                }
+            }
+        }
+    }
+}
