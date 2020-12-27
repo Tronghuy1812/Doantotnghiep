@@ -19706,7 +19706,6 @@ var Auth = {
     this.changeFormAuth();
     this.register();
     this.login();
-    this.handleLoginGoogle();
   },
   handleLoginGoogle: function handleLoginGoogle() {
     var login = Object(_helpers_function__WEBPACK_IMPORTED_MODULE_1__["login_google"])('js_login_google');
@@ -19716,8 +19715,13 @@ var Auth = {
     });
   },
   showPopupAuth: function showPopupAuth() {
+    var _this = this;
+
     $(".js-auth-popup").click(function (event) {
       event.preventDefault();
+
+      _this.handleLoginGoogle();
+
       $('.js-popup-auth').modal({
         escapeClose: true,
         clickClose: true,

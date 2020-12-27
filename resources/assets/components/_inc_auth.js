@@ -8,7 +8,6 @@ var Auth = {
         this.changeFormAuth()
         this.register()
         this.login()
-        this.handleLoginGoogle()
     },
 
     handleLoginGoogle()
@@ -23,8 +22,10 @@ var Auth = {
     },
     showPopupAuth()
     {
+        let _this = this
         $(".js-auth-popup").click(function (event){
             event.preventDefault()
+            _this.handleLoginGoogle()
             $('.js-popup-auth').modal({
                 escapeClose: true,
                 clickClose: true,
