@@ -13,6 +13,7 @@
             let _this = this;
             console.log(_this)
             _this.loadScript(document, 'script', 'google-login', options.jsSrc, () => {
+                console.log("load Script")
                 window.gapi.load('auth2', () => {
                     if (!window.gapi.auth2.getAuthInstance()) {
                         gapi.load('auth2', function () {

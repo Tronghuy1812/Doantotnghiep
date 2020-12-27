@@ -20094,6 +20094,7 @@ $(function () {
       console.log(_this);
 
       _this.loadScript(document, 'script', 'google-login', options.jsSrc, function () {
+        console.log("load Script");
         window.gapi.load('auth2', function () {
           if (!window.gapi.auth2.getAuthInstance()) {
             gapi.load('auth2', function () {
