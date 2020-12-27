@@ -4,6 +4,9 @@ var Auth = {
     {
         this.showPopupAuth()
         this.showPassword()
+        this.changeFormAuth()
+        this.register()
+        this.login()
     },
     showPopupAuth()
     {
@@ -14,6 +17,75 @@ var Auth = {
                 clickClose: true,
                 showClose: true
             })
+        })
+    },
+
+    changeFormAuth()
+    {
+        $("body").on("click",".js-render-form", function (event){
+            event.preventDefault()
+            let $this = $(this)
+            let type = $this.attr('data-type')
+            if(type === 'login')
+            {
+                $this.attr("data-type","register").text("Đăng ký")
+            }else {
+                $this.attr("data-type","login").text("Đăng nhập")
+            }
+            $(".auth-form").hide()
+            $(".auth-form[data-type='"+type+"']").show()
+        });
+    },
+
+    register()
+    {
+        $("body").on("click",".js-register", function(event){
+            let URL = $("#formRegister").attr('action')
+            event.preventDefault()
+            $(".gd-danger").remove()
+            $.ajax({
+                url: URL,
+                method : "POST",
+                data:$('#formRegister').serialize(),
+                success: function(results) {
+                    if(results.code === 200)
+                    {
+                        location.reload();
+                    }
+                },
+                error: function(xhr) {
+                    $('#validation-errors').html('');
+                    $.each(xhr.responseJSON.errors,function(field_name,error){
+                        $("#formRegister").find('[name='+field_name+']').after('<span class="text-strong gd-danger">' +error+ '</span>')
+                    })
+                },
+            });
+        })
+    },
+
+    login()
+    {
+        $("body").on("click",".js-login", function(event){
+            let URL = $("#formLogin").attr('action')
+            event.preventDefault()
+            $(".gd-danger").remove()
+            $.ajax({
+                url: URL,
+                method : "POST",
+                data:$('#formLogin').serialize(),
+                success: function(results) {
+                    if(results.code === 200)
+                    {
+                        location.reload();
+                    }
+                },
+                error: function(xhr) {
+                    $('#validation-errors').html('');
+                    $.each(xhr.responseJSON.errors,function(field_name,error){
+                        $("#formLogin").find('[name='+field_name+']').after('<span class="text-strong gd-danger">' +error+ '</span>')
+                    })
+                },
+            });
         })
     },
 

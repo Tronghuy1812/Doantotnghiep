@@ -15,7 +15,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['namespace' => 'Frontend'], function (){
     Route::post('/dang-nhap','LoginController@index')->name('get.login');
+    Route::post('/dang-ky','RegisterController@register')->name('get.register');
+    Route::get('/dang-xuat','RegisterController@logout')->name('get.logout');
     Route::get('/','HomeController@index')->name('get.home');
+    Route::get('/trang-chu','HomeController@index')->name('get.home');
     Route::get('khoa-hoc-ban-chay.html','CoursePaySellingController@index')->name('get.course.pay_selling');
     Route::get('khoa-hoc-yeu-thich.html','CourseFavouriteController@index')->name('get.course.favourite');
     Route::get('/danh-muc/{slug?}','CategoryController@index')->name('get.category');

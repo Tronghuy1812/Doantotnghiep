@@ -23,6 +23,9 @@
             }
         }
     }
+    .gd-danger{
+        color: #f54394;
+    }
     .auth-right {
         padding: 30px 40px;
         display: flex;
@@ -93,6 +96,20 @@
                 &:before
                 {
                     content: "\f2b6";
+                }
+            }
+            .icon-user
+            {
+                &:before
+                {
+                    content: "\f007";
+                }
+            }
+            .icon-phone
+            {
+                &:before
+                {
+                    content: "\f095";
                 }
             }
             .icon-lock{

@@ -5,6 +5,7 @@ import Search from "./_inc_search";
 var AutoloadJs = {
     init: function ()
     {
+        console.log("init Autoload Js")
         Auth.init()
         RunMessage.init()
         Search.init()
