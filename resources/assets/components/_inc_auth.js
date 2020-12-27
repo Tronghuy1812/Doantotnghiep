@@ -8,7 +8,7 @@ var Auth = {
         this.changeFormAuth()
         this.register()
         this.login()
-        this.handleLoginGoogle()
+        // this.handleLoginGoogle()
     },
 
     handleLoginGoogle()
