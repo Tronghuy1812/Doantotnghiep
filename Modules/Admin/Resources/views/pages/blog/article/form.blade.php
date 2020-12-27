@@ -139,7 +139,7 @@
                 <div class="card-body pt-3">
                     <div class="form-group">
                         <label for="exampleInputEmail1"> Avatar </label>
-                        <input type="file" class="filepond " name="avatar">
+                        <input type="file" class="filepond" data-type="avatar" name="avatar">
                         <input type="hidden" name="a_avatar" value="{{ old('a_avatar',$article->a_avatar ?? '') }}" id="avatar_uploads">
                     </div>
                 </div>

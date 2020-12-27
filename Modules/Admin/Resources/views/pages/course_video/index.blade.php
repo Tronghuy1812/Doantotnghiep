@@ -40,6 +40,14 @@
                                                 <div class="item-content">
                                                     <p>{{ $item->cv_name }}</p>
                                                 </div>
+                                                <div class="item-video">
+                                                    @if($item->cv_path)
+                                                        <p><a href="{{ pare_url_file($item->cv_path,'uploads_video') }}" download="">{{ $item->cv_path }}</a></p>
+                                                    @endif
+                                                    @if($item->cv_link)
+                                                        <p><a href="#" target="_blank">{{ $item->cv_link }}</a></p>
+                                                    @endif
+                                                </div>
                                                 <div class="item-action">
                                                     <a href="{{ route('get_admin.course_video.edit', ['id' => $id,'videoId' => $item->id]) }}" class="btn btn-xs"><i class="la la-edit"></i></a>
                                                     <a href="{{ route('get_admin.course_video.delete', ['id' => $id,'videoId' => $item->id]) }}" class="btn btn-xs js-delete"><i class="la la-trash"></i></a>

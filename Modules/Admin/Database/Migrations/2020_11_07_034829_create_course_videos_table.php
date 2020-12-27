@@ -17,6 +17,7 @@ class CreateCourseVideosTable extends Migration
             $table->id();
             $table->string('cv_name')->nullable();
             $table->string('cv_path')->nullable();
+            $table->mediumText('cv_link')->nullable();
             $table->integer('cv_course_content_id')->default(0);
             $table->integer('cv_course_id')->default(0);
             $table->tinyInteger('cv_status')->default(0);

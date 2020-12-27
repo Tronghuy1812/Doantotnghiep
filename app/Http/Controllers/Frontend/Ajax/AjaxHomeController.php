@@ -13,6 +13,7 @@ class AjaxHomeController extends Controller
         if($request->ajax())
         {
             $courses = Course::with('teacher:id,t_name,t_avatar,t_slug,t_job')
+                ->withCount('video')
                 ->where([
                     'c_category_id' => $categoryID,
                 ])

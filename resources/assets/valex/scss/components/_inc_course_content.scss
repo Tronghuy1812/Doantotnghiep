@@ -9,7 +9,14 @@
         }
 
         &-content{
-            width: 80%;
+            width: 30%;
+            p {
+                margin-bottom: 0;
+            }
+        }
+        &-video{
+            width: 50%;
+            text-align: left;
             p {
                 margin-bottom: 0;
             }

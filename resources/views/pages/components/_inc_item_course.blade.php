@@ -7,8 +7,8 @@
                 </a>
                 <div class="img_badget">
                     <p class="flex flex-jc-sb pl10 pr10">
-                        <span><i class="fa fa-play-circle"></i> {{ $course->c_total_video ?? 0 }}</span>
-                        <span><i class="fa fa-star"></i> 0</span>
+                        <span><i class="fa fa-play-circle"></i> {{ $course->video_count ?? 0 }}</span>
+                        <span><i class="fa fa-star"></i> {{ $course->c_total_evaluate ?? 0 }}</span>
                     </p>
                 </div>
             </div>

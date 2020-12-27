@@ -25,7 +25,7 @@ var FilepondUpload = {
         FilePond.registerPlugin(
             FilePondPluginImagePreview,
         );
-        FilePond.create( document.querySelector('input[type="file"]'))
+        FilePond.create( document.querySelector('input[type="file"][data-type="avatar"]'))
     }
 }
 export default FilepondUpload

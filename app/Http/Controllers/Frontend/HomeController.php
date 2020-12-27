@@ -22,6 +22,7 @@ class HomeController extends Controller
 
         // Khoá học nổi bật ở vị trí thứ 1
         $coursesHotPositionOne = Course::with('teacher:id,t_name,t_avatar,t_slug,t_job')
+            ->withCount('video')
             ->where([
                 'c_position_1' => 1,
                 'c_hot' => 1
@@ -30,9 +31,10 @@ class HomeController extends Controller
             ->limit(8)
             ->get();
 
-
         // khoa hoc khong dong
-        $coursesFree = Course::with('teacher:id,t_name,t_avatar,t_slug,t_job')->where('c_price', 0)
+        $coursesFree = Course::with('teacher:id,t_name,t_avatar,t_slug,t_job')
+            ->withCount('video')
+            ->where('c_price', 0)
             ->orderByDesc('id')
             ->limit(16)
             ->get();

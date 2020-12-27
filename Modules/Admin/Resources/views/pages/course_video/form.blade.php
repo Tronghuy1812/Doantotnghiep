@@ -26,10 +26,14 @@
                         @endif
                     </div>
                     <div class="form-group">
+                        <label for="exampleInputEmail1" class="required">Link<span>(Nếu có)</span></label>
+                        <input type="text" class="form-control" value="{{ old('cv_link',$courseVideo->cv_link ?? '') }}" name="cv_link" id="nameCourse">
+                    </div>
+                    <div class="form-group">
                         <label for="exampleInputEmail1" class="required">File Video <span>(*)</span></label>
                         <input type="file" class="form-control" name="video">
                         @if(isset($courseVideo) && $courseVideo->cv_path)
-                            <p>{{ $courseVideo->cv_path }}</p>
+                            <p><a href="{{ pare_url_file($courseVideo->cv_path,'uploads_video') }}" download="">{{ $courseVideo->cv_path }}</a></p>
                         @endif
                     </div>
                     <input type="hidden" name="cv_course_id" value="{{ $id }}">

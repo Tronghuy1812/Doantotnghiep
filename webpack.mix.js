@@ -23,10 +23,6 @@ mix.sass('resources/assets/scss/pages/blog/blog_menu.scss', 'public/css');
 mix.sass('resources/assets/scss/pages/blog/blog_article.scss', 'public/css');
 
 
-// ADMIN
-mix.sass('resources/assets/valex/scss/pages/admin_dashboard.scss', 'public/css_admin');
-
-
 // FRONTEND =====
 mix.js('resources/assets/js/pages/home/home.js', 'public/js');
 mix.js('resources/assets/js/pages/category/category.js', 'public/js');
@@ -35,8 +31,9 @@ mix.js('resources/assets/js/pages/teacher/teacher.js', 'public/js');
 mix.js('resources/assets/js/pages/cart/cart.js', 'public/js');
 mix.js('resources/assets/js/pages/user/user.js', 'public/js');
 
-// ADMIN
+//ADMIN
 mix.js('resources/assets/valex/js/pages/admin_dashboard.js', 'public/js_admin');
+mix.sass('resources/assets/valex/scss/pages/admin_dashboard.scss', 'public/css_admin');
 
 
 mix.autoload({

@@ -42,7 +42,7 @@
                 <div class="card-body pt-3">
                     <div class="form-group">
                         <label for="exampleInputEmail1"> Logo </label>
-                        <input type="file" class="filepond" name="avatar">
+                        <input type="file" class="filepond" data-type="avatar" name="avatar">
                         <input type="hidden" value="{{ $configuration->logo ?? '' }}" name="logo" id="avatar_uploads">
                     </div>
                 </div>

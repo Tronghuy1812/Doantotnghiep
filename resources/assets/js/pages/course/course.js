@@ -40,7 +40,6 @@ var Course = {
                 url: URL,
                 method : "GET",
                 success:function(results){
-                    console.log(results)
                     if(results.status === 404 || results.code === 401)
                     {
                         Toastr.warning(results.message)
@@ -52,9 +51,6 @@ var Course = {
                         clickClose: true,
                         showClose: true
                     })
-
-                    Toastr.success(results.message)
-
                 },
                 error: function(results){
                     console.log(results)

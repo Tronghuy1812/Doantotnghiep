@@ -53,6 +53,11 @@ class Course extends Model
         return $this->belongsToMany(Tag::class,'courses_tags','ct_course_id','ct_tag_id');
     }
 
+    public function video()
+    {
+        return $this->hasMany(CourseVideo::class,'cv_course_id');
+    }
+
     public function favourite()
     {
         return $this->hasMany(Favourite::class,'f_user_id');

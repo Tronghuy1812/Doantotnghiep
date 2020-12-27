@@ -53,7 +53,7 @@
                 <div class="card-body pt-3">
                     <div class="form-group">
                         <label for="exampleInputEmail1"> Banner </label>
-                        <input type="file" class="filepond" name="avatar">
+                        <input type="file" data-type="avatar" class="filepond" name="avatar">
                         <input type="hidden" name="s_banner" id="avatar_uploads">
                     </div>
                 </div>
