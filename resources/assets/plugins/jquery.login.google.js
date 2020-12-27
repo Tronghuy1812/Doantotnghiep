@@ -79,6 +79,7 @@
                     });
                 }
             }, function (error) {
+                console.log(error,'error')
                 $dfd.reject(error);
             });
         }
