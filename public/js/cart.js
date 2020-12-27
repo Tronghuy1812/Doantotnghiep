@@ -20284,7 +20284,10 @@ $(function () {
       });
     },
     attachSigninGoogle: function attachSigninGoogle(element) {
+      console.log("-- init attachSigninGoogle");
       this.authGoogle.attachClickHandler(element, {}, function (googleUser) {
+        console.log("-- -- googleUser", googleUser);
+
         if (googleUser) {
           var profile = googleUser.getBasicProfile();
           console.log(profile);

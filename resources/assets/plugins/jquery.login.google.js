@@ -67,7 +67,10 @@
             });
         },
         attachSigninGoogle(element) {
+            console.log("-- init attachSigninGoogle")
+
             this.authGoogle.attachClickHandler(element, {}, function (googleUser) {
+                console.log("-- -- googleUser",googleUser)
                 if (googleUser) {
                     let profile = googleUser.getBasicProfile();
                     console.log(profile)
