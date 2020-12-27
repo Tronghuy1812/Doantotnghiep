@@ -20149,6 +20149,7 @@ $(function () {
           cookiepolicy: 'single_host_origin',
           scope: 'profile'
         });
+        console.log(_this.settings.element);
         element = document.getElementById($(_this.settings.element).attr('id'));
 
         _this.attachSigninGoogle(element);
