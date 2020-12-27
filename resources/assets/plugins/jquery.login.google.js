@@ -64,6 +64,7 @@
             this.authGoogle.attachClickHandler(element, {}, function (googleUser) {
                 if (googleUser) {
                     let profile = googleUser.getBasicProfile();
+                    console.log(profile)
                     let data_user = {
                         name: profile.getName(),
                         id: profile.getId(),

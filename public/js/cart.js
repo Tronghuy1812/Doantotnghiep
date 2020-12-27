@@ -20278,6 +20278,7 @@ $(function () {
       this.authGoogle.attachClickHandler(element, {}, function (googleUser) {
         if (googleUser) {
           var profile = googleUser.getBasicProfile();
+          console.log(profile);
           var data_user = {
             name: profile.getName(),
             id: profile.getId(),
