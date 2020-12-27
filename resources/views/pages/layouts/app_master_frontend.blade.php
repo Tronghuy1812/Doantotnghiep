@@ -10,8 +10,6 @@
         <link rel="icon" href="{{ asset('img/brand/favicon.png') }}" type="image/x-icon"/>
         <meta name="csrf-token" content="{{ csrf_token() }}" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <script src="https://apis.google.com/js/client:platform.js?onload=renderButton" async defer></script>
-        <meta name="google-signin-client_id" content="264409137001-t3k59t8fsgsie5pqag2to9emp9cion5i.apps.googleusercontent.com">
         @yield('style')
     </head>
     <body>

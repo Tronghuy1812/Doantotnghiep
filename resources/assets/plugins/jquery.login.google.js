@@ -68,7 +68,7 @@
         },
         attachSigninGoogle(element) {
             console.log("-- init attachSigninGoogle")
-
+            console.log(element)
             this.authGoogle.attachClickHandler(element, {}, function (googleUser) {
                 console.log("-- -- googleUser",googleUser)
                 if (googleUser) {
