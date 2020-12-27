@@ -1,7 +1,7 @@
 <!-- Footer opened -->
 <div class="main-footer ht-40">
     <div class="container-fluid pd-t-0-f ht-100p">
-        <span>Copyright © 2020 <a href="empty#">Valex</a>. Designed by <a href="https://www.spruko.com/">Spruko</a> All rights reserved.</span>
+        <span>Copyright © 2020 <a href="https://previewcode.net/source-code.html">Admin</a>. Designed by <a href="https://www.facebook.com/TrungPhuNA/">TrungPhuNA</a> </span>
     </div>
 </div>
 <!-- Footer closed -->				<!-- Back-to-top -->

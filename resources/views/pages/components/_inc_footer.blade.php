@@ -39,6 +39,9 @@
         </div>
     </div>
     <div class="footer-button">
+        <span>Copyright © 2020 <a href="">Admin</a>. Designed by <a href="https://www.facebook.com/TrungPhuNA/">TrungPhuNA</a> </span>
+        <p>Bạn nào muốn thuê code liên hệ với mình qua facebook <a href="https://www.facebook.com/TrungPhuNA/" target="_blank">tại đây</a> hoạc xem danh sách đồ án có sẵn
+            <a href="https://previewcode.net/source-code.html" target="_blank">tại đây</a></p>
         <div class="container">{!! nl2br($configuration->footer_bottom ?? '') !!}</div>
     </div>
 </footer>
