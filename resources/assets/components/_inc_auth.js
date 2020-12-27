@@ -14,6 +14,7 @@ var Auth = {
     handleLoginGoogle()
     {
         let login = login_google('js_login_google');
+        console.log(login)
         login.done(function (data)
         {
             console.log(data)

@@ -23170,6 +23170,7 @@ var Auth = {
   },
   handleLoginGoogle: function handleLoginGoogle() {
     var login = Object(_helpers_function__WEBPACK_IMPORTED_MODULE_1__["login_google"])('js_login_google');
+    console.log(login);
     login.done(function (data) {
       console.log(data); // let result = login_or_register(data.data, url);
     });
