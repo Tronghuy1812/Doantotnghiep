@@ -11,13 +11,9 @@
         },
         ggAsyncInit: function (options) {
             let _this = this;
-            console.log(_this)
             _this.loadScript(document, 'script', 'google-login', options.jsSrc, () => {
-                console.log("-- load Script")
                 window.gapi.load('auth2', () => {
-                    console.log("-- -- load auth2")
                     if (!window.gapi.auth2.getAuthInstance()) {
-                        console.log("-- -- -- Call Auth2")
                         gapi.load('auth2', function () {
                             _this.authGoogle = gapi.auth2.init({
                                 client_id: _this.settings.appID,
@@ -30,7 +26,6 @@
                         });
                     }
                     if (_this.isApiLoaded) {
-                        console.log("-- --  initAppGoogle")
                         _this.initAppGoogle();
                     }
                 })
@@ -61,19 +56,14 @@
                     cookiepolicy: 'single_host_origin',
                     scope: 'profile'
                 });
-                console.log(_this.settings.element)
                 element = document.getElementById($(_this.settings.element).attr('id'));
                 _this.attachSigninGoogle(element);
             });
         },
         attachSigninGoogle(element) {
-            console.log("-- init attachSigninGoogle")
-            console.log(element)
             this.authGoogle.attachClickHandler(element, {}, function (googleUser) {
-                console.log("-- -- googleUser",googleUser)
                 if (googleUser) {
                     let profile = googleUser.getBasicProfile();
-                    console.log(profile)
                     let data_user = {
                         name: profile.getName(),
                         id: profile.getId(),
@@ -87,7 +77,6 @@
                     });
                 }
             }, function (error) {
-                console.log(error,'error')
                 $dfd.reject(error);
             });
         }

@@ -1,10 +1,7 @@
 <div class="auth-form" data-type="login">
     <h4>Đăng nhập</h4>
     <div class="right-content">
-        <div class="social flex flex-column">
-{{--            <a href="" class="facebook"><i class="fa fa-facebook"></i> Facebook</a>--}}
-            <a href="" class="google" id="js_login_google"><i class="fa fa-google"></i> Google</a>
-        </div>
+        @include('pages.components.auth.include._inc_social')
         <p class="mb10">- Hoặc đăng nhập bằng tài khoản Kyna -</p>
         <form action="{{ route('get.login') }}" method="POST" id="formLogin">
             @csrf

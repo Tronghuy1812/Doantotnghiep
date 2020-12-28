@@ -14,7 +14,7 @@ class LoginController extends Controller
         if($request->ajax())
         {
             $credentials = $request->only('email', 'password');
-            Log::info($credentials);
+
             if (\Auth::attempt($credentials)) {
                 if($request->ajax())
                 {

@@ -8,6 +8,7 @@ var Auth = {
         this.changeFormAuth()
         this.register()
         this.login()
+        this.handleLoginGoogle()
     },
 
     handleLoginGoogle()
@@ -16,16 +17,29 @@ var Auth = {
         console.log(login)
         login.done(function (data)
         {
+            $.ajax({
+                url: URL_SOCIAL,
+                method : "POST",
+                data:data,
+                success: function(results) {
+                    console.log(results)
+                    if(results.code === 200)
+                    {
+                        location.reload();
+                    }
+                },
+                error: function(xhr) {
+
+                },
+            });
+
             console.log(data,'data true')
-            // let result = login_or_register(data.data, url);
         });
     },
     showPopupAuth()
     {
-        let _this = this
         $(".js-auth-popup").click(function (event){
             event.preventDefault()
-            _this.handleLoginGoogle()
             $('.js-popup-auth').modal({
                 escapeClose: true,
                 clickClose: true,

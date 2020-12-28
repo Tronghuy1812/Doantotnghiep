@@ -10,6 +10,9 @@
         <link rel="icon" href="{{ asset('img/brand/favicon.png') }}" type="image/x-icon"/>
         <meta name="csrf-token" content="{{ csrf_token() }}" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script>
+            var URL_SOCIAL = '{{ route("post.social") }}'
+        </script>
         @yield('style')
     </head>
     <body>

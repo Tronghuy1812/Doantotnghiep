@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['namespace' => 'Frontend'], function (){
     Route::post('/dang-nhap','LoginController@index')->name('get.login');
     Route::post('/dang-ky','RegisterController@register')->name('get.register');
+    Route::post('/social','SocialController@callback')->name('post.social');
     Route::get('/dang-xuat','RegisterController@logout')->name('get.logout');
     Route::get('/','HomeController@index')->name('get.home');
     Route::get('/trang-chu','HomeController@index')->name('get.home');
