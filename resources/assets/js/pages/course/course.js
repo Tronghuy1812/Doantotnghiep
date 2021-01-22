@@ -8,6 +8,7 @@ var Course = {
         this.showContentCourse()
         this.addFavourites()
         this.showPopupViewCourse()
+        this.closeVideo()
     },
 
     showContentCourse()
@@ -47,15 +48,26 @@ var Course = {
                     }
                     $("#contentVideo").html(results.html)
                     $('#popup-view-course').modal({
-                        escapeClose: true,
-                        clickClose: true,
-                        showClose: true
+                        escapeClose: false,
+                        clickClose: false,
+                        showClose: false
                     })
                 },
                 error: function(results){
                     console.log(results)
                 }
             });
+        })
+    },
+
+    closeVideo()
+    {
+        $(".js-close-video").click(function (event){
+            event.preventDefault()
+            $.modal.close();
+            if(typeof $("body video")[0] !== 'undefined'){
+                $("body video")[0].pause();
+            }
         })
     },
 

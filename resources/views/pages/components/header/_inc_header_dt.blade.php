@@ -15,7 +15,7 @@
         </div>
         <div class="header-right flex flex-jc-sb flex-a-c">
             <a href="" class="btn-cdo cdo"><i class="fa fa-unlock-alt"></i> Kích hoạt COD</a>
-            <a href="{{ route('get_user.cart') }}" title="Giỏ hàng" class="cart"><i class="fa fa-cart-arrow-down"></i> <span>({{ \Cart::count() }})</span></a>
+            <a href="{{ route('get_user.cart') }}" title="Giỏ hàng" class="cart"><i class="fa fa-cart-arrow-down"></i> <span id="countSource">{{ \Cart::count() }}</span></a>
             @if(get_data_user('web'))
                 <div class="auth-login">
                     <a href="{{ route('get_user.dashboard') }}" title="Dashboard">{{ get_data_user('web','name') }}</a>
@@ -24,7 +24,7 @@
                 <div class="auth flex flex-a-c">
                     <p class="js-auth-popup">
                         <a href="" class="login">Đăng nhập</a>
-                        <a href="" class="facebook"><i class="fa fa-facebook "></i></a>
+{{--                        <a href="" class="facebook"><i class="fa fa-facebook "></i></a>--}}
                         <a href="" class="google"><i class="fa fa-google "></i></a>
                     </p>
                 </div>

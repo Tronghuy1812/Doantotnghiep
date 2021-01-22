@@ -5,6 +5,6 @@
 
     </div>
     <div class="popup-footer">
-        <a href="" class="btn btn-secondary">Đóng</a>
+        <a href="" class="btn btn-secondary js-close-video" >Đóng</a>
     </div>
 </div>

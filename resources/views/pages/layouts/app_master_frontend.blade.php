@@ -24,5 +24,8 @@
             @include('pages.components.auth._inc_popup_auth')
         @endif
     </body>
+    <script>
+        var URL_PAY = '{{ route('get_user.pay') }}'
+    </script>
     @yield('script')
 </html>

@@ -50,10 +50,38 @@ var Cart = {
 
     buyNow()
     {
+        let _this = this
         $(".js-buy-now").click(function (event){
             event.preventDefault()
             let $this = $(this)
-            console.log($this)
+            let URL = $this.attr('data-url')
+            if(typeof URL !== "undefined")
+            {
+                let result = _this.processAddCart(URL, $this)
+                console.log(result,'result')
+                result.done(function (results){
+                    if(results.status === 401)
+                    {
+                        $('.js-popup-auth').modal({
+                            escapeClose: true,
+                            clickClose: true,
+                            showClose: true
+                        })
+                        return  false
+                    }
+                    if(results.status === 404)
+                    {
+                        console.log('404')
+                        Toastr.error('Dữ liệu không tồn tại')
+                        return  false
+                    }
+
+                    if(results.status === 200)
+                    {
+                        window.location.href = URL_PAY
+                    }
+                })
+            }
         })
     },
 
@@ -66,44 +94,74 @@ var Cart = {
             let URL = $this.attr('data-url')
             if(typeof URL !== "undefined")
             {
-                _this.processAddCart(URL, $this)
+                let result = _this.processAddCart(URL, $this)
+                result.done(function (results){
+                    if(results.status === 401)
+                    {
+                        $('.js-popup-auth').modal({
+                            escapeClose: true,
+                            clickClose: true,
+                            showClose: true
+                        })
+                        return  false
+                    }
+                    if(results.status === 404)
+                    {
+                        console.log('404')
+                        Toastr.error('Dữ liệu không tồn tại')
+                        return  false
+                    }
+
+                    if(results.status === 200)
+                    {
+                        let $count = $("#countSource")
+                        let numberCount = $count.text()
+                        $count.text(parseInt($count.text()) + 1)
+                    }
+                })
             }
-            console.log(URL)
         })
     },
 
     processAddCart(URL, $element)
     {
-        $.ajax({
+        // let results = $.ajax({
+        //     url: URL,
+        //     success:function(results){
+        //         console.log(results)
+        //         if(results.status === 401)
+        //         {
+        //             $('.js-popup-auth').modal({
+        //                 escapeClose: true,
+        //                 clickClose: true,
+        //                 showClose: true
+        //             })
+        //             return  false
+        //         }
+        //         if(results.status === 404)
+        //         {
+        //             console.log('404')
+        //             Toastr.error('Dữ liệu không tồn tại')
+        //             return  false
+        //         }
+        //
+        //         if(results.status === 200)
+        //         {
+        //             console.log('404')
+        //             Toastr.success(results.message)
+        //         }
+        //     },
+        //     error: function(results){
+        //
+        //     }
+        // });
+
+        let results = $.ajax({
             url: URL,
-            success:function(results){
-                console.log(results)
-                if(results.status === 401)
-                {
-                    $('.js-popup-auth').modal({
-                        escapeClose: true,
-                        clickClose: true,
-                        showClose: true
-                    })
-                    return  false
-                }
-                if(results.status === 404)
-                {
-                    console.log('404')
-                    Toastr.error('Dữ liệu không tồn tại')
-                    return  false
-                }
-
-                if(results.status === 200)
-                {
-                    console.log('404')
-                    Toastr.success(results.message)
-                }
-            },
-            error: function(results){
-
-            }
+            async : false
         });
+
+        return results
     }
 }
 
