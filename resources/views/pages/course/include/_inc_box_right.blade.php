@@ -6,6 +6,11 @@
             <a href="javascript:;void(0)" data-url="{{ route('get_user.cart.add',['id' => $courseDetail->id,'type' => 'course']) }}" title="Mua ngay" class="btn btn-success btn-radius js-buy-now">Mua ngay</a>
             <a href="javascript:;void(0)" title="Thêm giỏ hàng" data-url="{{ route('get_user.cart.add',['id' => $courseDetail->id,'type' => 'course']) }}"
                class="btn btn-pink btn-radius js-add-cart">Thêm giỏ hàng</a>
+
+            <div class="choice" style="margin-top: 20px">
+                <a href="" class="btn btn-primary btn-radius js-process-choice">Làm bài</a>
+                <a href="" class="btn btn-primary btn-radius" id="timer">2 phút </a>
+            </div>
             <div class="footer">
                 <a href="" class="facebook"><i class="fa fa-facebook"></i></a>
                 <a href="" class="google"><i class="fa fa-google"></i></a>

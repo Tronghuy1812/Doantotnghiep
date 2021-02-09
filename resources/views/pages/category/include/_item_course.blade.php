@@ -28,7 +28,12 @@
                 <a href="" class="video">
                     <i class="fa fa-play-circle"></i> Học thử
                 </a>
-                <span class="price">Miễn phí</span>
+                @if($course->c_price)
+                    <span class="price">{{ number_format($course->c_price,0,',','.')}} VNĐ</span>
+                @else 
+                    <span class="price">Miễn phí</span>
+                @endif
+                
             </p>
         </div>
     </div>

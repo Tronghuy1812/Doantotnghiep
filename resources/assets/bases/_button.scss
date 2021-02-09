@@ -187,6 +187,11 @@ button {
         background-color: #007bff;
         border-color: #007bff;
     }
+    &-danger {
+        color: #fff;
+        background-color: #dc3545;
+        border-color: #dc3545;
+    }
     &-gradient {
         background-color: #F89029; /* For browsers that do not support gradients */
         background-image: linear-gradient(to right, #F89029 , #FC3B1F);

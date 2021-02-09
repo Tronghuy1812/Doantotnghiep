@@ -48,6 +48,39 @@
                         Đang cập nhật
                     </div>
                 </div>
+                @if(isset($questions) && !$questions->isEmpty())
+                <div class="box-section quiz-main">
+                    <h4 class="box-title">Một số bài mẫu trắc nghiệm <a href="{{ route('get.course.multiple_choice',['slug' => $courseDetail->c_slug.'-cr']) }}">Làm thử</a></h4>
+                    <div class="box-content">
+                        <ul>
+                            @foreach($questions as $key => $item)
+                            <li data-sectionid="457" class="quiz-section">
+                                <div class="quiz-section-title">Câu {{ $key + 1 }}. {{ $item->q_name }}</div>
+                                <div class="quiz-section-content">
+                                    <div class="item item-question item-choices">
+                                        @if(isset($item->answers) && !$item->answers->isEmpty())
+                                        <ul class="list btn-group group-theme">
+                                            @foreach($item->answers as $item)
+                                                <li class="list-item">
+                                                    <label class="overlabel">
+                                                        <input type="radio" class="hide" name="option-{{ $item->id }}" data-status="1" data-point="1"> <span class="mark"></span> </label>
+                                                    <div class="boxcheck">
+                                                        <div class="answer-desc textview">
+                                                            <p>{{ $item->a_name }}</p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                        @endif
+                                    </div>
+                                </div>
+                            </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+                @endif
                 @if(isset($courseDetail->teacher))
                 <div class="box-section teacher">
                     <h4 class="box-title">Thông tin giảng viên <a href="">Chi tiết <i class="fa fa-chevron-right"></i> </a></h4>

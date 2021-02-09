@@ -76,6 +76,18 @@ Route::prefix('admin')->middleware('checkLoginAdmin')->group(function() {
             Route::post('{id}/update/{videoId}', 'AdminCourseVideoController@update');
             Route::get('{id}/delete/{videoId}', 'AdminCourseVideoController@delete')->name('get_admin.course_video.delete')->middleware('permission:course_video_delete|full');
         });
+        Route::prefix('question')->group(function (){
+            Route::get('{id}/index', 'AdminCourseQuestionController@index')->name('get_admin.course_question.index')->middleware('permission:course_question_index|full');
+            Route::get('{id}/create', 'AdminCourseQuestionController@create')->name('get_admin.course_question.create')
+                ->middleware('permission:course_question_create|full');
+            Route::post('{id}/create', 'AdminCourseQuestionController@store')->name('get_admin.course_question.create');
+
+            Route::get('{id}/update/{questId}', 'AdminCourseQuestionController@edit')->name('get_admin.course_question.edit')->middleware('permission:course_question_edit|full');
+            Route::post('{id}/update/{questId}', 'AdminCourseQuestionController@update');
+            Route::get('{id}/delete/{questId}', 'AdminCourseQuestionController@delete')->name('get_admin.course_question.delete')->middleware('permission:course_question_delete|full');
+            Route::get('{id}/answers/{questId}/{answerId}','AdminCourseQuestionController@success')->name('get_admin.course_question.success')
+                ->middleware('permission:course_question_success|full');
+        });
         Route::prefix('vote')->group(function (){
             Route::get('{id}/index', 'AdminCourseVoteController@index')->name('get_admin.course_vote.index')->middleware('permission:course_vote_index|full');
             Route::get('{id}/delete/{voteId}', 'AdminCourseVoteController@delete')->name('get_admin.course_vote.delete')->middleware('permission:course_vote_delete|full');
@@ -83,7 +95,6 @@ Route::prefix('admin')->middleware('checkLoginAdmin')->group(function() {
 
         Route::post('update/{id}', 'AdminCourseController@update');
         Route::get('delete/{id}', 'AdminCourseController@delete')->name('get_admin.course.delete')->middleware('permission:course_delete|full');
-
     });
 
     Route::prefix('slide')->group(function (){

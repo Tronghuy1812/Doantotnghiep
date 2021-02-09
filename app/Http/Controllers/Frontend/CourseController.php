@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Education\Course;
 use App\Models\Education\CourseContent;
 use App\Models\Education\CourseVideo;
+use App\Models\Question;
 use App\Models\Vote;
 use Illuminate\Http\Request;
 
@@ -39,6 +40,13 @@ class CourseController extends Controller
             ->orderByDesc('id')
             ->paginate(20);
 
+        // Hiển thị bài học
+        $questions = Question::with('answers')
+            ->where('q_course_id', $courseDetail->id)
+            ->orderByDesc('id')
+            ->limit(2)
+            ->get();
+
         //3 Hiển thị thông kê
         $votesDashboard = Vote::groupBy('v_number')
             ->where('v_id', $id)
@@ -61,7 +69,8 @@ class CourseController extends Controller
             'courseContent'  => $courseContent,
             'votesDashboard' => $votesDashboard,
             'courseDetail'   => $courseDetail,
-            'courseVideo'    => $courseVideo
+            'courseVideo'    => $courseVideo,
+            'questions'      => $questions
         ];
 
         return view('pages.course.index', $viewData);

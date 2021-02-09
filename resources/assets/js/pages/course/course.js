@@ -1,6 +1,7 @@
 import Toastr from 'toastr';
 import Cart from "../../../components/_inc_cart";
 import AutoloadJs from '../../../components/_inc_autoload'
+import MultipleChoice from "../../../components/_inc_multiple_choice";
 var Course = {
     flagClick : false,
     init : function ()
@@ -116,4 +117,5 @@ $(function (){
     Course.init()
     Cart.init()
     AutoloadJs.init()
+    MultipleChoice.init()
 })

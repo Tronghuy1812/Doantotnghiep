@@ -22,7 +22,7 @@ mix.js('resources/assets/js/pages/cart/cart.js', 'public/js');
 mix.js('resources/assets/js/pages/user/user.js', 'public/js');
 
 //ADMIN
-// mix.js('resources/assets/valex/js/pages/admin_dashboard.js', 'public/js_admin');
+mix.js('resources/assets/valex/js/pages/admin_dashboard.js', 'public/js_admin');
 // mix.sass('resources/assets/valex/scss/pages/admin_dashboard.scss', 'public/css_admin');
 
 

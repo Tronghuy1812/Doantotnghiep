@@ -26,6 +26,7 @@
                                 <li><a href="{{ route('get_admin.course_content.index',['id' => $id]) }}" class="nav-link" >Nội dung khoá học</a></li>
                                 <li><a href="{{ route('get_admin.course_video.index',['id' => $id]) }}"  class="nav-link  active">Video khoá học</a></li>
                                 <li><a href="{{ route('get_admin.course_vote.index', $id) }}"  class="nav-link ">Đánh giá khoá học</a></li>
+                                <li><a href="{{ route('get_admin.course_question.index', $id) }}"  class="nav-link ">Câu hỏi và trả lời</a></li>
                             </ul>
                         </div>
                     </div>

@@ -19,6 +19,12 @@
         <!-- row -->
         <div class="row">
             <div class="col-xl-12">
+                <div class="mb-2">
+                    <form action="" class="form-inline">
+                        <input type="text" name="n" value="{{ Request::get('n') }}" placeholder="Tên khoá học" class="form-control">
+                        <button class="btn btn-primary ml-2">Lọc</button>
+                    </form>
+                </div>
                 <div class="card">
                     <div class="card-body">
                         <div class="table-responsive">

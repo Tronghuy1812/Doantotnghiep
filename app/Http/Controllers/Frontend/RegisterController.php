@@ -20,6 +20,10 @@ class RegisterController extends Controller
                 $data               = $request->except('_token','remember');
                 $data['created_at'] = Carbon::now();
                 $data['password'] = bcrypt($request->password);
+                $data['provider'] = 'register';
+                $data['avatar_social'] = '';
+                $data['provider_id'] = 0;
+                
                 $id = User::insertGetId($data);
                 if($id){
                     if (\Auth::attempt([

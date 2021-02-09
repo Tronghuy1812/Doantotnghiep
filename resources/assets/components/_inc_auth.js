@@ -76,6 +76,7 @@ var Auth = {
                 method : "POST",
                 data:$('#formRegister').serialize(),
                 success: function(results) {
+                    console.log(results)
                     if(results.code === 200)
                     {
                         location.reload();

@@ -2,6 +2,7 @@ var Course = {
     init : function (){
         this.saveCourseContent()
         this.nextTab()
+        this.addQuestion()
     },
 
     nextTab()
@@ -9,9 +10,7 @@ var Course = {
         $(".js-tabs-customer").click(function (event){
             $(".nav-link").removeClass('active')
             $(".js-tab-pane").removeClass('active')
-            console.log("Click")
             $(this).addClass('active')
-            console.log($($(this).attr('data-id')))
             $($(this).attr('data-id')).addClass('active')
         })
     },
@@ -46,6 +45,28 @@ var Course = {
                     $('#contentCourse').val('');
                 },
             });
+        })
+    },
+
+    addQuestion()
+    {
+        console.log('addQuestion')
+        $(".js-add-question").click(function (event){
+            event.preventDefault()
+            let $this = $(this)
+            let $boxQuestion = $this.parents('#js-box-question')
+            let $boxClone = $boxQuestion.find(".clone").clone()
+            $boxClone.find("input").val('');
+            $boxClone.find("textarea").val('');
+            $this.before($boxClone.removeClass('clone'))
+
+        })
+    },
+    removeQuestion()
+    {
+        $(".js-remove-question").click( function (event){
+            event.preventDefault()
+            $(this).parents('.row').remove()
         })
     },
 

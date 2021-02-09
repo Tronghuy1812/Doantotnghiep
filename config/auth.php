@@ -46,6 +46,11 @@ return [
             'provider' => 'admins',
         ],
 
+        'teachers' => [
+            'driver' => 'session',
+            'provider' => 'teachers',
+        ],
+
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -78,6 +83,10 @@ return [
         'admins' => [
             'driver' => 'eloquent',
             'model' => App\Models\System\Admin::class,
+        ],
+        'teachers' => [
+            'driver' => 'eloquent',
+            'model' => \App\Models\Education\Teacher::class,
         ]
 
         // 'users' => [
@@ -110,6 +119,12 @@ return [
         ],
         'admins' => [
             'provider' => 'admins',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'teachers' => [
+            'provider' => 'teachers',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

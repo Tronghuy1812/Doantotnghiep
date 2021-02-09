@@ -35,7 +35,7 @@ class AdminCourseContentController extends AdminController
 
     public function store(AdminCourseContentRequest $request, $id)
     {
-        $data = $request->except(['save', '_token']);
+        $data = $request->except(['save', '_token','avatar']);
         $data['created_at'] = Carbon::now();
         $idContent = CourseContent::insertGetId($data);
         if($idContent) {
@@ -59,7 +59,7 @@ class AdminCourseContentController extends AdminController
     public function update(AdminCourseContentRequest $request, $id, $contentId)
     {
         $course = CourseContent::findOrFail($contentId);
-        $data = $request->except(['save', '_token']);
+        $data = $request->except(['save', '_token','avatar']);
         $data['updated_at'] = Carbon::now();
         $course->fill($data)->save();
         $this->showMessagesSuccess();

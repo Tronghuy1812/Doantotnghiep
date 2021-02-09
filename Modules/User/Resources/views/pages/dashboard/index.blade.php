@@ -30,7 +30,7 @@
                                 @foreach($transactions as $item)
                                     <tr>
                                         <td scope="row" style="text-align: center;position:relative;" data-tooltip="Click để xem chi tiết" class="css-tooltip">
-                                            <a href="">DH{{ $item->id }}</a>
+                                            <a href="{{ route('get_user.transaction.view', $item->id) }}">DH{{ $item->id }}</a>
                                         </td>
                                         <td style="text-align: center">{{ number_format($item->t_total_money,0,',','.') }} đ</td>
                                         <td style="text-align: center">{{ $item->created_at }}</td>

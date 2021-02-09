@@ -23,6 +23,11 @@ Route::group(['namespace' => 'Frontend'], function (){
     Route::get('khoa-hoc-ban-chay.html','CoursePaySellingController@index')->name('get.course.pay_selling');
     Route::get('khoa-hoc-yeu-thich.html','CourseFavouriteController@index')->name('get.course.favourite');
     Route::get('/danh-muc/{slug?}','CategoryController@index')->name('get.category');
+    Route::get('/khoa-hoc/{slug?}/trac-nghiem','CourseMultipleChoiceController@index')->name('get.course.multiple_choice');
+    Route::post('/khoa-hoc/{slug?}/trac-nghiem','CourseMultipleChoiceController@processMultipleChoice');
+    Route::get('/khoa-hoc/{slug?}/ket-qua-trac-nghiem','CourseMultipleChoiceController@resultMultipleChoice')->name('get.course.multiple_choice.result');
+    Route::get('/khoa-hoc/{slug?}/ket-qua-trac-nghiem-lan-{position?}','CourseMultipleChoiceController@resultMultipleChoice')
+        ->name('get.course.multiple_choice.result_position')->where(['position' => '[0-9]+']);
     Route::get('/khoa-hoc/{slug?}','HubCourseController@render')->name('get.course.render');
     Route::get('tat-ca-khoa-hoc','CategoryController@index')->name('get.category.all');
     Route::get('giang-vien/{slug}','TeacherController@getCourseByTeacherSlug')->name('get.teacher.course');

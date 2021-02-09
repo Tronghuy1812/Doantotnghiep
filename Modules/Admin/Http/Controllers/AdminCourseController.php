@@ -16,14 +16,20 @@ use Modules\Admin\Http\Requests\AdminCourseRequest;
 
 class AdminCourseController extends AdminController
 {
-    public function index()
+    public function index(Request $request)
     {
-        $courses = Course::orderByDesc('id')
+        $courses = Course::whereRaw(1);
+        if($name = $request->n)
+            $courses->where('c_name','like','%'.$name.'%');
+
+        $courses =  $courses->orderByDesc('id')
             ->paginate(20);
 
         $viewData = [
-            'courses' => $courses
+            'courses' => $courses,
+            'query' => $request->query()
         ];
+
         return view('admin::pages.course.index', $viewData);
     }
 

@@ -14,5 +14,6 @@
     "/css/blog_menu.css": "/css/blog_menu.css",
     "/css/blog_article.css": "/css/blog_article.css",
     "/js/teacher.js": "/js/teacher.js",
-    "/js/user.js": "/js/user.js"
+    "/js/user.js": "/js/user.js",
+    "/js_admin/admin_dashboard.js": "/js_admin/admin_dashboard.js"
 }

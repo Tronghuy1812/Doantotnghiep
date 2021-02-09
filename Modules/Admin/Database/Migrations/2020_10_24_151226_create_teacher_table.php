@@ -18,6 +18,8 @@ class CreateTeacherTable extends Migration
             $table->string('t_name')->nullable();
             $table->string('t_slug')->unique();
             $table->string('t_avatar')->nullable();
+            $table->string('email')->nullable()->unique();
+            $table->string('password')->nullable()->unique();
             $table->string('t_job')->nullable();
             $table->string('t_phone')->nullable();
             $table->string('t_email')->nullable();

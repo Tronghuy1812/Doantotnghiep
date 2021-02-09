@@ -202,6 +202,20 @@
                     </div>
                 </div>
             </div>
+            <div class="card  box-shadow-0 ">
+                <div class="card-body pt-3">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1"> Banner </label>
+                        <input type="file" data-type="avatar" class="filepond" name="avatar">
+                        <input type="hidden" name="c_avatar" id="avatar_uploads">
+                    </div>
+                    @if(isset($course->c_avatar))
+                        <p>
+                            <img src="{{ pare_url_file($course->c_avatar) }}" alt="" style="width: 100%;height: auto">
+                        </p>
+                    @endif
+                </div>
+            </div>
         </div>
     </div>
 </form>
