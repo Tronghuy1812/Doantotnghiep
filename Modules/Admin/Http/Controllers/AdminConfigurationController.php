@@ -26,6 +26,7 @@ class AdminConfigurationController extends AdminController
     {
         try {
             $configuration = Configuration::firstOrNew(['email' => $request->email]);
+
             $configuration->fill($request->except(['_token', 'email']))->save();
             $this->showMessagesSuccess('Cập nhật thành công');
         } catch (\Exception $exception) {

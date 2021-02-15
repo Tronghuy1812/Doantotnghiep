@@ -9,25 +9,25 @@
         <div class="container">
             <div class="box">
                 <div class="box-25 mr20">
-                    <section>
-                        <div class="box-sidebar">
-                            <h2 class="box-sidebar-title">Kỹ năng quản trị</h2>
-                            <ul class="b-s-category">
-                                <li>
-                                    <a href=""><i class="fa fa-comments"></i> Khoá học combo</a>
-                                </li>
-                                <li>
-                                    <a href=""><i class="fa fa-comments"></i> Khoá học combo</a>
-                                </li>
-                                <li>
-                                    <a href=""><i class="fa fa-comments"></i> Khoá học combo</a>
-                                </li>
-                                <li class="turn-back">
-                                    <a href=""><i class="fa fa-angle-left"></i> Xem danh mục khác</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </section>
+{{--                    <section>--}}
+{{--                        <div class="box-sidebar">--}}
+{{--                            <h2 class="box-sidebar-title">Kỹ năng quản trị</h2>--}}
+{{--                            <ul class="b-s-category">--}}
+{{--                                <li>--}}
+{{--                                    <a href=""><i class="fa fa-comments"></i> Khoá học combo</a>--}}
+{{--                                </li>--}}
+{{--                                <li>--}}
+{{--                                    <a href=""><i class="fa fa-comments"></i> Khoá học combo</a>--}}
+{{--                                </li>--}}
+{{--                                <li>--}}
+{{--                                    <a href=""><i class="fa fa-comments"></i> Khoá học combo</a>--}}
+{{--                                </li>--}}
+{{--                                <li class="turn-back">--}}
+{{--                                    <a href=""><i class="fa fa-angle-left"></i> Xem danh mục khác</a>--}}
+{{--                                </li>--}}
+{{--                            </ul>--}}
+{{--                        </div>--}}
+{{--                    </section>--}}
                     @include('pages.components._inc_tags_hot')
                 </div>
                 <div class="box-75 box-content">

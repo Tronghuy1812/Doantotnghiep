@@ -43,8 +43,13 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1"> Logo </label>
                         <input type="file" class="filepond" data-type="avatar" name="avatar">
-                        <input type="hidden" value="{{ $configuration->logo ?? '' }}" name="logo" id="avatar_uploads">
+                        <input type="hidden" value="{{ pare_url_file($configuration->logo ?? '') }}" name="logo" id="avatar_uploads">
                     </div>
+                    @if(isset($configuration->logo))
+                        <p>
+                            <img src="{{ pare_url_file($configuration->logo) }}" alt="" style="width: 100%;height: auto">
+                        </p>
+                    @endif
                 </div>
             </div>
         </div>
