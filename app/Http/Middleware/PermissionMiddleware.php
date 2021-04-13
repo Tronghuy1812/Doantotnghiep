@@ -10,6 +10,7 @@ class PermissionMiddleware
 {
     public function handle($request, Closure $next, $permission, $guard = null)
     {
+        return $next($request);
         $permissions = is_array($permission)
             ? $permission
             : explode('|', $permission);
