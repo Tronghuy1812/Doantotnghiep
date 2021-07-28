@@ -17,4 +17,13 @@ class UserCartController extends Controller
 
         return view('user::pages.cart.index',compact('listCarts'));
     }
+
+    /**
+     *  Xoá sản phẩm đơn hang
+     * */
+    public function delete(Request $request, $rowId)
+    {
+        \Cart::remove($rowId);
+        return redirect()->back();
+    }
 }

@@ -32,7 +32,7 @@
                             </td>
                             <td> <span class="js-total-item">{{ number_format($item->price,0,',','.') }} đ</span> </td>
                             <td>
-                                <a href="" class="btn btn-xs btn-pink btn-radius"><i class="fa fa-trash"></i> Huỷ bỏ</a>
+                                <a href="{{ route('get.shopping.delete', $key) }}" class="btn btn-xs btn-pink btn-radius"><i class="fa fa-trash"></i> Huỷ bỏ</a>
                             </td>
                         </tr>
                     @endforeach

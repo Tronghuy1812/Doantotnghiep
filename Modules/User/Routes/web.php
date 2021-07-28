@@ -40,6 +40,7 @@ Route::prefix('user')->middleware('checkLoginUser')->group(function() {
 Route::middleware('checkLoginUser')->group(function() {
     Route::get('thanh-toan.html', 'UserPayController@getPay')->name('get_user.pay');
     Route::get('gio-hang.html', 'UserCartController@index')->name('get_user.cart');
+    Route::get('delete/{id}','UserCartController@delete')->name('get.shopping.delete'); // xoá sp trong gi hàng
 });
 
 

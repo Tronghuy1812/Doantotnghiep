@@ -41,7 +41,7 @@
                                         <td>{{ $item->phone }}</td>
                                         <td>
                                             <a href="" class="btn btn-xs btn-info"><i class="la la-edit"></i></a>
-                                            <a href="" class="btn btn-xs btn-danger"><i class="la la-trash"></i></a>
+                                            <a href="{{ route('get_admin.user.delete', $item->id) }}" class="btn btn-xs btn-danger"><i class="la la-trash"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach
