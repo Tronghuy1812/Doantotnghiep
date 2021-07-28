@@ -13,6 +13,9 @@
         <script>
             var URL_SOCIAL = '{{ route("post.social") }}'
         </script>
+        <meta property="og:image" content="https://123code.net/images/social.png" />
+        <meta property="og:image:height" content="315" />
+        <meta property="og:image:width" content="600" />
         @yield('style')
     </head>
     <body>
